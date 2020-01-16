@@ -1,14 +1,9 @@
 import React from "react";
 import {View, Text} from "react-native";
 import { Container }  from "native-base";
-import { Actions } from 'react-native-router-flux';
-import MapContainer from "./MapContainer";
 import HeaderComponent from '../../../components/HeaderComponent';
-import MapTrack from '../../../components/HeaderComponent';
-import FooterComponent from '../../../components/FooterComponent';
-import Fare from './Fare';
-import Fab from './Fab';
-import FindDriver from './FindDriver'
+import MapTrack from './MapTrack';
+import DriverFound from './DriverFound';
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -16,12 +11,6 @@ const truckMarker = require("../../../assets/img/truck_marker.png");
 class TrackDriver extends React.Component{
   componentDidMount(){
 		this.props.getCurrentLocation();
-  }
-
-  componentDidUpdate(prevProps, prevState){
-	if(this.props.booking.status === 'confirmed'){
-		Actions.trackDriver({type:'reset'});
-	}
   }
 render(){
 		const region = {
@@ -43,6 +32,12 @@ render(){
                     />
                 }
                 
+				{
+					this.props.showDriverFound && 
+					<DriverFound 
+						driverInfo={this.props.driverInfo}
+					/>
+				}
 			</Container>
 
 		);
