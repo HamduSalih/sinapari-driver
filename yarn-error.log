@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-spinkit@latest
+  C:\Program Files\nodejs\node.exe C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-start
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Ruby26-x64\bin;C:\Users\Zuchi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Zuchi\AppData\Roaming\npm
@@ -14,7 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Zuchi\Desktop\Dev Environment\sinapari\node_modules\@babel\preset-env\node_modules\.bin'
+  Error: https://registry.yarnpkg.com/react-native-start: Not found
+      at Request.params.callback [as _callback] (C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66947:18)
+      at Request.self.callback (C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140665:22)
+      at Request.emit (events.js:210:5)
+      at Request.<anonymous> (C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141637:10)
+      at Request.emit (events.js:210:5)
+      at IncomingMessage.<anonymous> (C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141559:12)
+      at Object.onceWrapper (events.js:299:28)
+      at IncomingMessage.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1184:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
   {
@@ -48,6 +58,7 @@ npm manifest:
       "react-native-google-places-autocomplete": "^1.4.0",
       "react-native-maps": "^0.26.1",
       "react-native-router-flux": "^4.0.6",
+      "react-native-spinkit": "^1.5.0",
       "react-native-web": "~0.11.7",
       "react-navigation": "^4.0.10",
       "react-navigation-deprecated-tab-navigator": "^1.3.0",
@@ -5609,6 +5620,13 @@ Lockfile:
     integrity sha512-tOxHGQUN83MTmQB4ghoQkibqOdGiX4JQEmeyEv96MKWO/x8T2PJv84ECUos9hD3blPRQwVwSpAid1PPPhrVEaw==
     dependencies:
       debounce "^1.2.0"
+  
+  react-native-spinkit@^1.5.0:
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/react-native-spinkit/-/react-native-spinkit-1.5.0.tgz#598b4b138b1e95cc232dfb2fc7e64dcdd45de574"
+    integrity sha512-HHOIH3Lq+oFsmhPBO9Y2hcxkKNm955gmNBaFgNUrshhGU4Dqp8qWj3bbVrwjBJOC5W+cvHSqyTsfgmpMPoUoTA==
+    dependencies:
+      prop-types "^15.5.8"
   
   react-native-tab-view@^0.0.77:
     version "0.0.77"
