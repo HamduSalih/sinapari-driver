@@ -3,7 +3,8 @@ import {View, Text} from "react-native";
 import { Container }  from "native-base";
 import HeaderComponent from '../../../components/HeaderComponent';
 import MapTrack from './MapTrack';
-import DriverFound from './DriverFound';
+import DriverFooterProfile from './DriverFooterProfile';
+import DriverOnTheWayFooter from './DriverOnTheWayFooter';
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -11,6 +12,7 @@ const truckMarker = require("../../../assets/img/truck_marker.png");
 class TrackDriver extends React.Component{
   componentDidMount(){
 		this.props.getCurrentLocation();
+		this.props.getDriverInfo();
   }
 render(){
 		const region = {
@@ -31,7 +33,15 @@ render(){
                         selectedAddress={this.props.selectedAddress}
                     />
                 }
+
+				<DriverOnTheWayFooter 
+					driverInfo={this.props.driverInfo}
+				/>
                 
+				<DriverFooterProfile 
+					driverInfo={this.props.driverInfo}
+				/>
+
 				{
 					this.props.showDriverFound && 
 					<DriverFound 
