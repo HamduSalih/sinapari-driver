@@ -5,7 +5,8 @@ import {
 } from "../Modules/TrackDriver";
 //states from modules home.js
 const mapStateToProps = (state) => ({
-	region: state.home.region
+	region: state.home.region,
+	selectedAddress: state.home.selectedAddress || {}
 });
 
 const mapActionCreators = {

@@ -4,6 +4,7 @@ import { Container }  from "native-base";
 import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
 import HeaderComponent from '../../../components/HeaderComponent';
+import MapTrack from '../../../components/HeaderComponent';
 import FooterComponent from '../../../components/FooterComponent';
 import Fare from './Fare';
 import Fab from './Fab';
@@ -35,6 +36,13 @@ render(){
 		return(
 			<Container>
 				<HeaderComponent logo={sinaLogo} />
+                {   this.props.region.latitude &&
+                    <MapTrack 
+                        region={this.props.latitude}
+                        selectedAddress={this.props.selectedAddress}
+                    />
+                }
+                
 			</Container>
 
 		);
