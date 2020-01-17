@@ -1,15 +1,19 @@
 import { connect } from "react-redux";
-import Home from "../Components/Home";
+import TrackDriver from "../Components/TrackDriver";
 import {
-	getCurrentLocation
+	getCurrentLocation,
+	getDriverInfo
 } from "../Modules/TrackDriver";
 //states from modules home.js
 const mapStateToProps = (state) => ({
-	region: state.home.region,
-	selectedAddress: state.home.selectedAddress || {}
+	region: state.trackDriver.region,
+	selectedAddress: state.home.selectedAddress || {},
+	driverInfo: state.trackDriver.driverInfo || {},
+	driverLocation: state.trackDriver.driverLocation 
 });
 
 const mapActionCreators = {
-	getCurrentLocation
+	getCurrentLocation,
+	getDriverInfo
 };
-export default connect(mapStateToProps, mapActionCreators)(Home);
+export default connect(mapStateToProps, mapActionCreators)(TrackDriver);

@@ -19,7 +19,8 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-  GET_CURRENT_LOCATION
+  GET_CURRENT_LOCATION,
+  GET_DRIVER_INFORMATION
 	  } = constants;
 
 
@@ -46,6 +47,21 @@ export function getCurrentLocation(){
   }
 }
 
+//Get driver's info
+
+export function getDriverInfo(){
+	return (dispatch, store)=>{
+		let id = store().home.booking.driverId;
+		request.get(uri + '/api/driver/' + id)
+		.finish((error, res)=>{
+			dispatch({
+				type:GET_DRIVER_INFORMATION,
+				payload:res.body
+			});
+		});
+	}
+}
+
 
 //--------------------
 //Action Handlers
@@ -69,16 +85,26 @@ function handleGetCurrentLocation(state, action){
   })
 }
 
+function handleGetDriverInfo(state, action){
+	return update(state, {
+		driverInfo:{
+			$set:action.payload
+		}
+	});
+}
+
+function handleUpdateDriverLocation(state, action){
+  return update(state, {
+		driverLocation:{
+			$set:action.payload
+		}
+	});
+}
+
 const ACTION_HANDLERS = {
   GET_CURRENT_LOCATION:handleGetCurrentLocation,
-  GET_INPUT:handleGetInputDate,
-  TOGGLE_SEARCH_RESULT:handleGetInputType,
-  GET_SELECTED_ADDRESS:handleGetSelectedAddress,
-  GET_DISTANCE_MATRIX:handleGetDistanceMatrix,
-  GET_FARE:handleGetFare,
-  GET_TRUCK:handleBookTruck,
-  GET_NEARBY_DRIVERS:handleGetNearByDrivers,
-  BOOKING_CONFIRMED:handleConfirmBooking
+  GET_DRIVER_INFORMATION:handleGetDriverInfo,
+  UPDATE_DRIVER_LOCATION:handleUpdateDriverLocation
 }
 const initialState = {
   region:{}

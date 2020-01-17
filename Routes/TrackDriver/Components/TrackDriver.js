@@ -30,7 +30,8 @@ render(){
                 {   this.props.region.latitude &&
                     <MapTrack 
                         region={this.props.latitude}
-                        selectedAddress={this.props.selectedAddress}
+						selectedAddress={this.props.selectedAddress}
+						driverLocation={this.props.driverLocation}
                     />
                 }
 
