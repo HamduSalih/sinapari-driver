@@ -20,7 +20,9 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //IN actionConstants.js
 const { 
   GET_CURRENT_LOCATION,
-  GET_DRIVER_INFORMATION
+  GET_DRIVER_INFORMATION,
+  GET_DRIVER_LOCATION,
+  GET_DISTANCE_FROM_DRIVER
 	  } = constants;
 
 
@@ -59,6 +61,44 @@ export function getDriverInfo(){
 				payload:res.body
 			});
 		});
+	}
+}
+
+//get initial driver location
+export function getDriverLocation(){
+	return (dispatch, store)=>{
+		let id = store().home.booking.driverId;
+		request.get(uri + '/api/driverLocation/' + id)
+		.finish((erroe, res)=>{
+			dispatch({
+				type:GET_DRIVER_LOCATION,
+				payload:res.body
+			});
+		});
+	}
+}
+
+//get distance from driver
+export function getDistanceFromDriver(){
+	return (dispatch, store)=>{
+		if(store().trackDriver.driverLocation){
+			request.get("https://maps.googleapis.com/maps/api/distancematrix/json")
+			.query({
+				origins:store().home.selectedAddress.LoadAddress.latitude + 
+				"," + store().home.selectedAddress.LoadAddress.longitude,
+				destinations:store().trackDriver.driverLocation.coordinate.coordinates[1] + 
+				"," + store().trackDriver.driverLocation.coordinate.coordinates[0],
+				mode:"driving",
+				key:"AIzaSyCspx_yMJwX4bTjLXTUHebo9TwYxTaLa6E"
+			})
+			.finish((error, res)=>{
+				dispatch({
+					type:GET_DISTANCE_FROM_DRIVER,
+					payload:res.body
+				})
+			});
+
+		}					
 	}
 }
 
@@ -101,13 +141,40 @@ function handleUpdateDriverLocation(state, action){
 	});
 }
 
+function handleGetDriverLocation(state, action){
+	return update(state, {
+		driverLocation:{
+			$set:action.payload
+		},
+		showDriverFound:{
+			$set:false
+		},
+		showCarMaker:{
+			$set:true
+		}
+
+	});
+}
+
+function handleGetDistanceFromDriver(state, action){
+	return update(state, {
+		distanceFromDriver:{
+			$set:action.payload
+		}
+	});
+}
+
+
 const ACTION_HANDLERS = {
   GET_CURRENT_LOCATION:handleGetCurrentLocation,
   GET_DRIVER_INFORMATION:handleGetDriverInfo,
-  UPDATE_DRIVER_LOCATION:handleUpdateDriverLocation
+  UPDATE_DRIVER_LOCATION:handleUpdateDriverLocation,
+  GET_DRIVER_LOCATION:handleGetDriverLocation,
+  GET_DISTANCE_FROM_DRIVER:handleGetDistanceFromDriver
 }
 const initialState = {
-  region:{}
+  region:{},
+  showDriverFound:true
 };
 
 export function TrackDriverReducer (state = initialState, action){
