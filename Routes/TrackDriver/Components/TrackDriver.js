@@ -5,6 +5,7 @@ import HeaderComponent from '../../../components/HeaderComponent';
 import MapTrack from './MapTrack';
 import DriverFooterProfile from './DriverFooterProfile';
 import DriverOnTheWayFooter from './DriverOnTheWayFooter';
+import DriverFound from './DriverFound';
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -28,37 +29,40 @@ render(){
 		 	latitudeDelta: 0.045,
      		longitudeDelta: 0.045
 		}
-
-		const { status } = this.props.booking
-    
 		return(
 			<Container>
-				<HeaderComponent />
-                {   this.props.region &&
-                    <MapTrack 
-                        region={this.props.region}
-						selectedAddress={this.props.selectedAddress}
-						driverLocation={this.props.driverLocation}
-						showCarMaker={this.props.showCarMaker}
-						truckMarker={truckMarker}
-                    />
-                }
+				<View style={{flex:1}}>
+					<HeaderComponent />
+					{   this.props.region &&
+						<MapTrack 
+							region={this.props.region}
+							selectedAddress={this.props.selectedAddress}
+							driverLocation={this.props.driverLocation}
+							showCarMaker={this.props.showCarMaker}
+							truckMarker={truckMarker}
+						/>
+					}
+{
+					this.props.distanceFromDriver.rows &&
+					
+						<DriverOnTheWayFooter
+							driverInfo={this.props.driverInfo}
+							distanceFromDriver={this.props.distanceFromDriver}
 
-				<DriverOnTheWayFooter 
-					driverInfo={this.props.driverInfo}
-				/>
-                
-				<DriverFooterProfile 
-					driverInfo={this.props.driverInfo}
-				/>
-
-				{
-					this.props.showDriverFound && 
-					<DriverFound 
+						/>
+					}					
+					<DriverFooterProfile 
 						driverInfo={this.props.driverInfo}
-						getDriverLocation={this.props.getDriverLocation}
 					/>
-				}
+
+					{
+						this.props.showDriverFound && 
+						<DriverFound 
+							driverInfo={this.props.driverInfo}
+							getDriverLocation={this.props.getDriverLocation}
+						/>
+					}
+				</View>
 			</Container>
 
 		);

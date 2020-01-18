@@ -5,7 +5,7 @@ var db = mongojs('mongodb://sinapari:sinapari@cluster0-shard-00-00-rzltc.mongodb
 
 
 //Get Single Driver
-router.get("/driver/:id", function(req, res, next){
+router.get("/drivers/:id", function(req, res, next){
     db.drivers.findOne({_id: mongojs.ObjectId(req.params.id)},function(err, driver){
         if (err){
             res.send(err);

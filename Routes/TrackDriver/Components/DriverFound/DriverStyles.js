@@ -46,7 +46,6 @@ const styles = {
         fontWeight: "bold",
         marginTop:10,
         marginLeft:10,
-        fontFamily: "Cochin"
     },
     quotationMarkRight:{
         color:"#FF5E3A",
@@ -55,7 +54,6 @@ const styles = {
         fontWeight: "bold",
         marginBottom:10,
         marginRight:10,
-        fontFamily: "Cochin"
     },
     driverInfo:{
         backgroundColor: "#fff",

@@ -179,39 +179,21 @@ export function bookTruck(){
       }
     };
 
-    fetch(uri + '/api/bookings', {
-      method:'POST',
-      headers:{
-        Accept:'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-    .catch((error)=> console.log(error.message));
-
-    dispatch({
-      type:BOOK_TRUCK,
-      payload
-    })
-
-  /*request.post('http://localhost:3000/api/bookings')
-    .set('Content-Type', 'application/json')
-    .send(payload)
-    .withCredentials()
-    .retry(5)
-    .finish((error, response)=>{
-			dispatch({
-				type:BOOK_TRUCK,
-				payload:response.body
-    	});
-    })*/
+    request.post(uri + '/api/bookings')
+      .send(payload)
+      .finish((error, res)=>{
+        dispatch({
+          type:BOOK_TRUCK,
+          payload:res.body
+        });
+      });
+    
   }
 }
 
 //get nearby drivers
 export function getNearByDrivers(){
 	return(dispatch, store)=>{
-    const temp = store().home.region.latitude;
 		request.get(uri + '/api/driverLocation')
 		.query({
 			latitude:store().home.region.latitude,
@@ -379,7 +361,7 @@ const ACTION_HANDLERS = {
   GET_SELECTED_ADDRESS:handleGetSelectedAddress,
   GET_DISTANCE_MATRIX:handleGetDistanceMatrix,
   GET_FARE:handleGetFare,
-  GET_TRUCK:handleBookTruck,
+  BOOK_TRUCK:handleBookTruck,
   GET_NEARBY_DRIVERS:handleGetNearByDrivers,
   BOOKING_CONFIRMED:handleConfirmBooking
 }

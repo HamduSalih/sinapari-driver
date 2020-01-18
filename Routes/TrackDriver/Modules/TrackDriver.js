@@ -54,7 +54,7 @@ export function getCurrentLocation(){
 export function getDriverInfo(){
 	return (dispatch, store)=>{
 		let id = store().home.booking.driverId;
-		request.get(uri + '/api/driver/' + id)
+		request.get(uri + '/api/drivers/' + id)
 		.finish((error, res)=>{
 			dispatch({
 				type:GET_DRIVER_INFORMATION,
