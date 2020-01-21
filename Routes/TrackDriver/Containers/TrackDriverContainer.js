@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 	driverInfo: state.trackDriver.driverInfo || {},
 	driverLocation: state.trackDriver.driverLocation,
 	showDriverFound:state.trackDriver.showDriverFound,
-	showCarMarker:state.trackDriver.showCarMarker,
+	showCarMaker:state.trackDriver.showCarMaker,
 	distanceFromDriver:state.trackDriver.distanceFromDriver || {} 
 });
 

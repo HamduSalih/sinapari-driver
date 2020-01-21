@@ -6,7 +6,7 @@ import styles from "./MapTrackStyles";
 export const MapContainer = ({
 		region,
 		driverLocation,
-		showCarMarker,
+		showCarMaker,
 		selectedAddress,
 		truckMarker
 	})=>{
@@ -34,7 +34,7 @@ export const MapContainer = ({
 						pinColor="blue"
 					/>
 				}	
-				{	showCarMarker &&
+				{	showCarMaker &&
 					<MapView.Marker
 						coordinate={{latitude:driverLocation.coordinate.coordinates[1], longitude:driverLocation.coordinate.coordinates[0]}}
 						image={truckMarker}

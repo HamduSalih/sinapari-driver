@@ -12,7 +12,7 @@ const DriverOnTheWayFooter = ({driverInfo, distanceFromDriver})=>{
             <View style={styles.iconContainer}>
             <FontAwesome name="window-minimize" style={styles.icon}/>
                 { distanceFromDriver &&               
-                    <View>
+                    <View style={styles.iconContainer}>
                         <Text style={styles.distanceText}>{(duration.value < 100) ? "Your driver has arrived" : duration.text}</Text>
                         <Text style={styles.onWayText}>Your driver is on the way</Text>
                     </View>
