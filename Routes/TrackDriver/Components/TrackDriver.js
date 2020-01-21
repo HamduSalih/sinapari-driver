@@ -42,8 +42,8 @@ render(){
 							truckMarker={truckMarker}
 						/>
 					}
-{
-					this.props.distanceFromDriver.rows &&
+					{
+						this.props.distanceFromDriver.rows &&
 					
 						<DriverOnTheWayFooter
 							driverInfo={this.props.driverInfo}

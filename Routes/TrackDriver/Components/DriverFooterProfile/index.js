@@ -18,7 +18,7 @@ const DriverFooterProfile = ({driverInfo, getDriverLocation})=>{
                         starSize={20}
                         disabled={true}
                         maxStars={5}
-                        rating={rating}
+                        rating={parseInt(rating)}
                         starColor="blue"
                     />
                 </View>

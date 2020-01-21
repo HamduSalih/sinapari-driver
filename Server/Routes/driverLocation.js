@@ -60,7 +60,7 @@ router.get("/driverLocation", function(req, res, next){
 //Get Single Driver and emit track by user to driver
 router.get("/driverLocation/:id", function(req, res, next){
 	var io = req.app.io;
-    db.driversLocation.findOne({driverId: req.params.id},function(err, location){
+    db.driversLocations.findOne({driverId: req.params.id},function(err, location){
         if (err){
             res.send(err);
         }
@@ -81,13 +81,13 @@ router.put("/driverLocation/:id", function(req, res, next){
             "error":"Bad Data"
         });
     } else {
-        db.driversLocation.update({_id: mongojs.ObjectId(req.params.id)},{ $set: {
+        db.driversLocations.update({_id: mongojs.ObjectId(req.params.id)},{ $set: {
         	socketId:location.socketId,
         	coordinate:{
                 "type": "Point",
         		coordinates:[
-                    longitude,
-        			latitude
+                    latitude,
+        			longitude
     			]
     		}
     	}}, function(err, updateDetails){
@@ -98,7 +98,7 @@ router.put("/driverLocation/:id", function(req, res, next){
         if (updateDetails){
 
             //Get updated location
-            db.driversLocation.findOne({_id:  mongojs.ObjectId(req.params.id)},function(error, updatedLocation){
+            db.driversLocations.findOne({_id:  mongojs.ObjectId(req.params.id)},function(error, updatedLocation){
                 if (error){
                     res.send(error);
                 }
