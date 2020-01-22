@@ -6,21 +6,21 @@ import {
   Text,
   View
 } from 'react-native';
+
 import Root from "./main";
+import LoginScreen from './components/AuthScreens/LoginScreen'
 
 export default class sinapari extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Root {...this.props}/>
-      </View>
+      <LoginScreen />
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   welcome: {
     fontSize: 20,
