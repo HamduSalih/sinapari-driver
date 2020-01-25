@@ -3,11 +3,13 @@ import { Actions, Scene } from "react-native-router-flux";
 import HomeContainer from "./Home/Containers/HomeContainer";
 import TrackDriverContainer from "./TrackDriver/Containers/TrackDriverContainer";
 import LoginScreenContainer from './LoginScreen/Containers/LoginScreenContainer';
+import SignInOneContainer from './SignInOne/Containers/SignInOneContainer';
 
 
 const scenes = Actions.create(
 	<Scene key="root" hideNavBar>
 		<Scene key="login" component={LoginScreenContainer} title="login" initial />
+		<Scene key="signin" component={SignInOneContainer} title="signin" />
 		<Scene key="home" component={HomeContainer} title="home" />
 		<Scene key="trackDriver" component={TrackDriverContainer} title="trackDriver" />
 	</Scene>

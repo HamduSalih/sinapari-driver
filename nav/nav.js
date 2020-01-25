@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import LoginScreen from '../Routes/LoginScreen/Components/LoginScreen.js';
 import Root from '../main';
 import AuthLoadScreen from '../Routes/AuthScreens/AuthLoadScreen';
+import SignInOne from '../Routes/SignInOne/Components/SignInOne';
 
 const AuthStack = createStackNavigator({
     Login: {
@@ -18,7 +19,11 @@ const AppStack = createStackNavigator({
     },*/
     Root: {
         screen: Root
+    },
+    SignInOne: {
+        screen: SignInOne
     }
+
 },
 {
     //initialRouteName: 'Login',

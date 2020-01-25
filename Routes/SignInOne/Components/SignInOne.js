@@ -14,7 +14,7 @@ const userInfo = {
     password:'12345'
 }
 
-export default class LoginScreen extends Component{
+export default class SignInOne extends Component{
     static navigationOptions = {
         headerShown: false
     }
@@ -22,16 +22,6 @@ export default class LoginScreen extends Component{
     state = {
         username:'',
         password:''
-    }
-
-    _login = async() => {
-        if(userInfo.username === this.state.username && userInfo.password === this.state.password){
-            //alert('Logged In');
-            await AsyncStorage.setItem('isLoggedIn', '1');
-            this.props.navigation.navigate('Root');
-        }else{
-            alert('User info not corrected')
-        }
     }
 
     _navigate = (page) => {
@@ -47,17 +37,16 @@ export default class LoginScreen extends Component{
                     resizeMode='contain'
                     style={{width:300, height:100, marginBottom:-10}}
                 />
-                <Text style={styles.welcome}>Welcome Partner</Text>
+                <Text style={styles.welcome}>Register</Text>
                 <TextInput 
                     style={styles.input}
-                    placeholder='Username'
+                    placeholder='Fullname'
                     onChangeText={(username)=> this.setState({username})}
                     value={this.state.username}
-                    autoCapitalize='none'
                 />
                 <TextInput 
                     style={styles.input}
-                    placeholder='Password'
+                    placeholder=''
                     secureTextEntry
                     onChangeText={(password)=> this.setState({password})}
                     value={this.state.password}
@@ -65,13 +54,8 @@ export default class LoginScreen extends Component{
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity 
                         style={styles.userButton}
-                        onPress={this._login}>
-                        <Text style={styles.buttonText}>Login</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.userButton}
-                        onPress={ this._navigate.bind(this, 'SignInOne')}>
-                        <Text style={styles.buttonText}>Register</Text>
+                        onPress={ this._navigate.bind(this, 'SignInTwo')}>
+                        <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
             </View>
