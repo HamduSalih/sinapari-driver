@@ -7,13 +7,12 @@ import {
   View
 } from 'react-native';
 
-import Root from "./main";
-import LoginScreen from './components/AuthScreens/LoginScreen'
+import Screens from './nav/nav';
 
 export default class sinapari extends Component {
   render() {
     return (
-      <LoginScreen />
+      <Screens />
     );
   }
 }

@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput,TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, 
+        Text, 
+        View, 
+        TextInput,
+        TouchableOpacity, 
+        Image,
+        AsyncStorage } from 'react-native';
 import Constants from 'expo-constants';
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 
-type Props = {};
+const userInfo = {
+    username:'admin', 
+    password:'12345'
+}
+
 export default class LoginScreen extends Component{
+    static navigationOptions = {
+        headerShown: false
+    }
+
+    state = {
+        username:'',
+        password:''
+    }
+
+    _login = async() => {
+        if(userInfo.username === this.state.username && userInfo.password === this.state.password){
+            //alert('Logged In');
+            await AsyncStorage.setItem('isLoggedIn', '1');
+            this.props.navigation.navigate('Root');
+        }else{
+            alert('User info not corrected')
+        }
+    }
     render(){
         return(
             <View style={styles.container}>
@@ -18,14 +46,21 @@ export default class LoginScreen extends Component{
                 <TextInput 
                     style={styles.input}
                     placeholder='Username'
+                    onChangeText={(username)=> this.setState({username})}
+                    value={this.state.username}
+                    autoCapitalize='none'
                 />
                 <TextInput 
                     style={styles.input}
                     placeholder='Password'
                     secureTextEntry
+                    onChangeText={(password)=> this.setState({password})}
+                    value={this.state.password}
                 />
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.userButton}>
+                    <TouchableOpacity 
+                        style={styles.userButton}
+                        onPress={this._login}>
                         <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.userButton}>

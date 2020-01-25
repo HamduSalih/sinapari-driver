@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-start
+  C:\Program Files\nodejs\node.exe C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-safe-area-view react-native-safe-area-context.
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Ruby26-x64\bin;C:\Users\Zuchi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Zuchi\AppData\Roaming\npm
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-native-start: Not found
+  Error: https://registry.yarnpkg.com/react-native-safe-area-context.: Not found
       at Request.params.callback [as _callback] (C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66947:18)
       at Request.self.callback (C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140665:22)
       at Request.emit (events.js:210:5)
@@ -59,9 +59,11 @@ npm manifest:
       "react-native-maps": "^0.26.1",
       "react-native-router-flux": "^4.0.6",
       "react-native-spinkit": "^1.5.0",
+      "react-native-star-rating": "^1.1.0",
       "react-native-web": "~0.11.7",
       "react-navigation": "^4.0.10",
       "react-navigation-deprecated-tab-navigator": "^1.3.0",
+      "react-navigation-stack": "^2.0.16",
       "react-redux": "^7.1.3",
       "react-router": "^5.1.2",
       "redbox-react": "^1.6.0",
@@ -2028,7 +2030,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
     integrity sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==
   
-  color@~3.1.2:
+  color@^3.1.2, color@~3.1.2:
     version "3.1.2"
     resolved "https://registry.yarnpkg.com/color/-/color-3.1.2.tgz#68148e7f85d41ad7649c5fa8c8106f098d229e10"
     integrity sha512-vXTJhHebByxZn3lDvDJYw4lR5+uB3vuoHsuYA5AKuxRVn5wzzIfQKGLBmgdVRHKTJYeK5rvJcHnrd0Li49CFpg==
@@ -5513,6 +5515,20 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
+  react-native-animatable@^1.2.4:
+    version "1.3.3"
+    resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
+    integrity sha512-2ckIxZQAsvWn25Ho+DK3d1mXIgj7tITkrS4pYDvx96WyOttSvzzFeQnM2od0+FUMzILbdHDsDEqZvnz1DYNQ1w==
+    dependencies:
+      prop-types "^15.7.2"
+  
+  react-native-button@^2.3.0:
+    version "2.4.0"
+    resolved "https://registry.yarnpkg.com/react-native-button/-/react-native-button-2.4.0.tgz#42b487073a7ce7c54ab503f77c6ced1ab95742bf"
+    integrity sha512-4siaJlpOLeL9fAhX8VU3cnUfcGLe3E2zABDWSKxkF+NiYOd+AnKeYY29WXlV8hXhCFo+Ry7E+alrJ6zjZLTSfg==
+    dependencies:
+      prop-types "^15.5.10"
+  
   react-native-dismiss-keyboard@1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -5571,7 +5587,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-google-places/-/react-native-google-places-3.1.2.tgz#6aa11f76da6bd58aa9ec1d1b3e2c85edb4ced2ce"
     integrity sha512-aKPbGHga3k/Vkfw9NMf/1t0sivdqxn4qzCbEyAfmhxO7Mlqv9Nljjnez6rp6MZGwh89ss3/a9lhM4ulyZ6o0ew==
   
-  react-native-iphone-x-helper@^1.0.3:
+  react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.2.1:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
     integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
@@ -5628,6 +5644,16 @@ Lockfile:
     dependencies:
       prop-types "^15.5.8"
   
+  react-native-star-rating@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/react-native-star-rating/-/react-native-star-rating-1.1.0.tgz#57fcd023c63e947427c4dbbd1c8f4cc49e5c48ce"
+    integrity sha512-ocOYx+BKUvfruvXm45MBbQZtpkVO3PQieBDepB0FaLuxE3vUtDTPzHqXuBes3iCM5oRi5umrnmMUMsM0mEq5ZA==
+    dependencies:
+      prop-types "^15.5.10"
+      react-native-animatable "^1.2.4"
+      react-native-button "^2.3.0"
+      react-native-vector-icons "^4.5.0"
+  
   react-native-tab-view@^0.0.77:
     version "0.0.77"
     resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.77.tgz#11ceb8e7c23100d07e628dc151b57797524d00d4"
@@ -5641,6 +5667,15 @@ Lockfile:
     integrity sha512-Bke8KkDcDhvB/z0AS7MnQKMD2p6Kwfc1rSKlMOvg9CC5CnClQ2QEnhPSbwegKDYhUkBI92iH/BYy7hNSm5kbUQ==
     dependencies:
       prop-types "^15.6.1"
+  
+  react-native-vector-icons@^4.5.0:
+    version "4.6.0"
+    resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"
+    integrity sha512-rpfhfPiXCK2PX1nrNhdxSMrEGB/Gw/SvKoPM0G2wAkSoqynnes19K0VYI+Up7DqR1rFIpE4hP2erpT1tNx2tfg==
+    dependencies:
+      lodash "^4.0.0"
+      prop-types "^15.5.10"
+      yargs "^8.0.2"
   
   react-native-vector-icons@^6.6.0:
     version "6.6.0"
@@ -5724,6 +5759,14 @@ Lockfile:
     version "0.7.0"
     resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-0.7.0.tgz#0b2f139ee1cba953037ef51353df992ec6c74fa2"
     integrity sha512-3Tbb/SsustBrM9R/qaI6XuOfyqYMVbwkeHFC8NbU890vB0aKZvjAtioWLZ18e/4LgbiOCmoTdp37z3gkGDyNDQ==
+  
+  react-navigation-stack@^2.0.16:
+    version "2.0.16"
+    resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-2.0.16.tgz#083ee644eeb600782222ff1d9ef6df939120ec8a"
+    integrity sha512-l6Fqvz0tvs7i9+KHZDW9hdQbzzgE78bq85pLALllyiHBfz/aFAaoNG4RUWNSen+54uU4xLC5uioowxTJPRLQWQ==
+    dependencies:
+      color "^3.1.2"
+      react-native-iphone-x-helper "^1.2.1"
   
   react-navigation-tabs@0.8.4:
     version "0.8.4"
@@ -7344,6 +7387,25 @@ Lockfile:
       which-module "^2.0.0"
       y18n "^4.0.0"
       yargs-parser "^13.1.1"
+  
+  yargs@^8.0.2:
+    version "8.0.2"
+    resolved "https://registry.yarnpkg.com/yargs/-/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
+    integrity sha1-YpmpBVsc78lp/355wdkY3Osiw2A=
+    dependencies:
+      camelcase "^4.1.0"
+      cliui "^3.2.0"
+      decamelize "^1.1.1"
+      get-caller-file "^1.0.1"
+      os-locale "^2.0.0"
+      read-pkg-up "^2.0.0"
+      require-directory "^2.1.1"
+      require-main-filename "^1.0.1"
+      set-blocking "^2.0.0"
+      string-width "^2.0.0"
+      which-module "^2.0.0"
+      y18n "^3.2.1"
+      yargs-parser "^7.0.0"
   
   yargs@^9.0.0:
     version "9.0.1"
