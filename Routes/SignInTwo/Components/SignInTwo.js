@@ -14,19 +14,23 @@ const userInfo = {
     password:'12345'
 }
 
-export default class SignInOne extends Component{
+export default class SignInTwo extends Component{
+    componentDidMount(){
+        const { navigation } = this.props;
+        console.log(JSON.stringify(navigation.getParam('param', '')))
+    }
+
     static navigationOptions = {
         headerShown: false
     }
 
     state = {
-        fullname:'',
-        location:''
+        username:'',
+        password:''
     }
 
     _navigate = (page) => {
-        let param = this.state;
-        this.props.navigation.navigate(page, {param});
+        this.props.navigation.navigate(page);
     }
 
     render(){
@@ -42,14 +46,15 @@ export default class SignInOne extends Component{
                 <TextInput 
                     style={styles.input}
                     placeholder='Fullname'
-                    onChangeText={(fullname)=> this.setState({fullname})}
-                    value={this.state.fullname}
+                    onChangeText={(username)=> this.setState({username})}
+                    value={this.state.username}
                 />
                 <TextInput 
                     style={styles.input}
-                    placeholder='Location'
-                    onChangeText={(location)=> this.setState({location})}
-                    value={this.state.location}
+                    placeholder=''
+                    secureTextEntry
+                    onChangeText={(password)=> this.setState({password})}
+                    value={this.state.password}
                 />
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity 
