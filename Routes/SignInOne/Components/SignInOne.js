@@ -21,7 +21,16 @@ export default class SignInOne extends Component{
 
     state = {
         fullname:'',
-        location:''
+        age:'',
+        phone_number:'',
+        truck_model:'',
+        trailer_length:'',
+        trailer_type:'',
+        truck_number:'',
+        id_number:'',
+        driver_license:'',
+        affiliate:'',
+        picture:null
     }
 
     _navigate = (page) => {
@@ -47,14 +56,22 @@ export default class SignInOne extends Component{
                 />
                 <TextInput 
                     style={styles.input}
-                    placeholder='Location'
-                    onChangeText={(location)=> this.setState({location})}
-                    value={this.state.location}
+                    placeholder='Age'
+                    keyboardType='number-pad'
+                    onChangeText={(age)=> this.setState({age})}
+                    value={this.state.age}
+                />
+                <TextInput 
+                    style={styles.input}
+                    placeholder='Phone Number'
+                    keyboardType='number-pad'
+                    onChangeText={(phone_number)=> this.setState({phone_number})}
+                    value={this.state.phone_number}
                 />
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity 
                         style={styles.userButton}
-                        onPress={ this._navigate.bind(this, 'SignInTwo')}>
+                        onPress={ this._navigate.bind(this, 'SignInTwo') }>
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>

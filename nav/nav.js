@@ -7,6 +7,7 @@ import Root from '../main';
 import AuthLoadScreen from '../Routes/AuthScreens/AuthLoadScreen';
 import SignInOne from '../Routes/SignInOne/Components/SignInOne';
 import SignInTwo from '../Routes/SignInTwo/Components/SignInTwo';
+import SignInThree from '../Routes/SignInThree/Components/SignInThree';
 
 const AuthStack = createStackNavigator({
     Login: {
@@ -26,6 +27,9 @@ const AppStack = createStackNavigator({
     },
     SignInTwo: {
         screen: SignInTwo
+    },
+    SignInThree:{
+        screen: SignInThree
     }
 },
 {

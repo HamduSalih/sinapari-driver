@@ -5,6 +5,7 @@ import TrackDriverContainer from "./TrackDriver/Containers/TrackDriverContainer"
 import LoginScreenContainer from './LoginScreen/Containers/LoginScreenContainer';
 import SignInOneContainer from './SignInOne/Containers/SignInOneContainer';
 import SignInTwoContainer from './SignInTwo/Containers/SignInTwoContainer';
+import SignInThreeContainer from './SignInThree/Containers/SignInThreeContainer';
 
 
 const scenes = Actions.create(
@@ -12,6 +13,7 @@ const scenes = Actions.create(
 		<Scene key="login" component={LoginScreenContainer} title="login" initial />
 		<Scene key="signin" component={SignInOneContainer} title="signin" />
 		<Scene key="signintwo" component={SignInTwoContainer} title="signintwo" />
+		<Scene key="signinthree" component={SignInThreeContainer} title="signinthree" />
 		<Scene key="home" component={HomeContainer} title="home" />
 		<Scene key="trackDriver" component={TrackDriverContainer} title="trackDriver" />
 	</Scene>
