@@ -1,18 +1,18 @@
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View
 } from 'react-native';
-
+import Root from './main'
 import Screens from './nav/nav';
 
 export default class sinapari extends Component {
   render() {
     return (
-      <Screens />
+      <View style={styles.container}>
+        <Root {...this.props}/>
+      </View>
     );
   }
 }

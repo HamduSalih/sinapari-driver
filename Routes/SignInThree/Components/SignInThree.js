@@ -6,14 +6,15 @@ import { StyleSheet,
         TouchableOpacity,
         Picker,
         Image,
-        AsyncStorage } from 'react-native';
+        ImageBackground } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
+import { Actions } from 'react-native-router-flux';
 import * as Permissions from 'expo-permissions';
 import * as FileSystem from 'expo-file-system';
 import * as firebase from 'firebase';
 
-const sinaLogo = require("../../../assets/img/sinapari_blue.png");
+const sinabg = require('../../../assets/img/sina-bg.jpg');
 const firebaseConfig = {
     apiKey: "AIzaSyBICeaakAkGPlVOVjObj7BDaoZvmgibDA8",
     authDomain: "sinapari-6dbbd.firebaseapp.com",
@@ -25,7 +26,7 @@ const firebaseConfig = {
     measurementId: "G-Y9TJXZG88L"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  //firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
 
 export default class SignInThree extends Component{
@@ -37,18 +38,18 @@ export default class SignInThree extends Component{
         super(props);
         // Don't call this.setState() here!
         const { navigation } = this.props;
-        let old_state = navigation.getParam('param', '');
+        let old_state = this.props.userData;
         this.state = old_state;
     }
 
-    _navigate = (page) => {
+    _navigate = () => {
         let param = this.state;
-        this.props.navigation.navigate(page, {param});
+        Actions.regprocess({userData:param});
     }
 
     _upload = async(img_src) => {
-        //const response = await fetch(img_src);
-        //const blob = await response.blob();
+        const response = await fetch(img_src);
+        const blob = await response.blob();
         var ref = firebase.storage().ref().child(this.state.driver_license.toString() + '.jpg');
         //ref.getMetadata().then(function(metadata){
          //   console.log(metadata);
@@ -56,16 +57,39 @@ export default class SignInThree extends Component{
         //ref.getDownloadURL().then(function(url){
           //  console.log(url);
         //})
-        //return ref.put(blob);
+        if(ref.put(blob)){
+            let param = this.state;
+            Actions.regprocess({userData:param});
+        };
+        ref.put(blob)
+        .then(()=>{
+            let param = this.state;
+            Actions.regprocess({userData:param});
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+        //console.log(this.state);
     }
 
     render(){   
         let { picture } = this.state;   
         let g = 'https://firebasestorage.googleapis.com/v0/b/sinapari-6dbbd.appspot.com/o/123.jpg?alt=media&token=0597b22e-fefd-4942-bdb4-8bc688d5319c';
         return(
-            <View style={styles.container}>
+            <ImageBackground 
+                source={sinabg} 
+                style={styles.container}
+            >
                 <TouchableOpacity
-                    style={styles.userButton}
+                    style={{backgroundColor: '#eef0ef',
+                    padding: 15,
+                    width: '45%',
+                    borderRadius: 5,
+                    flexDirection:'row',
+                    alignSelf: 'flex-start',
+                    marginLeft: '5%',
+                    marginBottom: 20}
+                }
                     onPress={this._pickImage}
                 >
                     <Text style={styles.buttonText}>Pick an Image</Text>
@@ -74,7 +98,6 @@ export default class SignInThree extends Component{
                     picture && 
                     <Image source={{uri: picture}} style={{width: 200, height:200, padding:10}}/>
                 }
-                <Image source={{uri: g}} style={{width: 200, height:200, padding:10}}/>
                 <TextInput 
                     style={styles.input}
                     placeholder='Identification Number'
@@ -105,7 +128,7 @@ export default class SignInThree extends Component{
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ImageBackground>
 
         )
     }
@@ -166,7 +189,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     userButton: {
-        backgroundColor: '#0000ff',
+        backgroundColor: '#eef0ef',
         padding: 15,
         width: '45%',
         borderRadius: 5
@@ -179,8 +202,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
         textAlign: 'center',
-        color: '#fff'
-
+        color: '#141d48',
     },
     statusBar: {
         backgroundColor: "#C2185B",

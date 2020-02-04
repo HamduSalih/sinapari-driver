@@ -5,6 +5,8 @@ import { LoginReducer as login } from '../Routes/LoginScreen/Modules/LoginScreen
 import { SignInOneReducer as signinone } from '../Routes/SignInOne/Modules/SignInOne';
 import { SignInTwoReducer as signintwo } from '../Routes/SignInTwo/Modules/SignInTwo';
 import { SignInThreeReducer as signinthree } from '../Routes/SignInThree/Modules/SignInThree';
+import { RegProcessReducer as regprocess } from '../Routes/RegProcess/Modules/RegProcess';
+import { DriverHomeReducer as driverhome } from '../Routes/DriverHome/Modules/DriverHome';
 
 
 export const makeRootReducer = () => {
@@ -13,8 +15,10 @@ export const makeRootReducer = () => {
 		signinone,
 		signintwo,
 		signinthree,
+		regprocess,
 		home,
-		trackDriver
+		trackDriver,
+		driverhome
 	});
 }
 

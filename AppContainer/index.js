@@ -9,14 +9,13 @@ import { Provider } from "react-redux";
 export default class AppContainer extends Component {
 	static propTypes = {
 		store: PropTypes.object.isRequired
-	}
+	} 
 	render(){
 		return (
 
 			<Provider store={this.props.store}>
 				<Router scenes={scenes} />
-
-			</Provider>
+			</Provider> 
 
 			);
 	}

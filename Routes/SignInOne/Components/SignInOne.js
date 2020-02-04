@@ -5,9 +5,11 @@ import { StyleSheet,
         TextInput,
         TouchableOpacity, 
         Image,
-        AsyncStorage } from 'react-native';
+        ImageBackground } from 'react-native';
 import Constants from 'expo-constants';
-const sinaLogo = require("../../../assets/img/sinapari_blue.png");
+import { Actions } from 'react-native-router-flux';
+const sinabg = require('../../../assets/img/sina-bg.jpg')
+const sinaLogo = require("../../../assets/img/sinalogo.jpg");
 
 const userInfo = {
     username:'admin', 
@@ -18,36 +20,32 @@ export default class SignInOne extends Component{
     static navigationOptions = {
         headerShown: false
     }
-
-    state = {
-        fullname:'',
-        age:'',
-        phone_number:'',
-        truck_model:'',
-        trailer_length:'',
-        trailer_type:'',
-        truck_number:'',
-        id_number:'',
-        driver_license:'',
-        affiliate:'',
-        picture:null
+    constructor(props) {
+        super(props);
+        // Don't call this.setState() here!
+        let old_state = this.props.userData;
+        this.state = old_state;
     }
 
-    _navigate = (page) => {
+    _navigate = () => {
         let param = this.state;
-        this.props.navigation.navigate(page, {param});
+        Actions.signintwo({userData:param});
     }
 
     render(){
         return(
-            <View style={styles.container}>
+            <ImageBackground 
+                source={sinabg} 
+                style={styles.container}
+            >
                 <View style={styles.statusBar} />
                 <Image 
-                    source={sinaLogo}
-                    resizeMode='contain'
-                    style={{width:300, height:100, marginBottom:-10}}
+                   source={sinaLogo}
+                   resizeMode='center'
+                   style={{padding:0,marginBottom:-60}}
                 />
                 <Text style={styles.welcome}>Register</Text>
+
                 <TextInput 
                     style={styles.input}
                     placeholder='Fullname'
@@ -71,24 +69,23 @@ export default class SignInOne extends Component{
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity 
                         style={styles.userButton}
-                        onPress={ this._navigate.bind(this, 'SignInTwo') }>
+                        onPress={ this._navigate }>
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
-        )
+            </ImageBackground>
+        );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#b2b2ff'
     },
     welcome: {
-        fontSize: 20,
+        fontSize: 15,
         textAlign: 'center',
         margin: 10,
         color: '#fff'
@@ -106,7 +103,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     userButton: {
-        backgroundColor: '#0000ff',
+        backgroundColor: '#eef0ef',
         padding: 15,
         width: '45%',
         borderRadius: 5
@@ -119,8 +116,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
         textAlign: 'center',
-        color: '#fff'
-
+        color: '#141d48',
     },
     statusBar: {
         backgroundColor: "#C2185B",

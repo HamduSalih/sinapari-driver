@@ -16,7 +16,7 @@ let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 const log =  createLogger({ diff: true, collapsed: true });
 
 // a function which can create our store and auto-persist the data
-export default (initialState = {}) => {
+const Store = (initialState = {}) => {
     // ======================================================
     // Middleware Configuration
     // ======================================================
@@ -40,3 +40,4 @@ export default (initialState = {}) => {
     );
     return store;
 };
+export default Store;

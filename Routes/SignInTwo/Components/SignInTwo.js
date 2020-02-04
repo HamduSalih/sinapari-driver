@@ -5,9 +5,10 @@ import { StyleSheet,
         TextInput,
         TouchableOpacity,
         Picker,
-        AsyncStorage } from 'react-native';
+        ImageBackground } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import Constants from 'expo-constants';
-const sinaLogo = require("../../../assets/img/sinapari_blue.png");
+const sinabg = require('../../../assets/img/sina-bg.jpg');
 
 export default class SignInTwo extends Component{
     static navigationOptions = {
@@ -18,18 +19,21 @@ export default class SignInTwo extends Component{
         super(props);
         // Don't call this.setState() here!
         const { navigation } = this.props;
-        let old_state = navigation.getParam('param', '');
+        let old_state = this.props.userData;
         this.state = old_state;
     }
 
-    _navigate = (page) => {
+    _navigate = () => {
         let param = this.state;
-        this.props.navigation.navigate(page, {param});
+        Actions.signinthree({userData:param});
     }
 
     render(){        
         return(
-            <View style={styles.container}>
+            <ImageBackground 
+                source={sinabg} 
+                style={styles.container}
+            >
                 <TextInput 
                     style={styles.input}
                     placeholder='Truck Model/Name'
@@ -66,11 +70,11 @@ export default class SignInTwo extends Component{
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity 
                         style={styles.userButton}
-                        onPress={ this._navigate.bind(this, 'SignInThree') }>
+                        onPress={ this._navigate }>
                         <Text style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ImageBackground>
         )
     }
 }
@@ -78,7 +82,7 @@ export default class SignInTwo extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent:'center',
         alignItems: 'center',
         backgroundColor: '#b2b2ff'
     },
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     userButton: {
-        backgroundColor: '#0000ff',
+        backgroundColor: '#eef0ef',
         padding: 15,
         width: '45%',
         borderRadius: 5
@@ -114,8 +118,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
         textAlign: 'center',
-        color: '#fff'
-
+        color: '#141d48',
     },
     statusBar: {
         backgroundColor: "#C2185B",

@@ -3,10 +3,7 @@ import constants from "./actionConstants";
 //helps you get latidue delta from main size of window
 import { Dimensions } from "react-native"
 import RNGooglePlaces from "react-native-google-places";
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import request from '../../../util/Request';
-import calculateFare from '../../../util/FareCalculator';
-import * as Network from 'expo-network';
 import Constants from "expo-constants";
 import * as firebase from 'firebase';
 import '@firebase/firestore';
@@ -21,11 +18,10 @@ const firebaseConfig = {
     appId: "1:501482455468:web:4a21086028e2e8237fba09",
     measurementId: "G-Y9TJXZG88L"
   };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 //firebase.analytics();
 
 const database = firebase.firestore();
+
 
 const { manifest } = Constants;
 
@@ -37,7 +33,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-	REGISTER_USER
+  REGISTER_USER
 	  } = constants;
 
 
@@ -51,7 +47,7 @@ const LONGITUDE_DELTA = 0.035;
 export function registerUser(payload){
 	return{
 		type:REGISTER_USER,
-		payload
+		payload	
 	}
 }
 
@@ -67,13 +63,13 @@ function handleRegisterUser(state, action){
 }
 
 const ACTION_HANDLERS = {
-	REGISTER_USER:handleRegisterUser
+	REGISTER_USER:handleRegisterUser  
 }
 const initialState = {
-	UserData:{}
+  UserData:{}
 };
 
-export function LoginReducer (state = initialState, action){
+export function RegProcessReducer (state = initialState, action){
 	const handler = ACTION_HANDLERS[action.type];
 
 	return handler ? handler(state, action) : state;

@@ -8,29 +8,18 @@ import AuthLoadScreen from '../Routes/AuthScreens/AuthLoadScreen';
 import SignInOne from '../Routes/SignInOne/Components/SignInOne';
 import SignInTwo from '../Routes/SignInTwo/Components/SignInTwo';
 import SignInThree from '../Routes/SignInThree/Components/SignInThree';
+import RegProcess from '../Routes/RegProcess/Components/RegProcess';
 
 const AuthStack = createStackNavigator({
-    Login: {
-        screen: LoginScreen
-    }
-})
+    Login: LoginScreen
+});
 
 const AppStack = createStackNavigator({
-    /*Login: {
-        screen: LoginScreen
-    },*/
-    Root: {
-        screen: Root
-    },
-    SignInOne: {
-        screen: SignInOne
-    },
-    SignInTwo: {
-        screen: SignInTwo
-    },
-    SignInThree:{
-        screen: SignInThree
-    }
+    Root: Root,
+    SignInOne: SignInOne,
+    SignInTwo: SignInTwo,
+    SignInThree:SignInThree,
+    RegProcess:RegProcess
 },
 {
     //initialRouteName: 'Login',
