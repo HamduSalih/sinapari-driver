@@ -1,3 +1,3 @@
 export default {
-	
+	GET_DRIVER_LOCATION:'GET_DRIVER_LOCATION'
 };

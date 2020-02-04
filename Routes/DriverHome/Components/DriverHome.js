@@ -9,9 +9,17 @@ const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
 
 class DriverHome extends React.Component{
-  componentDidMount(){
-	
-  }
+	constructor(props){
+		super(props);
+	}
+
+	state = {
+		driverLicense: this.props.userId
+	}
+
+	componentDidMount(){
+		this.props.getDriverLocation();
+  	}
 
   componentDidUpdate(prevProps, prevState){
 	/**if(this.props.booking.status === 'confirmed'){
