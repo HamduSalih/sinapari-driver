@@ -39,6 +39,7 @@ const {
 	GET_USER_DATA,
 	GET_USER_ACCOUNTS,
 	GET_USER_JOBS,
+	GET_ALL_JOBS,
 	  } = constants;
 
 
@@ -110,6 +111,27 @@ export function getUserData(userId){
 	}	
 }
 
+export function getAllJobs(){
+	var jobsCollection = database.collection('jobs');
+	var jobsObject = {};
+	return(dispatch) => {
+		jobsCollection.get()
+		.then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				// doc.data() is never undefined for query doc snapshots
+				var docId = doc.id;
+				jobsObject[docId] = doc.data();
+			});
+		})
+		.then(()=>{
+			dispatch({
+				type:GET_ALL_JOBS,
+				payload: jobsObject	
+			})
+		})
+	}
+}
+
 //--------------------
 //Action Handlers
 //--------------------
@@ -156,14 +178,23 @@ function handleGetUserJobs(state, action){
 	})
 }
 
+function handleGetAllJobs(state, action){
+	return update(state, {
+		allJobs:{
+			$set: action.payload
+		}
+	})
+}
+
 const ACTION_HANDLERS = {
   GET_DRIVER_LOCATION:handleGetDriverLocation,
   GET_USER_DATA:handleGetUserData,
   GET_USER_ACCOUNTS:handleGetUserAccount,
-  GET_USER_JOBS:handleGetUserJobs
+  GET_USER_JOBS:handleGetUserJobs,
+  GET_ALL_JOBS:handleGetAllJobs
 }
 const initialState = {
-  region:{}
+  region:{},
 };
 
 export function DriverHomeReducer (state = initialState, action){

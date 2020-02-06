@@ -1,9 +1,10 @@
 import React from "react";
-import {View, Text} from "react-native";
+import {View, Text, YellowBox} from "react-native";
 import { Container }  from "native-base";
 import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
 import Constants from 'expo-constants';
+import RenderJobs from './RenderJobs';
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -11,6 +12,9 @@ const truckMarker = require("../../../assets/img/truck_marker.png");
 class DriverHome extends React.Component{
 	constructor(props){
 		super(props);
+		const renderJobs = () => {
+			return <Text style={{position:'absolute', fontSize:30, color:'black'}}>Working</Text>
+		}
 	}
 
 	state = {
@@ -20,13 +24,15 @@ class DriverHome extends React.Component{
 	componentDidMount(){
 		this.props.getDriverLocation(this.state.driverLicense);
 		this.props.getUserData(this.state.driverLicense);
+		this.props.getAllJobs();
   	}
 
   componentDidUpdate(prevProps, prevState){
 	/**if(this.props.booking.status === 'confirmed'){
 		Actions.trackDriver({type:'reset'});
 	} */
-  }
+  } 
+
 render(){
 	const region = {
 		latitude: 5.6604616,
@@ -41,6 +47,13 @@ render(){
 					<MapContainer 
 						region={region}							
 					/>
+						{
+							this.props.allJobs && this.props.userJobs && this.props.userJobs.status == 'inactive' && 
+							<RenderJobs 
+								allJobs={this.props.allJobs}
+							/>
+						}
+					
 				</View>
 			</Container>
 		);
