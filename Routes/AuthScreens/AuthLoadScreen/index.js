@@ -28,7 +28,7 @@ export default class AuthLoadScreen extends React.Component{
         })
          */
         const userToken = await AsyncStorage.getItem('isLoggedIn');
-        const driverLicense = await AsyncStorage.getItem('driverLicense')
+        const driverLicense = await AsyncStorage.getItem('driverLicense');
         if(userToken !== '1'){
             Actions.login();
         } else{

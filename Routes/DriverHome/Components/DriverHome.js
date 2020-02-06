@@ -18,7 +18,8 @@ class DriverHome extends React.Component{
 	}
 
 	componentDidMount(){
-		this.props.getDriverLocation();
+		this.props.getDriverLocation(this.state.driverLicense);
+		this.props.getUserData(this.state.driverLicense);
   	}
 
   componentDidUpdate(prevProps, prevState){
