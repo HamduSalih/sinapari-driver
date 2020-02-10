@@ -43,18 +43,22 @@ render(){
 		return(
 			<Container>
 				<View style={{height: Constants.statusBarHeight,}} />
-				<View style={{flex:1}}>
-					<MapContainer 
-						region={region}							
-					/>
-						{
-							this.props.allJobs && this.props.userJobs && this.props.userJobs.status == 'inactive' && 
-							<RenderJobs 
-								allJobs={this.props.allJobs}
-							/>
-						}
-					
-				</View>
+					<View style={{flex:1}}>
+					{this.props.region.latitude &&
+						<MapContainer 
+							region={this.props.region}
+							allJobs={this.props.allJobs}
+							userJobs={this.props.userJobs}							
+						/>
+					}
+					{
+						this.props.allJobs && this.props.userJobs && this.props.userJobs.status == 'inactive' && 
+						<RenderJobs 
+							style={{flex:1}}
+							allJobs={this.props.allJobs}
+						/>
+					}	
+					</View>
 			</Container>
 		);
 
