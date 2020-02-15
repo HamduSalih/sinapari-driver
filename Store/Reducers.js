@@ -7,6 +7,7 @@ import { SignInTwoReducer as signintwo } from '../Routes/SignInTwo/Modules/SignI
 import { SignInThreeReducer as signinthree } from '../Routes/SignInThree/Modules/SignInThree';
 import { RegProcessReducer as regprocess } from '../Routes/RegProcess/Modules/RegProcess';
 import { DriverHomeReducer as driverhome } from '../Routes/DriverHome/Modules/DriverHome';
+import { DriverJobDetailsReducer as driverjobdetails } from '../Routes/DriverJobDetails/Modules/DriverJobDetails';
 
 
 export const makeRootReducer = () => {
@@ -18,7 +19,8 @@ export const makeRootReducer = () => {
 		regprocess,
 		home,
 		trackDriver,
-		driverhome
+		driverhome,
+		driverjobdetails
 	});
 }
 
