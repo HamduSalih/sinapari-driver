@@ -21,7 +21,7 @@ const RenderJobs = ({allJobs}) => {
           return (
             <Card>
               <TouchableOpacity
-                onPress={_navigate(title)}
+                onPress={_navigate.bind(this, title)}
               >
               <View style={styles.locView}>
                 <Text style={{width: '50%'}}>{title.trailerType}</Text>

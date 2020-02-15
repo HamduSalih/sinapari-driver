@@ -11,10 +11,10 @@ const styles = {
 		flex:1,
 		justifyContent:"center",
 		alignItems:"center",
-		height: viewHeight,
 	},
 	map:{
-		...StyleSheet.absoluteFillObject
+		height: viewHeight,
+		//...StyleSheet.absoluteFillObject
 	}
 }
 
