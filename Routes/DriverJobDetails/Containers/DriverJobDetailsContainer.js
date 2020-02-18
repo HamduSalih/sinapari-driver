@@ -5,7 +5,7 @@ import {
 } from "../Modules/DriverJobDetails";
 //states from modules home.js
 const mapStateToProps = (state) => ({
-	
+	userData: state.driverhome.userData,
 });
 
 const mapActionCreators = {

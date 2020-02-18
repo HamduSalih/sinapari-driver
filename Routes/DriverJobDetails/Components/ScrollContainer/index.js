@@ -16,8 +16,16 @@ class ScrollContainer extends Component{
         amount: null,
         jobId: this.props.jobDetails.JobId,
         driverId: AsyncStorage.getItem('driverLicense'),
-        
+        driverName: this.props.userData.fullname,
+        truck_number: this.props.userData.truck_number,
+        rating: this.props.userData.rating,
+        paid: false,
+        status: 'pending'
     };
+
+    componentDidUpdate(){
+        console.log(this.state);
+    }
 
     render(){
         var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];

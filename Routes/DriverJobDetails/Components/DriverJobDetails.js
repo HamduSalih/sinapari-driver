@@ -42,7 +42,10 @@ render(){
 				<MapContainer 
 					region={initialRegion}							
 				/>
-				<ScrollContainer jobDetails={this.state.jobDetails}/>
+				<ScrollContainer 
+					jobDetails={this.state.jobDetails}
+					userData={this.props.userData}
+				/>
 			</View>
 		);
 
