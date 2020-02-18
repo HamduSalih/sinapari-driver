@@ -8,20 +8,33 @@ import styles from './scrollContainerStyles'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 
-const randomString = require('crypto-random-string');
+import * as Random from 'expo-random';
 
 class ScrollContainer extends Component{
     state={
-        bidId: randomString({length: 15}),
+        bidId: null,
         amount: null,
-        jobId: this.props.jobDetails.JobId,
-        driverId: AsyncStorage.getItem('driverLicense'),
+        jobId: this.props.jobDetails.jobId,
+        driverId: null,
         driverName: this.props.userData.fullname,
         truck_number: this.props.userData.truck_number,
         rating: this.props.userData.rating,
         paid: false,
         status: 'pending'
     };
+
+    async componentDidMount(){
+        const randomBytes = await Random.getRandomBytesAsync(15);
+        var i = 0;
+        var bidId = '';
+        while(i < randomBytes.length){
+            bidId = bidId + randomBytes[i];
+            i = i + 1;
+        }
+        const driverId = await AsyncStorage.getItem('driverLicense');
+        this.setState({bidId: bidId});
+        this.setState({driverId: driverId});
+    }
 
     componentDidUpdate(){
         console.log(this.state);
