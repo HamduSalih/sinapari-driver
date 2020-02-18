@@ -46,7 +46,7 @@ const RenderJobs = ({allJobs}) => {
                     <View style={{
                       marginLeft:7}}/>
                       <Text style={styles.dateStyle}>{new Date(title.dropOff.Time.seconds * 1000).getDate() + ' ' + months[new Date(title.dropOff.Time.seconds * 1000).getMonth()] + ' ' + new Date(title.dropOff.Time.seconds * 1000).getFullYear() + ', ' + new Date(title.dropOff.Time.seconds * 1000).getHours() + ':' + new Date(title.dropOff.Time.seconds * 1000).getMinutes()}</Text>
-              </View>
+                  </View>
               </TouchableOpacity>
             </Card>
           );
