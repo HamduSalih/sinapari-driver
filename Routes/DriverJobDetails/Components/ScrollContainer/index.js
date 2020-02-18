@@ -39,7 +39,11 @@ const ScrollContainer = ({jobDetails}) => {
                 </View>
 
 
-                <View>
+                <View style={{
+                    borderTopWidth: 1,
+                    borderTopColor: 'grey',
+                    paddingTop: 20
+                }}>
                     <View style = {styles.locView}>
                         <FontAwesome style={styles.locIcon} size={20} name='dot-circle-o'/>
                         <Text style={styles.locText}>{jobDetails.pickUp.address}</Text>
@@ -61,6 +65,7 @@ const ScrollContainer = ({jobDetails}) => {
                         <Text style={styles.dateStyle}>{new Date(jobDetails.dropOff.Time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOff.Time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOff.Time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOff.Time.seconds * 1000).getHours() + ':' + new Date(jobDetails.dropOff.Time.seconds * 1000).getMinutes()}</Text>
                     </View>
                 </View>
+                {/** add price input and bid button */}
             </ScrollView>
         </View>
     )
