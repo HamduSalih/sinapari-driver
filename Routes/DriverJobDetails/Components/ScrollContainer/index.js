@@ -43,11 +43,12 @@ class ScrollContainer extends Component{
     }
 
     _navigate = () => {
+        let param = this.state;
         if(this.state.amount === null || this.state.amount === ' ' || this.state.amount === ' '){
             alert('Please add your price');
         }
         else{
-            Actions.bidProcess();
+            Actions.bidProcess({jobDetails: param});
         }
     }
 

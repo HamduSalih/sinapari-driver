@@ -14,13 +14,17 @@ const sinabg = require('../../../assets/img/sina-bg.jpg')
 const sinaLogo = require("../../../assets/img/sinalogo.jpg");
 
 export default class BidProcess extends Component{
+    constructor(props){
+        super(props);
+        this.state = this.props.jobDetails;
+    }
+
     componentDidMount() {
-        
+        console.log(this.state);
     }
 
     _navigate = () => {
-        let param = this.state;
-        Actions.signin({userData:param});
+        
     }
 
     render(){
