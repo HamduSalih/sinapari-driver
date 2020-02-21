@@ -5,7 +5,7 @@ import { StyleSheet,
         TextInput,
         TouchableOpacity, 
         Image,
-        AsyncStorage,
+        ActivityIndicator,
         ImageBackground } from 'react-native';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
@@ -14,10 +14,6 @@ const sinabg = require('../../../assets/img/sina-bg.jpg')
 const sinaLogo = require("../../../assets/img/sinalogo.jpg");
 
 export default class BidProcess extends Component{
-    static navigationOptions = {
-        headerShown: false
-    }
-
     componentDidMount() {
         
     }
@@ -33,7 +29,6 @@ export default class BidProcess extends Component{
                 source={sinabg} 
                 style={styles.container}
             >
-                <View style={styles.statusBar} />
                 
                 <View style={{margin:20}}>
                     <Image 
@@ -42,6 +37,7 @@ export default class BidProcess extends Component{
                             style={{padding:0,marginBottom:-60}} />
                     <Text style={styles.welcome}>We are processong your bid</Text>
                 </View>
+                <ActivityIndicator size="large" color="#eef0ef"/>
             </ImageBackground>
         )
     }
@@ -51,7 +47,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#b2b2ff'
+        backgroundColor: '#b2b2ff',
+        justifyContent: 'center',
+        ...StyleSheet.absoluteFillObject
     },
     welcome: {
         fontSize: 15,

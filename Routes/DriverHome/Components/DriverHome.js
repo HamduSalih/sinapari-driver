@@ -42,7 +42,7 @@ render(){
 	}
 		return(
 			<Container>
-				<View style={{height: Constants.statusBarHeight,}} />
+				
 					<View style={{flex:1}}>
 					{/**this.props.region.latitude &&
 						<MapContainer 

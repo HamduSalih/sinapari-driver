@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { AsyncStorage, Text, ScrollView, 
         TextInput,
         TouchableOpacity,
-        KeyboardAvoidingView} from 'react-native';
+        KeyboardAvoidingView,
+        Platform} from 'react-native';
 import { View } from 'native-base';
 import styles from './scrollContainerStyles'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -42,16 +43,21 @@ class ScrollContainer extends Component{
     }
 
     _navigate = () => {
-        Actions.bidProcess();
+        if(this.state.amount === null || this.state.amount === ' ' || this.state.amount === ' '){
+            alert('Please add your price');
+        }
+        else{
+            Actions.bidProcess();
+        }
     }
 
     render(){
         var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const jobDetails = this.props.jobDetails;
         return(
-            <KeyboardAvoidingView style={styles.container}
-                behavior="padding" enabled
-            >
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : null}
+                style={styles.container}>
                 <ScrollView contentContainerStyle={styles.scrollStyle}>
                     <View style = {styles.distanceContainer}>
                         <View style={{borderRightColor: 'grey', 
@@ -111,7 +117,9 @@ class ScrollContainer extends Component{
                     </View>
                 </ScrollView>
                 {/** add price input and bid button */}
-                <View style={styles.bidContainer}>
+                <View
+                    style={styles.bidContainer}
+                >
                     <TextInput 
                         placeholder='Your price in GHS'
                         style={styles.bidInput}
@@ -125,7 +133,7 @@ class ScrollContainer extends Component{
                     >
                         <Text 
                             style={styles.bidButtonText}
-                        >
+                         >
                             Place Bid
                         </Text>
                     </TouchableOpacity>

@@ -15,8 +15,8 @@ import BidProcessContainer from './bidProcess/Containers/BidProcessContainer';
 
 
 const scenes = Actions.create(
-	<Scene key="root" hideNavBar>
-		<Scene key="authLoad" component={AuthLoadScreen} title="AuthLoad"  initial/>
+	<Scene key="root">
+		<Scene key="authLoad" hideNavBar component={AuthLoadScreen} title="AuthLoad"  initial/>
 		<Scene key="login" type={ActionConst.RESET} component={LoginScreenContainer} title="Login" />
 		<Scene key="signin" component={SignInOneContainer} title="Sign In" />
 		<Scene key="signintwo" component={SignInTwoContainer} title="Sign In" />
@@ -26,7 +26,7 @@ const scenes = Actions.create(
 		<Scene key="trackDriver" component={TrackDriverContainer} title="Driver" />
 		<Scene key="driverhome" type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
-		<Scene key="bidProcess" type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
+		<Scene key="bidProcess" hideNavBar type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
 	</Scene>
 
 );

@@ -48,7 +48,7 @@ const styles = {
           padding: 15,
           borderTopColor: 'grey',
           borderTopWidth: 1,
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
       },
       bidInput:{
           width: '55%',
