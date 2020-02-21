@@ -13,9 +13,9 @@ import { Actions } from 'react-native-router-flux';
 const sinabg = require('../../../assets/img/sina-bg.jpg')
 const sinaLogo = require("../../../assets/img/sinalogo.jpg");
 
-export default class LoginScreen extends Component{
+export default class BidProcess extends Component{
     static navigationOptions = {
-        headerShown: true
+        headerShown: false
     }
 
     componentDidMount() {
@@ -59,34 +59,6 @@ const styles = StyleSheet.create({
         margin: 10,
         color: '#fff'
    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    input: {
-        width: '90%',
-        backgroundColor: 'white',
-        padding: 15,
-        marginBottom: 10,
-        borderRadius: 5
-    },
-    userButton: {
-        backgroundColor: '#eef0ef',
-        padding: 15,
-        width: '45%',
-        borderRadius: 5
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '90%'
-    },
-    buttonText: {
-        fontSize: 18,
-        textAlign: 'center',
-        color: '#141d48',
-    },
     statusBar: {
         backgroundColor: "#C2185B",
         height: Constants.statusBarHeight,

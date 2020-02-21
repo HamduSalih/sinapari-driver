@@ -9,6 +9,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 
 import * as Random from 'expo-random';
+import { Actions } from 'react-native-router-flux';
 
 class ScrollContainer extends Component{
     state={
@@ -38,6 +39,10 @@ class ScrollContainer extends Component{
 
     componentDidUpdate(){
         //console.log(this.state);
+    }
+
+    _navigate = () => {
+        Actions.bidProcess();
     }
 
     render(){
@@ -116,6 +121,7 @@ class ScrollContainer extends Component{
                     />
                     <TouchableOpacity
                         style={styles.bidButton}
+                        onPress={this._navigate}
                     >
                         <Text 
                             style={styles.bidButtonText}

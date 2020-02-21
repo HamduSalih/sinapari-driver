@@ -8,6 +8,7 @@ import { SignInThreeReducer as signinthree } from '../Routes/SignInThree/Modules
 import { RegProcessReducer as regprocess } from '../Routes/RegProcess/Modules/RegProcess';
 import { DriverHomeReducer as driverhome } from '../Routes/DriverHome/Modules/DriverHome';
 import { DriverJobDetailsReducer as driverjobdetails } from '../Routes/DriverJobDetails/Modules/DriverJobDetails';
+import { BidProcessReducer as bidProcess } from '../Routes/bidProcess/Modules/BidProcess';
 
 
 export const makeRootReducer = () => {
@@ -20,7 +21,8 @@ export const makeRootReducer = () => {
 		home,
 		trackDriver,
 		driverhome,
-		driverjobdetails
+		driverjobdetails,
+		bidProcess
 	});
 }
 

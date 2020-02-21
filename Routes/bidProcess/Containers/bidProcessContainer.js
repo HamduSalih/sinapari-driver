@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
-import LoginScreen from "../Components/LoginScreen";
+import BidProcess from "../Components/BidProcess";
 import {
-	registerUser
-} from "../Modules/LoginScreen";
+	
+} from "../Modules/BidProcess";
 //states from modules home.js
 const mapStateToProps = (state) => ({
-	UserData: state.login.UserData
+	
 });
 
 const mapActionCreators = {
-	registerUser
+	
 };
-export default connect(mapStateToProps, mapActionCreators)(LoginScreen);
+export default connect(mapStateToProps, mapActionCreators)(BidProcess);

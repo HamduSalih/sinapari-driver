@@ -10,6 +10,8 @@ import RegProcessContainer from './RegProcess/Containers/RegProcessContainer';
 import AuthLoadScreen from './AuthScreens/AuthLoadScreen';
 import DriverHomeContainer from './DriverHome/Containers/DriverHomeContainer';
 import DriverJobDetailsContainer from './DriverJobDetails/Containers/DriverJobDetailsContainer';
+import BidProcessContainer from './bidProcess/Containers/BidProcessContainer';
+
 
 
 const scenes = Actions.create(
@@ -24,6 +26,7 @@ const scenes = Actions.create(
 		<Scene key="trackDriver" component={TrackDriverContainer} title="Driver" />
 		<Scene key="driverhome" type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
+		<Scene key="bidProcess" type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
 	</Scene>
 
 );
