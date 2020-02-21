@@ -29,7 +29,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-	
+	ADD_BIDS
 	  } = constants;
 
 
@@ -41,16 +41,31 @@ const LONGITUDE_DELTA = 0.035;
 //Actions
 //---------------
 
-
+export function addBidToDb(data){
+  database.collection('bids').add(data)
+  .then((docRef)=>{
+    console.log(docRef.id);
+  });
+  return{
+    type: ADD_BIDS,
+    payload: data
+  }
+}
 
 //--------------------
 //Action Handlers
 //--------------------
-
+function handleAddBidToDb(state, action){
+  return update(state, {
+    addedBid:{
+      $set: action.payload
+    }
+  })
+}
 
 
 const ACTION_HANDLERS = {
-	
+	ADD_BIDS: handleAddBidToDb
 }
 const initialState = {
 	
