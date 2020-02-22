@@ -9,6 +9,7 @@ import { RegProcessReducer as regprocess } from '../Routes/RegProcess/Modules/Re
 import { DriverHomeReducer as driverhome } from '../Routes/DriverHome/Modules/DriverHome';
 import { DriverJobDetailsReducer as driverjobdetails } from '../Routes/DriverJobDetails/Modules/DriverJobDetails';
 import { BidProcessReducer as bidProcess } from '../Routes/bidProcess/Modules/BidProcess';
+import { MyBidsReducer as myBids } from '../Routes/MyBids/Modules/MyBids';
 
 
 export const makeRootReducer = () => {
@@ -22,7 +23,8 @@ export const makeRootReducer = () => {
 		trackDriver,
 		driverhome,
 		driverjobdetails,
-		bidProcess
+		bidProcess,
+		myBids
 	});
 }
 

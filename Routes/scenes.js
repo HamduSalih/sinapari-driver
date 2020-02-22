@@ -11,6 +11,7 @@ import AuthLoadScreen from './AuthScreens/AuthLoadScreen';
 import DriverHomeContainer from './DriverHome/Containers/DriverHomeContainer';
 import DriverJobDetailsContainer from './DriverJobDetails/Containers/DriverJobDetailsContainer';
 import BidProcessContainer from './bidProcess/Containers/BidProcessContainer';
+import MyBidContainer from './MyBids/Containers/MyBidContainer';
 
 
 
@@ -27,6 +28,7 @@ const scenes = Actions.create(
 		<Scene key="driverhome" type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
 		<Scene key="bidProcess" hideNavBar type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
+		<Scene key="bidProcess" component={MyBidContainer} title="My Bids" />
 	</Scene>
 
 );
