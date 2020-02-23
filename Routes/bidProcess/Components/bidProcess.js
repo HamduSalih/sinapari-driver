@@ -21,10 +21,11 @@ export default class BidProcess extends Component{
 
     componentDidMount() {
         this.props.addBidToDb(this.state);
-        /**if(this.props.addBidToDb(this.state)){
+        if(this.props.addBidToDb(this.state)){
             alert('Bid Added Successfully')
-            Actions.driverhome({userId: this.props.userData.driver_license});
-        } */
+            Actions.driverhome({userId: this.props.userData.driver_license,
+            bids: this.props.bids});
+        }
     }
 
     _navigate = () => {

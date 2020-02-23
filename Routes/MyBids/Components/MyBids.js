@@ -10,9 +10,7 @@ const truckMarker = require("../../../assets/img/truck_marker.png");
 class MyBids extends React.Component{
 	constructor(props){
 		super(props);
-		const renderJobs = () => {
-			return <Text style={{position:'absolute', fontSize:30, color:'black'}}>Working</Text>
-		}
+		this.state.bids = this.props.bids
 	}
 
 	state = {
@@ -20,7 +18,7 @@ class MyBids extends React.Component{
 	}
 
 	componentDidMount(){
-		
+		console.log(this.state.bids);
   	}
 
   componentDidUpdate(prevProps, prevState){
