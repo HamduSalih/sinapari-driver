@@ -5,7 +5,8 @@ import {
 } from "../Modules/BidProcess";
 //states from modules home.js
 const mapStateToProps = (state) => ({
-	userData: state.driverhome.userData
+	userData: state.driverhome.userData,
+	bids: state.bidProcess.bids
 });
 
 const mapActionCreators = {

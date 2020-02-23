@@ -46,9 +46,23 @@ export function addBidToDb(data){
   .then((docRef)=>{
     console.log(docRef.id);
   });
-  return{
-    type: ADD_BIDS,
-    payload: data
+
+  var bidsArray = [];
+
+  return (dispatch, store)=>{
+    database.collection('bids').where('driverId', '==', store().driverhome.userData.driver_license)
+    .get()
+    .then((querySnapshot)=>{
+      querySnapshot.forEach((doc)=>{
+        bidsArray.push(doc.data());
+      })
+    })
+    .then(()=>{
+      dispatch({
+        type: ADD_BIDS,
+        payload: bidsArray
+      })
+    })
   }
 }
 
@@ -57,7 +71,7 @@ export function addBidToDb(data){
 //--------------------
 function handleAddBidToDb(state, action){
   return update(state, {
-    addedBid:{
+    bids:{
       $set: action.payload
     }
   })
