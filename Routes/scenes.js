@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from 'react-native';
 import { Actions, Scene, ActionConst } from "react-native-router-flux";
 import HomeContainer from "./Home/Containers/HomeContainer";
 import TrackDriverContainer from "./TrackDriver/Containers/TrackDriverContainer";
@@ -12,6 +13,7 @@ import DriverHomeContainer from './DriverHome/Containers/DriverHomeContainer';
 import DriverJobDetailsContainer from './DriverJobDetails/Containers/DriverJobDetailsContainer';
 import BidProcessContainer from './bidProcess/Containers/BidProcessContainer';
 import MyBidContainer from './MyBids/Containers/MyBidContainer';
+import BottomTab from '../Navigtions/BottomTab'
 
 
 
@@ -25,12 +27,24 @@ const scenes = Actions.create(
 		<Scene key="regprocess" type={ActionConst.RESET} component={RegProcessContainer} title="Processing" />
 		<Scene key="home" component={HomeContainer} title="Home"/>
 		<Scene key="trackDriver" component={TrackDriverContainer} title="Driver" />
-		<Scene key="driverhome" type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
+		
+		<Scene key="driverhome" tabBarComponent={BottomTab} type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
+
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
 		<Scene key="bidProcess" hideNavBar type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
-		<Scene key="bidProcess" component={MyBidContainer} title="My Bids" />
+		<Scene key="myBids" component={MyBidContainer} title="My Bids" />
 	</Scene>
 
 );
+
+const styles = StyleSheet.create({
+	tabBar: {
+	height: 50,
+	borderTopColor: 'darkgrey',
+	borderTopWidth: 1,
+	opacity: 0.98,
+	justifyContent:'space-between'
+	}
+	});
 
 export default scenes;

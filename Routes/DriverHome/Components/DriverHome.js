@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
 import Constants from 'expo-constants';
 import RenderJobs from './RenderJobs';
+import BottomTab from '../../../Navigtions/BottomTab'
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -56,7 +57,8 @@ render(){
 						<RenderJobs
 							allJobs={this.props.allJobs}
 						/>
-					}	
+					}
+						<BottomTab />
 					</View>
 			</Container>
 		);

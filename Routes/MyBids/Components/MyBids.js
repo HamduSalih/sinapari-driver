@@ -20,9 +20,7 @@ class MyBids extends React.Component{
 	}
 
 	componentDidMount(){
-		this.props.getDriverLocation(this.state.driverLicense);
-		this.props.getUserData(this.state.driverLicense);
-		this.props.getAllJobs();
+		
   	}
 
   componentDidUpdate(prevProps, prevState){
@@ -32,7 +30,11 @@ class MyBids extends React.Component{
   } 
 
 	render(){
-		return();
+		return(
+			<View style={{flex: 1}}>
+
+			</View>
+		);
 	}
 }
 
