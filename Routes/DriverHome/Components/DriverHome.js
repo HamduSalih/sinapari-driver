@@ -16,17 +16,17 @@ class DriverHome extends React.Component{
 		if(this.props.from === 'bidProcess'){
 			this.state.bids = this.props.bids
 		} else {
-			this.state.bids = this.props.myBids
+			this.state.bids = this.props.allBids
 		}
 	}
 
 	state = {
 		driverLicense: this.props.userId,
-		bids: this.props.bids
 	}
 
 	componentDidMount(){
 		this.props.getAllJobs();
+		this.props.getDriverBids(this.state.driverLicense);
 		this.props.getDriverLocation(this.state.driverLicense);
 		this.props.getUserData(this.state.driverLicense);
   	}

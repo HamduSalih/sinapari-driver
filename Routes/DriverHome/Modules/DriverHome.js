@@ -40,6 +40,7 @@ const {
 	GET_USER_ACCOUNTS,
 	GET_USER_JOBS,
 	GET_ALL_JOBS,
+	DRIVER_BIDS
 	  } = constants;
 
 
@@ -132,6 +133,26 @@ export function getAllJobs(){
 	}
 }
 
+export function getDriverBids(userId){
+	var bidsCollection = database.collection('bids');
+	var allBids = [];
+	return (dispatch) => {
+		bidsCollection.where('driverId', '==', userId.toString())
+		.get()
+		.then((querySnapshot)=>{
+			querySnapshot.forEach((doc)=>{
+				allBids.push(doc.data());
+			})
+		})
+		.then(()=>{
+			dispatch({
+				type: DRIVER_BIDS,
+				payload: allBids
+			})
+		})
+	}
+}
+
 //--------------------
 //Action Handlers
 //--------------------
@@ -186,15 +207,25 @@ function handleGetAllJobs(state, action){
 	})
 }
 
+function handleGetDriverBids(state, action){
+	return update(state, {
+		allBids:{
+			$set: action.payload
+		}
+	})
+}
+
 const ACTION_HANDLERS = {
   GET_DRIVER_LOCATION:handleGetDriverLocation,
   GET_USER_DATA:handleGetUserData,
   GET_USER_ACCOUNTS:handleGetUserAccount,
   GET_USER_JOBS:handleGetUserJobs,
-  GET_ALL_JOBS:handleGetAllJobs
+  GET_ALL_JOBS:handleGetAllJobs,
+  DRIVER_BIDS: handleGetDriverBids
 }
 const initialState = {
   region:{},
+  allBids: {}
 };
 
 export function DriverHomeReducer (state = initialState, action){

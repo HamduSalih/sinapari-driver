@@ -3,7 +3,8 @@ import DriverHome from "../Components/DriverHome";
 import {
 	getDriverLocation,
 	getUserData,
-	getAllJobs
+	getAllJobs,
+	getDriverBids
 } from "../Modules/DriverHome";
 //states from modules home.js
 const mapStateToProps = (state) => ({
@@ -12,11 +13,13 @@ const mapStateToProps = (state) => ({
 	userAccount: state.driverhome.userAccount,
 	userJobs: state.driverhome.userJobs,
 	allJobs: state.driverhome.allJobs,
+	allBids: state.driverhome.allBids || []
 });
 
 const mapActionCreators = {
 	getDriverLocation,
 	getUserData,
-	getAllJobs
+	getAllJobs,
+	getDriverBids
 };
 export default connect(mapStateToProps, mapActionCreators)(DriverHome);
