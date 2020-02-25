@@ -22,7 +22,20 @@ class ScrollContainer extends Component{
         truck_number: this.props.userData.truck_number,
         rating: this.props.userData.rating,
         paid: false,
-        status: 'pending'
+        status: 'pending',
+        goodsDescription: this.props.jobDetails.goodsDescription,
+        pickUpAddress: {
+            address: this.props.jobDetails.pickUp.address,
+            lat: this.props.jobDetails.pickUp.lat,
+            long: this.props.jobDetails.pickUp.long,
+            time: this.props.jobDetails.pickUp.time
+        },
+        dropOffAddress: {
+            address: this.props.jobDetails.dropOff.address,
+            lat: this.props.jobDetails.dropOff.lat,
+            long: this.props.jobDetails.dropOff.long,
+            time: this.props.jobDetails.dropOff.Time
+        },
     };
 
     async componentDidMount(){
