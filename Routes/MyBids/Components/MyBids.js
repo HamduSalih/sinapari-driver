@@ -3,7 +3,8 @@ import {View, Text, YellowBox} from "react-native";
 import { Container }  from "native-base";
 import { Actions } from 'react-native-router-flux';
 import Constants from 'expo-constants';
-
+import BottomTab from '../../../Navigtions/BottomTab'
+import RenderBids from './RenderBids'
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
 
@@ -29,9 +30,17 @@ class MyBids extends React.Component{
 
 	render(){
 		return(
-			<View style={{flex: 1}}>
-
-			</View>
+			<Container>
+				<View style={{flex:1}}>
+					{
+						this.props.allBids &&
+						<RenderBids 
+							allBids = {this.props.allBids}
+						/>
+					}
+					<BottomTab />
+				</View>
+			</Container>
 		);
 	}
 }

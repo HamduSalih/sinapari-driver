@@ -5,6 +5,7 @@ import {
 } from "../Modules/MyBids";
 const mapStateToProps = (state) => ({
 	userData: state.driverhome.userData,
+	allBids: state.driverhome.allBids
 });
 
 const mapActionCreators = {
