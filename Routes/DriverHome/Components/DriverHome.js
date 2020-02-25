@@ -13,9 +13,6 @@ const truckMarker = require("../../../assets/img/truck_marker.png");
 class DriverHome extends React.Component{
 	constructor(props){
 		super(props);
-		const renderJobs = () => {
-			return <Text style={{position:'absolute', fontSize:30, color:'black'}}>Working</Text>
-		}
 	}
 
 	state = {

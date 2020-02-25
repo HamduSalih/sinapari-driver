@@ -20,12 +20,18 @@ export default class BidProcess extends Component{
     }
 
     componentDidMount() {
-        this.props.addBidToDb(this.state);
-        if(this.props.addBidToDb(this.state)){
+       this.props.addBidToDb(this.state)
+       alert('Bid Added Successfully');
+        /**if(this.props.addBidToDb(this.state)){
             alert('Bid Added Successfully')
             Actions.driverhome({userId: this.props.userData.driver_license,
             bids: this.props.bids});
-        }
+        } */
+    }
+
+    componentWillReceiveProps(nextProps){
+        Actions.driverhome({userId: this.props.userData.driver_license,
+            bids: nextProps.bids});
     }
 
     _navigate = () => {
@@ -44,7 +50,7 @@ export default class BidProcess extends Component{
                             source={sinaLogo}
                             resizeMode='center'
                             style={{padding:0,marginBottom:-60}} />
-                    <Text style={styles.welcome}>We are processong your bid</Text>
+                    <Text style={styles.welcome}>We are processing your bid</Text>
                 </View>
                 <ActivityIndicator size="large" color="#eef0ef"/>
             </ImageBackground>
