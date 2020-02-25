@@ -31,7 +31,7 @@ export default class BidProcess extends Component{
 
     componentWillReceiveProps(nextProps){
         Actions.driverhome({userId: this.props.userData.driver_license,
-            bids: nextProps.bids});
+            bids: nextProps.bids, from: 'bidProcess'});
     }
 
     _navigate = () => {
