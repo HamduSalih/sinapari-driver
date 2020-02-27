@@ -9,13 +9,19 @@ import styles from './RenderBidsStyles';
 const RenderBids = ({allBids}) => {
     var DATA = allBids;
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    _navigationProcess = (jobStatus, jobDetails) => {
+      if(jobStatus === 'accepted'){
+        Actions.currentJob({jobDetails: jobDetails});
+      }
+    }
+
         function Item({ title }) {
-          function _navigate(param){
-            Actions.driverjobdetails({jobDetails: param});
-          }
           return (
             <Card>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={this._navigationProcess.bind(this, title.status, title)}
+              >
                 <View style={styles.locView}>
                     <Text style={{width: '50%'}}>{title.goodsDescription}</Text>
                     <Text style={{width: '50%', textAlign: 'right', marginBottom: 10, textTransform: 'capitalize'}}>{title.status}</Text>

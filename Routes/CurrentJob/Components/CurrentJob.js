@@ -31,15 +31,15 @@ class CurrentJob extends React.Component{
   } 
 
 render(){
-	const region = {
-		latitude: 5.6604616,
-		  longitude: -0.0077599,
-		 latitudeDelta: 0.045,
-		 longitudeDelta: 0.045
-	}
+	const region = this.props.region
+
 		return(
 			<Container>
-				
+				<View style={{flex:1}}>
+					<MapContainer 
+						region={region}							
+					/>
+				</View>
 			</Container>
 		);
 

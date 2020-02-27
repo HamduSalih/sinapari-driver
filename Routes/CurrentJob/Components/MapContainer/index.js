@@ -7,8 +7,6 @@ import RenderJobs from '../RenderJobs';
 
 export const MapContainer = ({
 		region,
-		allJobs,
-		userJobs
 	})=>{
 			
 		return(
