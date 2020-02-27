@@ -13,6 +13,7 @@ import DriverHomeContainer from './DriverHome/Containers/DriverHomeContainer';
 import DriverJobDetailsContainer from './DriverJobDetails/Containers/DriverJobDetailsContainer';
 import BidProcessContainer from './bidProcess/Containers/BidProcessContainer';
 import MyBidContainer from './MyBids/Containers/MyBidContainer';
+import CurrentJobContainer from './CurrentJob/Containers/CurrentJobContainer';
 import BottomTab from '../Navigtions/BottomTab'
 
 
@@ -33,6 +34,7 @@ const scenes = Actions.create(
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
 		<Scene key="bidProcess" hideNavBar type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
 		<Scene key="myBids" component={MyBidContainer} title="My Bids" />
+		<Scene key="currentJob" component={CurrentJobContainer} title="Current Job" />
 	</Scene>
 
 );

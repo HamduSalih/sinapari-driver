@@ -10,6 +10,7 @@ import { DriverHomeReducer as driverhome } from '../Routes/DriverHome/Modules/Dr
 import { DriverJobDetailsReducer as driverjobdetails } from '../Routes/DriverJobDetails/Modules/DriverJobDetails';
 import { BidProcessReducer as bidProcess } from '../Routes/bidProcess/Modules/BidProcess';
 import { MyBidsReducer as myBids } from '../Routes/MyBids/Modules/MyBids';
+import { CurrentJobReducer as currentJob } from '../Routes/CurrentJob/Modules/CurrentJob';
 
 
 export const makeRootReducer = () => {

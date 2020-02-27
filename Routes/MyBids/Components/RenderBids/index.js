@@ -8,6 +8,7 @@ import styles from './RenderBidsStyles';
 
 const RenderBids = ({allBids}) => {
     var DATA = allBids;
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         function Item({ title }) {
           function _navigate(param){
             Actions.driverjobdetails({jobDetails: param});
@@ -17,9 +18,9 @@ const RenderBids = ({allBids}) => {
               <TouchableOpacity>
                 <View style={styles.locView}>
                     <Text style={{width: '50%'}}>{title.goodsDescription}</Text>
-                    <Text style={{width: '50%', textAlign: 'right', marginBottom: 10}}>{title.status}</Text>
+                    <Text style={{width: '50%', textAlign: 'right', marginBottom: 10, textTransform: 'capitalize'}}>{title.status}</Text>
                 </View>
-                <View>
+                <View style={{marginBottom: 15}}>
                     <Text>Client: { title.client }</Text>
                     <Text>Amount Bid: { title.amount }</Text>
                 </View>
@@ -49,11 +50,6 @@ const RenderBids = ({allBids}) => {
         }
     return(
         <SafeAreaView style={styles.container}>
-        <View style={{paddingTop:10, paddingHorizontal:15}}>
-          <Text style={styles.headerText}>
-            My Bids
-          </Text>
-        </View>
         <FlatList 
           data={DATA}
           renderItem={({item})=>
