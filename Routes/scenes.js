@@ -34,7 +34,7 @@ const scenes = Actions.create(
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
 		<Scene key="bidProcess" hideNavBar type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
 		<Scene key="myBids" component={MyBidContainer} title="My Bids" />
-		<Scene key="currentJob" component={CurrentJobContainer} title="Current Job" />
+		<Scene key="currentJob" hideNavBar component={CurrentJobContainer} title="Current Job" />
 	</Scene>
 
 );

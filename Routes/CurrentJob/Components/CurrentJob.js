@@ -34,13 +34,11 @@ render(){
 	const region = this.props.region
 
 		return(
-			<Container>
-				<View style={{flex:1}}>
-					<MapContainer 
-						region={region}							
-					/>
-				</View>
-			</Container>
+			<View style={{flex:1}}>
+				<MapContainer 
+					region={region}							
+				/>
+			</View>
 		);
 
 	}

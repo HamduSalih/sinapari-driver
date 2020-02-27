@@ -25,10 +25,10 @@ class DriverHome extends React.Component{
 	}
 
 	componentDidMount(){
-		this.props.getAllJobs();
-		this.props.getDriverBids(this.state.driverLicense);
-		this.props.getDriverLocation(this.state.driverLicense);
-		this.props.getUserData(this.state.driverLicense);
+		this.props.getAllJobs(),
+		this.props.getDriverBids(this.state.driverLicense),
+		this.props.getDriverLocation(this.state.driverLicense),
+		this.props.getUserData(this.state.driverLicense)
   	}
 
   componentDidUpdate(prevProps, prevState){
