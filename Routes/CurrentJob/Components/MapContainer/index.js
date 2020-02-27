@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "native-base";
 import MapView from "react-native-maps";
 import styles from "./MapContainerStyles.js";
+import MapViewDirections from 'react-native-maps-directions';
 
 export const MapContainer = ({
 		region,
@@ -17,7 +18,10 @@ export const MapContainer = ({
 			latitude: 5.6060955, 
 			longitude: -0.1681235,
 			latitudeDelta: 0.045,
-		 	longitudeDelta: 0.045};
+			longitudeDelta: 0.045};
+			 
+		const pickUpOrigin = region
+		const pickUpDestination = origin
 		const GOOGLE_MAPS_APIKEY = 'AIzaSyCspx_yMJwX4bTjLXTUHebo9TwYxTaLa6E';
 
 
@@ -29,6 +33,13 @@ export const MapContainer = ({
 				style={styles.map}
 				region={region}
 			>
+				<MapViewDirections 
+					origin={pickUpOrigin}
+					destination={pickUpDestination}
+					apikey={GOOGLE_MAPS_APIKEY}
+					strokeWidth={3}
+					strokeColor={'green'}
+				/>
 				<MapViewDirections 
 					origin={origin}
 					destination={destination}

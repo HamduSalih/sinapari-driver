@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native';
 
 const {width, height} = Dimensions.get("window");
 
-const viewHeight = (height / 2);
+const viewHeight = (height / 2) - Constants.statusBarHeight;
 
 const styles = {
 	container:{
