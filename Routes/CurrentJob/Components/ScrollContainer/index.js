@@ -32,15 +32,69 @@ class ScrollContainer extends Component{
     render(){
         var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         var jobDetails = this.props.jobDetails;
-        var minutesSource = new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMinutes();
-        var minutes = minutesSource < 10 ? '0' + minutesSource : minutesSource;
+        var minutesSourcePickUp = new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMinutes();
+        var minutesPickUp = minutesSourcePickUp < 10 ? '0' + minutesSourcePickUp : minutesSourcePickUp;
+
+        var minutesSourceDropOff = new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMinutes();
+        var minutesDropOff = minutesSourceDropOff < 10 ? '0' + minutesSourceDropOff : minutesSourceDropOff;
         return(
             <View
               style={styles.container}>
                 <ScrollView contentContainerStyle={styles.scrollStyle}>
-                    <Text style={styles.pickUpTime}>Pick Up at {new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours() + ':' + minutes}</Text>
-                    <View>
-                        <Text>Payout: GHS {jobDetails.amount}</Text>
+                    <Text style={styles.pickUpTime}>Pick Up at {new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours()] + ':' + minutesPickUp}</Text>
+                    <View style={styles.payoutView}>
+                        <View style={styles.payoutViewViews, {borderRightWidth: 1, borderRightColor: 'grey', paddingRight: 40}}>
+                            <Text>Payout</Text>
+                            <Text style={{fontSize: 20}}>GHS {jobDetails.amount}</Text>
+                        </View>
+                        <View style={styles.payoutViewViews}>
+                            <Text>Driver Id</Text>
+                            <Text style={{fontSize: 20}}>GHS {jobDetails.driverId}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.standAloneViews}>
+                        <Text>Job Id: {jobDetails.jobId}</Text>
+                    </View>
+
+                    <View style={styles.standAloneViews, {alignItems: 'center', marginTop: 40}}>
+                        <Text
+                            style={{
+                                width: '50%',
+                                textAlign: 'center',
+                                textTransform: 'uppercase',
+                                borderColor: '#141d48',
+                                borderRadius: 10,
+                                borderWidth: 1
+                            }}
+                        >
+                            Job Summary</Text>
+                    </View>
+
+                    <View
+                        style={{
+                            padding: 10
+                        }}
+                    >
+                        <View style = {styles.locView}>
+                            <FontAwesome style={styles.locIcon} size={20} name='dot-circle-o'/>
+                            <Text style={styles.locText}>{jobDetails.pickUpAddress.address}</Text>
+                        </View>
+                        <View style={styles.locView}>
+                          <View style={{ 
+                            height:35,
+                            borderLeftWidth:2, 
+                            marginLeft:7}}/>
+                          <Text style={styles.dateStyle}>{new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours() + ':' + minutesPickUp}</Text>
+                        </View>
+                        <View style={styles.locView}>
+                            <Entypo style={styles.locIcon} size={17} name='circle'/>
+                            <Text>{jobDetails.dropOffAddress.address}</Text> 
+                        </View>
+                        <View style={styles.locView}>
+                            <View style={{
+                            marginLeft:7}}/>
+                            <Text style={styles.dateStyle}>{new Date(jobDetails.dropOffAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOffAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOffAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOffAddress.time.seconds * 1000).getHours() + ':' + minutesDropOff}</Text>
+                        </View>
                     </View>
                 </ScrollView>                 
             </View>
