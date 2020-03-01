@@ -8,17 +8,40 @@ import { View } from 'native-base';
 import styles from './scrollContainerStyles'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
-
 import * as Random from 'expo-random';
 import { Actions } from 'react-native-router-flux';
 
 class ScrollContainer extends Component{
     state={
-        buttonText: 'Start Trip/Job'
+        buttonText: 'Start Job'
     };
 
     async componentDidMount(){
-        
+        if(this.props.jobDetails.tripStatus !== 'live'){
+            this.setState({buttonText: 'Start Job'});
+        }else if(this.props.jobDetails.tripStatus == 'live'){
+            this.setState({buttonText: 'Complete Job'});
+        }else if(this.props.jobDetails.tripStatus == 'completed'){
+            this.setState({buttonText: 'Job Completed'});
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+       /**
+        *  if(nextProps.jobDetails.tripStatus !== 'live'){
+            this.setState({buttonText: 'Start Job'});
+        }else if(nextProps.jobDetails.tripStatus == 'live'){
+            this.setState({buttonText: 'Complete Trip'});
+        }
+        */
+    }
+
+    onPressEvent = () => {
+        if(this.state.buttonText == 'Start Job'){
+            this.props.updateBidTripStatus(this.props.jobDetails),
+            this.setState({buttonText: 'Complete Job'}),
+            this.props.createLiveJob(this.props.jobDetails)
+        }
     }
 
     componentDidUpdate(){
@@ -41,7 +64,7 @@ class ScrollContainer extends Component{
             <View
               style={styles.container}>
                 <ScrollView contentContainerStyle={styles.scrollStyle}>
-                    <Text style={styles.pickUpTime}>Pick Up at {new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours()] + ':' + minutesPickUp}</Text>
+                    <Text style={styles.pickUpTime}>Pick Up at {new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours() + ' ' + ':' + minutesPickUp}</Text>
                     <View style={styles.payoutView}>
                         <View style={styles.payoutViewViews, {borderRightWidth: 1, borderRightColor: 'grey', paddingRight: 40}}>
                             <Text>Payout</Text>
@@ -49,7 +72,7 @@ class ScrollContainer extends Component{
                         </View>
                         <View style={styles.payoutViewViews}>
                             <Text>Driver Id</Text>
-                            <Text style={{fontSize: 20}}>GHS {jobDetails.driverId}</Text>
+                            <Text style={{fontSize: 20}}>{jobDetails.driverId}</Text>
                         </View>
                     </View>
                     <View style={styles.standAloneViews}>
@@ -108,7 +131,9 @@ class ScrollContainer extends Component{
                         width: '90%',
                         backgroundColor: '#141d48',
                         borderRadius: 50
-                    }}>
+                    }}
+                        onPress={ this.onPressEvent }
+                    >
                         <Text style={{
                             color: 'white',
                             textAlign: 'center',

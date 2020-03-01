@@ -25,7 +25,8 @@ export const makeRootReducer = () => {
 		driverhome,
 		driverjobdetails,
 		bidProcess,
-		myBids
+		myBids,
+		currentJob
 	});
 }
 

@@ -36,7 +36,9 @@ class ScrollContainer extends Component{
             long: this.props.jobDetails.dropOff.long,
             time: this.props.jobDetails.dropOff.Time
         },
-        client: this.props.jobDetails.client
+        client: this.props.jobDetails.client,
+        tripStatus: null,
+        ownerStatus: null
     };
 
     async componentDidMount(){

@@ -35,7 +35,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-	
+	CREATE_LIVE_JOB
 	  } = constants;
 
 
@@ -46,14 +46,49 @@ const LONGITUDE_DELTA = 0.035;
 //---------------
 //Actions
 //---------------
+export function createLiveJob(bidDetail){
+  return (dispatch) => {
+    navigator.geolocation.getCurrentPosition(
+		  (position)=>{
+        database.collection('liveJobs').add({
+          driverId: bidDetail.driverId,
+          jobId: bidDetail.jobId,
+          lat: position.coords.latitude,
+          long: position.coords.longitude
+			})
+			.then(()=>{
+				dispatch({
+					type:CREATE_LIVE_JOB,
+					payload:position
+				});
+			});
+		  },
+		  (error) => console.log(error.message),
+		  {enableHighAccuracy: true, timeout:2000, maximumAge:10000}
+		)
+  }
+}
+
 
 //--------------------
 //Action Handlers
 //--------------------
+function handleCreateLiveJob(state, action){
+  return update(state, {
+    liveJob:{
+      latitude:{
+				$set: action.payload.coords.latitude
+			},
+			longitude:{
+				$set: action.payload.coords.longitude
+			}
+    }
+  })
+}
 
 
 const ACTION_HANDLERS = {
-  
+  CREATE_LIVE_JOB: handleCreateLiveJob
 }
 const initialState = {
   
