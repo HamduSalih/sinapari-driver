@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 const styles = {
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'white',
     },
     scrollStyle:{
-      paddingVertical: 10
+      
     },
     pickUpTime: {
       backgroundColor: '#141d48',

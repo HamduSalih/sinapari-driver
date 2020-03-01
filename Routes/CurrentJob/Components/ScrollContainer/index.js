@@ -14,7 +14,7 @@ import { Actions } from 'react-native-router-flux';
 
 class ScrollContainer extends Component{
     state={
-        
+        buttonText: 'Start Trip/Job'
     };
 
     async componentDidMount(){
@@ -96,7 +96,27 @@ class ScrollContainer extends Component{
                             <Text style={styles.dateStyle}>{new Date(jobDetails.dropOffAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOffAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOffAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOffAddress.time.seconds * 1000).getHours() + ':' + minutesDropOff}</Text>
                         </View>
                     </View>
-                </ScrollView>                 
+                </ScrollView>
+                <View style={{
+                    borderColor: 'grey',
+                    borderTopWidth: 1,
+                    padding: 10,
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                }}>
+                    <TouchableOpacity style={{
+                        width: '90%',
+                        backgroundColor: '#141d48',
+                        borderRadius: 50
+                    }}>
+                        <Text style={{
+                            color: 'white',
+                            textAlign: 'center',
+                            padding: 7,
+                            fontSize: 17
+                        }}>{this.state.buttonText}</Text>
+                    </TouchableOpacity>
+                </View>                 
             </View>
         )
     }
