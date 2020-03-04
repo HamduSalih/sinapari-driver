@@ -154,42 +154,6 @@ export function getDriverBids(userId){
 	}
 }
 
-export function updateBidTripStatus(bid){
-	var collections = database.collection('bids');
-	var docId = '';
-	var allBids = [];
-	collections.where('driverId', '==', bid.driverId)
-	.where('bidId', '==', bid.bidId)
-	.where('status', '==', 'accepted')
-	.get()
-	.then((querySnapshot)=>{
-		querySnapshot.forEach((doc)=>{
-			docId = doc.id
-  		})
-	})
-	.then(()=>{
-		 collections.doc(docId)
-		 .update({
-		  tripStatus: 'live'
-		})
-	})
-
-	return (dispatch) => {
-		bidsCollection.where('driverId', '==', userId.toString())
-		.get()
-		.then((querySnapshot)=>{
-			querySnapshot.forEach((doc)=>{
-				allBids.push(doc.data());
-			})
-		})
-		.then(()=>{
-			dispatch({
-				type: UPDATE_BIDS,
-				payload: allBids
-			})
-		})
-	}
-}
 
 //--------------------
 //Action Handlers
@@ -253,14 +217,6 @@ function handleGetDriverBids(state, action){
 	})
 }
 
-function handleUpdateBidStatus(state, action){
-	return update(state, {
-		allBids:{
-			$set: action.payload
-		}
-	})
-}
-
 const ACTION_HANDLERS = {
   GET_DRIVER_LOCATION:handleGetDriverLocation,
   GET_USER_DATA:handleGetUserData,
@@ -268,7 +224,6 @@ const ACTION_HANDLERS = {
   GET_USER_JOBS:handleGetUserJobs,
   GET_ALL_JOBS:handleGetAllJobs,
   DRIVER_BIDS:handleGetDriverBids,
-  UPDATE_BIDS:handleUpdateBidStatus
 }
 const initialState = {
   region:{},

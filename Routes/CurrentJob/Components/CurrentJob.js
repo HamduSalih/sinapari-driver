@@ -5,7 +5,6 @@ import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
 import BottomTab from '../../../Navigtions/BottomTab';
 import ScrollContainer from './ScrollContainer'
-import { updateBidTripStatus } from '../../DriverHome/Modules/DriverHome'
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
 
@@ -40,7 +39,7 @@ render(){
 
 				<ScrollContainer 
 					jobDetails={this.props.jobDetails}
-					updateBidTripStatus={updateBidTripStatus}
+					updateBidTripStatus={this.props.updateBidTripStatus}
 					createLiveJob={this.props.createLiveJob}
 				/>
 			</View>

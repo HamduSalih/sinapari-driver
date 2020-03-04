@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import CurrentJob from "../Components/CurrentJob";
 import {
-	createLiveJob
+	createLiveJob,
+	updateBidTripStatus
 } from "../Modules/CurrentJob";
 //states from modules home.js
 const mapStateToProps = (state) => ({
@@ -10,6 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionCreators = {
-	createLiveJob
+	createLiveJob,
+	updateBidTripStatus
 };
 export default connect(mapStateToProps, mapActionCreators)(CurrentJob);

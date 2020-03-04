@@ -42,9 +42,7 @@ class ScrollContainer extends Component{
             this.setState({buttonText: 'Complete Job'}),
             this.props.createLiveJob(this.props.jobDetails) */
             this.props.updateBidTripStatus(this.props.jobDetails, 
-                this.setState({buttonText: 'Complete Job'},
-                this.props.createLiveJob(this.props.jobDetails)
-        ))}
+                this.setState({buttonText: 'Complete Job'}))}
     }
 
     componentDidUpdate(){
