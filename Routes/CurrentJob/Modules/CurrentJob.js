@@ -35,7 +35,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-  CREATE_LIVE_JOB,
+  LIVE_JOB1,
   DRIVER_BIDS
 	  } = constants;
 
@@ -59,7 +59,7 @@ export function createLiveJob(bidDetail){
 			})
 			.then(()=>{
 				dispatch({
-					type:CREATE_LIVE_JOB,
+					type: LIVE_JOB1,
 					payload:position
 				});
 			});
@@ -93,7 +93,7 @@ export function updateBidTripStatus(bid){
 			})
 		})
 
-		bidsCollection.where('driverId', '==', userId.toString())
+		collections.where('driverId', '==', bid.driverId)
 		.get()
 		.then((querySnapshot)=>{
 			querySnapshot.forEach((doc)=>{
@@ -114,16 +114,16 @@ export function updateBidTripStatus(bid){
 //Action Handlers
 //--------------------
 function handleCreateLiveJob(state, action){
-	return update(state, {
-		liveJob:{
-			latitude:{
-        $set: action.payload.coords.latitude
+  return update(state, {
+    liveJob:{
+      latitude:{
+        $set: action.payload.coords.latitude,
       },
       longitude:{
-        $set: action.payload.coords.longitude
+        $set: action.payload.coords.longitude,
       }
-		}
-	})
+    }
+  })
 }
 
 function handleGetDriverBids(state, action){
@@ -136,7 +136,7 @@ function handleGetDriverBids(state, action){
 
 
 const ACTION_HANDLERS = {
-  CREATE_LIVE_JOB:handleCreateLiveJob,
+  LIVE_JOB1:handleCreateLiveJob,
   DRIVER_BIDS: handleGetDriverBids
 }
 
