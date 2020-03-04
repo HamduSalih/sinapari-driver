@@ -74,22 +74,23 @@ export function createLiveJob(bidDetail){
 //Action Handlers
 //--------------------
 function handleCreateLiveJob(state, action){
-  return update(state, {
-    liveJob:{
-      latitude:{
-				$set: action.payload.coords.latitude
-			},
-			longitude:{
-				$set: action.payload.coords.longitude
-			}
-    }
-  })
+	return update(state, {
+		liveJob:{
+			latitude:{
+        $set: action.payload.coords.latitude
+      },
+      longitude:{
+        $set: action.payload.coords.longitude
+      }
+		}
+	})
 }
 
 
 const ACTION_HANDLERS = {
-  CREATE_LIVE_JOB: handleCreateLiveJob
+  CREATE_LIVE_JOB:handleCreateLiveJob
 }
+
 const initialState = {
   
 };

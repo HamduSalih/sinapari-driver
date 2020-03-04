@@ -267,8 +267,8 @@ const ACTION_HANDLERS = {
   GET_USER_ACCOUNTS:handleGetUserAccount,
   GET_USER_JOBS:handleGetUserJobs,
   GET_ALL_JOBS:handleGetAllJobs,
-  DRIVER_BIDS: handleGetDriverBids, 
-  UPDATE_BIDS: handleUpdateBidStatus
+  DRIVER_BIDS:handleGetDriverBids,
+  UPDATE_BIDS:handleUpdateBidStatus
 }
 const initialState = {
   region:{},

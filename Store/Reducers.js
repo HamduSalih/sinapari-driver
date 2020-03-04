@@ -20,8 +20,6 @@ export const makeRootReducer = () => {
 		signintwo,
 		signinthree,
 		regprocess,
-		home,
-		trackDriver,
 		driverhome,
 		driverjobdetails,
 		bidProcess,
