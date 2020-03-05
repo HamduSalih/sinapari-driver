@@ -35,7 +35,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-  LIVE_JOB1,
+  GET_DRIVER_LOCATION,
   DRIVER_BIDS
 	  } = constants;
 
@@ -47,19 +47,21 @@ const LONGITUDE_DELTA = 0.035;
 //---------------
 //Actions
 //---------------
-export function createLiveJob(bidDetail){
-  return (dispatch) => {
-    navigator.geolocation.getCurrentPosition(
+export function getDriverLocation(bid){
+	var dbLocations = database.collection('liveJobs').doc(bid.driverId);
+	return(dispatch)=>{
+		//navigator is used to return geolocation object to display users current location 
+		navigator.geolocation.watchPosition(
 		  (position)=>{
-        database.collection('liveJobs').add({
-          driverId: bidDetail.driverId,
-          jobId: bidDetail.jobId,
-          lat: position.coords.latitude,
-          long: position.coords.longitude
+			dbLocations.update({
+        driverId: bid.driverId,
+        jobId: bid.jobId,
+				lat: position.coords.latitude,
+				long: position.coords.longitude
 			})
 			.then(()=>{
 				dispatch({
-					type: LIVE_JOB1,
+					type:GET_DRIVER_LOCATION,
 					payload:position
 				});
 			});
@@ -67,7 +69,7 @@ export function createLiveJob(bidDetail){
 		  (error) => console.log(error.message),
 		  {enableHighAccuracy: true, timeout:2000, maximumAge:10000}
 		)
-  }
+	  }
 }
 
 
@@ -113,17 +115,23 @@ export function updateBidTripStatus(bid){
 //--------------------
 //Action Handlers
 //--------------------
-function handleCreateLiveJob(state, action){
-  return update(state, {
-    liveJob:{
-      latitude:{
-        $set: action.payload.coords.latitude,
-      },
-      longitude:{
-        $set: action.payload.coords.longitude,
-      }
-    }
-  })
+function handleGetDriverLocation(state, action){
+	return update(state, {
+		region:{
+			latitude:{
+				$set: action.payload.coords.latitude
+			},
+			longitude:{
+				$set: action.payload.coords.longitude
+			},
+			latitudeDelta:{
+			  $set:LATITUDE_DELTA
+			},
+			longitudeDelta:{
+			  $set:LONGITUDE_DELTA
+			}	
+		}	
+	})
 }
 
 function handleGetDriverBids(state, action){
@@ -136,7 +144,7 @@ function handleGetDriverBids(state, action){
 
 
 const ACTION_HANDLERS = {
-  LIVE_JOB1:handleCreateLiveJob,
+  GET_DRIVER_LOCATION:handleGetDriverLocation,
   DRIVER_BIDS: handleGetDriverBids
 }
 
