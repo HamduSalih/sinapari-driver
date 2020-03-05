@@ -35,7 +35,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-  GET_DRIVER_LOCATION,
+  LIVE_LOCATION,
   DRIVER_BIDS
 	  } = constants;
 
@@ -48,12 +48,12 @@ const LONGITUDE_DELTA = 0.035;
 //Actions
 //---------------
 export function getDriverLocation(bid){
-	var dbLocations = database.collection('liveJobs').doc(bid.driverId);
+	var dbLocations = database.collection('liveJobs');
 	return(dispatch)=>{
 		//navigator is used to return geolocation object to display users current location 
 		navigator.geolocation.watchPosition(
 		  (position)=>{
-			dbLocations.update({
+			dbLocations.add({
         driverId: bid.driverId,
         jobId: bid.jobId,
 				lat: position.coords.latitude,
@@ -61,7 +61,7 @@ export function getDriverLocation(bid){
 			})
 			.then(()=>{
 				dispatch({
-					type:GET_DRIVER_LOCATION,
+					type:LIVE_LOCATION,
 					payload:position
 				});
 			});
@@ -115,9 +115,9 @@ export function updateBidTripStatus(bid){
 //--------------------
 //Action Handlers
 //--------------------
-function handleGetDriverLocation(state, action){
+function handleLiveJob(state, action){
 	return update(state, {
-		region:{
+		jobRegion:{
 			latitude:{
 				$set: action.payload.coords.latitude
 			},
@@ -144,7 +144,7 @@ function handleGetDriverBids(state, action){
 
 
 const ACTION_HANDLERS = {
-  GET_DRIVER_LOCATION:handleGetDriverLocation,
+  LIVE_LOCATION:handleLiveJob,
   DRIVER_BIDS: handleGetDriverBids
 }
 
