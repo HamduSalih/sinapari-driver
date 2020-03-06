@@ -11,7 +11,7 @@ import { DriverJobDetailsReducer as driverjobdetails } from '../Routes/DriverJob
 import { BidProcessReducer as bidProcess } from '../Routes/bidProcess/Modules/BidProcess';
 import { MyBidsReducer as myBids } from '../Routes/MyBids/Modules/MyBids';
 import { CurrentJobReducer as currentJob } from '../Routes/CurrentJob/Modules/CurrentJob';
-
+import { DriverProfileReducer as driverProfile } from '../Routes/DriverProfile/Modules/DriverProfile';
 
 export const makeRootReducer = () => {
 	return combineReducers({

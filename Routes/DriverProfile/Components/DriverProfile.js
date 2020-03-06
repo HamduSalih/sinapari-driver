@@ -29,7 +29,7 @@ const firebaseConfig = {
   //firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
 
-export default class SignInThree extends Component{
+export default class DriverProfile extends Component{
     static navigationOptions = {
         headerShown: false
     }
@@ -47,31 +47,6 @@ export default class SignInThree extends Component{
         Actions.regprocess({userData:param});
     }
 
-    _upload = async(img_src) => {
-        const response = await fetch(img_src);
-        const blob = await response.blob();
-        var ref = firebase.storage().ref().child(this.state.driver_license.toString() + '.jpg');
-        //ref.getMetadata().then(function(metadata){
-         //   console.log(metadata);
-        //});
-        //ref.getDownloadURL().then(function(url){
-          //  console.log(url);
-        //})
-        if(ref.put(blob)){
-            let param = this.state;
-            Actions.regprocess({userData:param});
-        };
-        ref.put(blob)
-        .then(()=>{
-            let param = this.state;
-            Actions.regprocess({userData:param});
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-        //console.log(this.state);
-    }
-
     render(){   
         let { picture } = this.state;   
         let g = 'https://firebasestorage.googleapis.com/v0/b/sinapari-6dbbd.appspot.com/o/123.jpg?alt=media&token=0597b22e-fefd-4942-bdb4-8bc688d5319c';
@@ -80,87 +55,11 @@ export default class SignInThree extends Component{
                 source={sinabg} 
                 style={styles.container}
             >
-                <TouchableOpacity
-                    style={{backgroundColor: '#eef0ef',
-                    padding: 15,
-                    width: '45%',
-                    borderRadius: 5,
-                    flexDirection:'row',
-                    alignSelf: 'flex-start',
-                    marginLeft: '5%',
-                    marginBottom: 20}
-                }
-                    onPress={this._pickImage}
-                >
-                    <Text style={styles.buttonText}>Pick an Image</Text>
-                </TouchableOpacity>
-                {
-                    picture && 
-                    <Image source={{uri: picture}} style={{width: 200, height:200, padding:10}}/>
-                }
-                <TextInput 
-                    style={styles.input}
-                    placeholder='Identification Number'
-                    onChangeText={(id_number)=> this.setState({id_number})}
-                    value={this.state.id_number}
-                />
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Driver's License"
-                    onChangeText={(driver_license)=> this.setState({driver_license})}
-                    value={this.state.driver_license}
-                />
-                <Picker
-                    selectedValue={this.state.affiliate}
-                    style={styles.input}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({affiliate: itemValue})
-                    }>
-                        <Picker.Item label="Affiliation" value="" />
-                        <Picker.Item label="Independent" value="independent" />
-                        <Picker.Item label="Under Partner" value="under_partner" />
-                </Picker>
                 
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity 
-                        style={styles.userButton}
-                        onPress={ this._upload.bind(this, this.state.picture) }>
-                        <Text style={styles.buttonText}>Next</Text>
-                    </TouchableOpacity>
-                </View>
             </ImageBackground>
 
         )
     }
-
-    componentDidMount(){
-        this.getPermissionAsync();
-        console.log('hi');
-    }
-
-    getPermissionAsync = async () => {
-        if (Constants.platform.ios) {
-          const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-          if (status !== 'granted') {
-            alert('Sorry, we need camera roll permissions to make this work!');
-          }
-        }
-      }
-    
-      _pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.All,
-          allowsEditing: true,
-          aspect: [4, 3],
-          quality: 1
-        });
-    
-        console.log(result);
-    
-        if (!result.cancelled) {
-          this.setState({ picture: result.uri });
-        }
-      };
 }
 
 const styles = StyleSheet.create({

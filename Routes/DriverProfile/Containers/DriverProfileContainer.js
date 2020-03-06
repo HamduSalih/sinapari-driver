@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import Home from "../Components/SignInThree";
+import DriverProfile from "../Components/DriverProfile";
 import {
 	
-} from "../Modules/SignInThree";
+} from "../Modules/DriverProfile";
 //states from modules home.js
 const mapStateToProps = (state) => ({
 	

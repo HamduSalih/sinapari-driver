@@ -21,6 +21,12 @@ export default class BottomTab extends React.Component {
         subTitle:'',
         icon:'',
         sceneKey: 'myBids'
+    },
+    {
+        title:'Profile',
+        subTitle:'',
+        icon:'',
+        sceneKey: 'driverProfile'
     }
     ];
 
