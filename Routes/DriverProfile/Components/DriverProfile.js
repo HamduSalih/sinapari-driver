@@ -37,19 +37,13 @@ export default class DriverProfile extends Component{
     constructor(props) {
         super(props);
         // Don't call this.setState() here!
-        const { navigation } = this.props;
-        let old_state = this.props.userData;
-        this.state = old_state;
     }
 
     _navigate = () => {
-        let param = this.state;
-        Actions.regprocess({userData:param});
+        
     }
 
-    render(){   
-        let { picture } = this.state;   
-        let g = 'https://firebasestorage.googleapis.com/v0/b/sinapari-6dbbd.appspot.com/o/123.jpg?alt=media&token=0597b22e-fefd-4942-bdb4-8bc688d5319c';
+    render(){
         return(
             <ImageBackground 
                 source={sinabg} 
