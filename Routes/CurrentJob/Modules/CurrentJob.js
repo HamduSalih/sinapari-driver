@@ -34,8 +34,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //--------------------
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
-const { 
-  LIVE_LOCATION,
+const {
   DRIVER_BIDS
 	  } = constants;
 
@@ -47,32 +46,6 @@ const LONGITUDE_DELTA = 0.035;
 //---------------
 //Actions
 //---------------
-export function getDriverLocation(bid){
-	var dbLocations = database.collection('liveJobs');
-	return(dispatch)=>{
-		//navigator is used to return geolocation object to display users current location 
-		navigator.geolocation.watchPosition(
-		  (position)=>{
-			dbLocations.add({
-        driverId: bid.driverId,
-        jobId: bid.jobId,
-				lat: position.coords.latitude,
-				long: position.coords.longitude
-			})
-			.then(()=>{
-				dispatch({
-					type:LIVE_LOCATION,
-					payload:position
-				});
-			});
-		  },
-		  (error) => console.log(error.message),
-		  {enableHighAccuracy: true, timeout:2000, maximumAge:10000}
-		)
-	  }
-}
-
-
 export function updateBidTripStatus(bid){
 	var collections = database.collection('bids');
 	var docId = '';
@@ -93,7 +66,23 @@ export function updateBidTripStatus(bid){
 			.update({
 			tripStatus: 'live'
 			})
-		})
+    })
+    .then(()=>{
+      collections.where('driverId', '==', bid.driverId)
+      .get()
+      .then((querySnapshot)=>{
+        querySnapshot.forEach((doc)=>{
+          allBids.push(doc.data());
+        })
+      })
+      .then(()=>{
+        dispatch({
+          type: DRIVER_BIDS,
+          payload: allBids
+        })
+      })
+    })
+    /**
 
 		collections.where('driverId', '==', bid.driverId)
 		.get()
@@ -107,7 +96,7 @@ export function updateBidTripStatus(bid){
 				type: DRIVER_BIDS,
 				payload: allBids
 			})
-		})
+		}) */
 	}
 }
 
@@ -115,25 +104,6 @@ export function updateBidTripStatus(bid){
 //--------------------
 //Action Handlers
 //--------------------
-function handleLiveJob(state, action){
-	return update(state, {
-		jobRegion:{
-			latitude:{
-				$set: action.payload.coords.latitude
-			},
-			longitude:{
-				$set: action.payload.coords.longitude
-			},
-			latitudeDelta:{
-			  $set:LATITUDE_DELTA
-			},
-			longitudeDelta:{
-			  $set:LONGITUDE_DELTA
-			}	
-		}	
-	})
-}
-
 function handleGetDriverBids(state, action){
 	return update(state, {
 		allBids:{
@@ -144,7 +114,6 @@ function handleGetDriverBids(state, action){
 
 
 const ACTION_HANDLERS = {
-  LIVE_LOCATION:handleLiveJob,
   DRIVER_BIDS: handleGetDriverBids
 }
 

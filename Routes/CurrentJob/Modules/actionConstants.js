@@ -1,4 +1,3 @@
 export default {
-	LIVE_LOCATION: 'LIVE_LOCATION',
 	DRIVER_BIDS: 'DRIVER_BIDS'
 };

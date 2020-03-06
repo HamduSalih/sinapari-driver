@@ -40,7 +40,6 @@ render(){
 				<ScrollContainer 
 					jobDetails={this.props.jobDetails}
 					updateBidTripStatus={this.props.updateBidTripStatus}
-					getDriverLocation={this.props.getDriverLocation}
 				/>
 			</View>
 		);
