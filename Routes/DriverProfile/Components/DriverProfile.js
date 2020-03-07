@@ -7,12 +7,10 @@ import { StyleSheet,
         Picker,
         Image,
         ImageBackground } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
-import * as Permissions from 'expo-permissions';
-import * as FileSystem from 'expo-file-system';
 import * as firebase from 'firebase';
+import FormComponents from './FormComponents'
 
 const sinabg = require('../../../assets/img/sina-bg.jpg');
 const firebaseConfig = {
@@ -40,7 +38,7 @@ export default class DriverProfile extends Component{
     }
 
     _navigate = () => {
-        
+
     }
 
     render(){
@@ -49,7 +47,7 @@ export default class DriverProfile extends Component{
                 source={sinabg} 
                 style={styles.container}
             >
-                
+                <FormComponents />
             </ImageBackground>
 
         )
@@ -60,7 +58,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#b2b2ff'
     },
     welcome: {
