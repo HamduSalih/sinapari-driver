@@ -11,6 +11,7 @@ import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import FormComponents from './FormComponents'
+import BottomTab from '../../../Navigtions/BottomTab'
 
 const sinabg = require('../../../assets/img/sina-bg.jpg');
 const firebaseConfig = {
@@ -47,7 +48,11 @@ export default class DriverProfile extends Component{
                 source={sinabg} 
                 style={styles.container}
             >
-                <FormComponents />
+                <FormComponents 
+                    userData={this.props.userData}
+                    updateProfile={this.props.updateProfile}
+                />
+                <BottomTab />
             </ImageBackground>
 
         )

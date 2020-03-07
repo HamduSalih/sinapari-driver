@@ -5,12 +5,12 @@ import { Dimensions } from "react-native"
 import RNGooglePlaces from "react-native-google-places";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import request from '../../../util/Request';
-import calculateFare from '../../../util/FareCalculator';
-import * as Network from 'expo-network';
+import * as firebase from 'firebase';
+import '@firebase/firestore';
 import Constants from "expo-constants";
 
 const { manifest } = Constants;
-
+const database = firebase.firestore();
 const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 
 //--------------------
@@ -19,7 +19,7 @@ const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const { 
-  
+	UPDATE_PROFILE
 	  } = constants;
 
 
@@ -30,15 +30,43 @@ const LONGITUDE_DELTA = 0.035;
 //---------------
 //Actions
 //---------------
-
+export function updateProfile(data){
+	var collections = database.collection('drivers').doc(data.driverId.toString());
+	return(dispatch)=>{
+		collections.update({
+			phone_number: data.phone_number,
+			affiliate: data.affiliation,
+			trailer_length: data.trailer_length,
+			trailer_type: data.trailer_type,
+			truck_number: data.truck_number
+		})
+		.then(()=>{
+			collections.get()
+			.then((doc)=>{
+				if(doc.exists){
+					dispatch({
+						type: UPDATE_PROFILE,
+						payload: doc.data()	
+					})
+				}
+			})
+		})
+	}
+}
 
 //--------------------
 //Action Handlers
 //--------------------
-
+function handleUpdateProfile(state, action){
+	return update(state, {
+		userData:{
+			$set: action.payload
+		}
+	})
+}
 
 const ACTION_HANDLERS = {
-  
+  UPDATE_PROFILE:handleUpdateProfile
 }
 const initialState = {
   
