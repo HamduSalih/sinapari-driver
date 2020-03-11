@@ -3,7 +3,7 @@ import {View, Text, YellowBox} from "react-native";
 import { Container }  from "native-base";
 import { Actions } from 'react-native-router-flux';
 import Constants from 'expo-constants';
-import BottomTab from '../../../Navigtions/BottomTab'
+import BottomTab from '../../../Navigtions/BottomTabContainer';
 import RenderBids from './RenderBids'
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");

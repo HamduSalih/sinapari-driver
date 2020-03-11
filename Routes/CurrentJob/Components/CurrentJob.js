@@ -3,7 +3,7 @@ import {View, Text, YellowBox} from "react-native";
 import { Container }  from "native-base";
 import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
-import BottomTab from '../../../Navigtions/BottomTab';
+import BottomTab from '../../../Navigtions/BottomTabContainer';
 import ScrollContainer from './ScrollContainer'
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -41,6 +41,7 @@ render(){
 					jobDetails={this.props.jobDetails}
 					updateBidTripStatus={this.props.updateBidTripStatus}
 				/>
+				<BottomTab />
 			</View>
 		);
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Footer, FooterTab } from 'native-base';
 
 export default class BottomTab extends React.Component {
     _navigate = (scenceLoc) => {
-        Actions[scenceLoc].call();
+        Actions[scenceLoc].call({userId: this.props.userData.driver_license});
+        //alert(this.props.userData.driver_license)
     }
   render() {
 

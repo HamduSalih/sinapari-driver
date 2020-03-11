@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
 import Constants from 'expo-constants';
 import RenderJobs from './RenderJobs';
-import BottomTab from '../../../Navigtions/BottomTab'
+import BottomTab from '../../../Navigtions/BottomTabContainer';
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
@@ -18,10 +18,11 @@ class DriverHome extends React.Component{
 		} else {
 			this.state.bids = this.props.allBids
 		}
+		this.state.driverLicense = this.props.userId
 	}
 
 	state = {
-		driverLicense: this.props.userId,
+		//driverLicense: this.props.userId,
 	}
 
 	componentDidMount(){

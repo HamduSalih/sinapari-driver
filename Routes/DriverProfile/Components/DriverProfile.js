@@ -11,7 +11,7 @@ import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import FormComponents from './FormComponents'
-import BottomTab from '../../../Navigtions/BottomTab'
+import BottomTab from '../../../Navigtions/BottomTabContainer';
 
 const sinabg = require('../../../assets/img/sina-bg.jpg');
 const firebaseConfig = {
