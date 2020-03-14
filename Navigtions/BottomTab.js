@@ -4,18 +4,22 @@ import { Actions } from 'react-native-router-flux';
 import { Footer, FooterTab } from 'native-base';
 
 export default class BottomTab extends React.Component {
-    _navigate = (scenceLoc) => {
-        Actions[scenceLoc].call({userId: this.state.userId});
+    _navigate = async (scenceLoc) => {
+        try {
+            const driverLicense = await AsyncStorage.getItem('driverLicense');
+            if (driverLicense !== null){
+                console.log(driverLicense)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+        //Actions[scenceLoc].call({userId: this.state.userId});
         //alert(this.props.userData.driver_license)
     }
 
     componentDidMount(){
-        async function getToken () {
-            const driverLicense = await AsyncStorage.getItem('driverLicense');
-            this.setState({ userId: driverLicense })
-        }
-
-        getToken();
+       
     }
   render() {
 
