@@ -9,6 +9,7 @@ export default class BottomTab extends React.Component {
             const driverLicense = await AsyncStorage.getItem('driverLicense');
             if (driverLicense !== null){
                 console.log(driverLicense)
+                Actions[scenceLoc].call({userId: driverLicense});
             }
         } catch (error) {
             console.log(error)
@@ -28,7 +29,7 @@ export default class BottomTab extends React.Component {
         title:'Home',
         subTitle:'',
         icon:'',
-        sceneKey: 'driverhome'
+        sceneKey: 'driverhome2'
     },
     {
         title:'My Bids',

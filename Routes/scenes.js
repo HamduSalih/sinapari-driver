@@ -31,7 +31,7 @@ const scenes = Actions.create(
 		<Scene key="trackDriver" component={TrackDriverContainer} title="Driver" />
 		
 		<Scene key="driverhome" tabBarComponent={BottomTab} type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
-
+		<Scene key="driverhome2" tabBarComponent={BottomTab} component={DriverHomeContainer} title="Home" />
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />
 		<Scene key="bidProcess" hideNavBar type={ActionConst.RESET} component={BidProcessContainer} title="Bid Processing" />
 		<Scene key="myBids" component={MyBidContainer} title="My Bids" />
