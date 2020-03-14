@@ -14,6 +14,8 @@ export default class BottomTab extends React.Component {
             const driverLicense = await AsyncStorage.getItem('driverLicense');
             this.setState({ userId: driverLicense })
         }
+
+        getToken();
     }
   render() {
 
