@@ -15,6 +15,7 @@ import BidProcessContainer from './bidProcess/Containers/BidProcessContainer';
 import MyBidContainer from './MyBids/Containers/MyBidContainer';
 import CurrentJobContainer from './CurrentJob/Containers/CurrentJobContainer';
 import BottomTab from '../Navigtions/BottomTab'
+import navAuthLoad from '../Navigtions/DriverHomeNav'
 import DriverProfileContainer from "./DriverProfile/Containers/DriverProfileContainer";
 
 
@@ -37,6 +38,7 @@ const scenes = Actions.create(
 		<Scene key="myBids" component={MyBidContainer} title="My Bids" />
 		<Scene key="currentJob" hideNavBar component={CurrentJobContainer} title="Current Job" />
 		<Scene key="driverProfile" component={DriverProfileContainer} title="Edit Profile" />
+		<Scene key="driverBotTab" hideNavBar component={navAuthLoad} title="DriverBotTab" />
 	</Scene>
 
 );
