@@ -42,7 +42,7 @@ class ScrollContainer extends Component{
     };
 
     async componentDidMount(){
-        const randomBytes = await Random.getRandomBytesAsync(15);
+        const randomBytes = await Random.getRandomBytesAsync(9);
         var i = 0;
         var bidId = '';
         while(i < randomBytes.length){
@@ -120,7 +120,7 @@ class ScrollContainer extends Component{
                             height:35,
                             borderLeftWidth:2, 
                             marginLeft:7}}/>
-                            <Text style={styles.dateStyle}>{new Date(jobDetails.pickUp.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUp.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUp.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUp.time.seconds * 1000).getHours() + ':' + new Date(jobDetails.pickUp.time.seconds * 1000).getMinutes()}</Text>
+                            <Text style={styles.dateStyle}>{new Date(jobDetails.pickUp.time * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUp.time * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUp.time * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUp.time * 1000).getHours() + ':' + new Date(jobDetails.pickUp.time * 1000).getMinutes()}</Text>
                         </View>
                         <View style={styles.locView}>
                             <Entypo style={styles.locIcon} size={17} name='circle'/>
@@ -129,7 +129,7 @@ class ScrollContainer extends Component{
                         <View style={styles.locView}>
                             <View style={{
                             marginLeft:7}}/>
-                            <Text style={styles.dateStyle}>{new Date(jobDetails.dropOff.Time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOff.Time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOff.Time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOff.Time.seconds * 1000).getHours() + ':' + new Date(jobDetails.dropOff.Time.seconds * 1000).getMinutes()}</Text>
+                            <Text style={styles.dateStyle}>{new Date(jobDetails.dropOff.Time * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOff.Time * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOff.Time * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOff.Time * 1000).getHours() + ':' + new Date(jobDetails.dropOff.Time * 1000).getMinutes()}</Text>
                         </View>
                     </View>
                 </ScrollView>

@@ -105,7 +105,7 @@ export default class RegProcess extends React.Component{
                 style={styles.container}
                  >
                 <ActivityIndicator size="large" color="#eef0ef"/>
-                <Text style={{color:'white', padding:10}}>Please be patient as we things ready</Text>
+                <Text style={{color:'white', padding:10}}>Please be patient as we get things ready</Text>
             </ImageBackground>
         )
     }

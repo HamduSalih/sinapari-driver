@@ -9,6 +9,10 @@ import { StyleSheet,
         ImageBackground } from 'react-native';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
+import * as firebase from 'firebase';
+import '@firebase/firestore';
+
+const database = firebase.firestore()
 
 const sinabg = require('../../../assets/img/sina-bg.jpg')
 const sinaLogo = require("../../../assets/img/sinalogo.jpg");
@@ -46,13 +50,37 @@ export default class LoginScreen extends Component{
     }
 
     _login = async() => {
-        if(userInfo.username === this.state.username && userInfo.password === this.state.password){
+        var driverCollection = database.collection('drivers')
+
+        driverCollection.where('username', '==', this.state.username)
+        .where('password', '==', this.state.password)
+        .get()
+        .then(async(querySnapshot)=>{
+            querySnapshot.forEach(async(doc)=>{
+                await AsyncStorage.setItem('isLoggedIn', '1');
+                await AsyncStorage.setItem('driverLicense', doc.data().id_number);
+            })
+        })
+        .then(async()=>{
+            const userToken = await AsyncStorage.getItem('isLoggedIn');
+            const driverLicense = await AsyncStorage.getItem('driverLicense');
+            if(userToken !== '1'){
+                Actions.login();
+            } else{
+                Actions.driverhome({userId: driverLicense});
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+        /**if(userInfo.username === this.state.username && userInfo.password === this.state.password){
             //alert('Logged In');
             await AsyncStorage.setItem('isLoggedIn', '1');
             this.props.navigation.navigate('Root');
         }else{
             alert('User info not corrected')
-        }
+        } */
     }
 
     _navigate = () => {

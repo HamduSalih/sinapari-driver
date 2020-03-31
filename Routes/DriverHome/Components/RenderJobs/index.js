@@ -36,7 +36,7 @@ const RenderJobs = ({allJobs}) => {
                       height:35,
                       borderLeftWidth:2, 
                       marginLeft:7}}/>
-                    <Text style={styles.dateStyle}>{new Date(title.pickUp.time.seconds * 1000).getDate() + ' ' + months[new Date(title.pickUp.time.seconds * 1000).getMonth()] + ' ' + new Date(title.pickUp.time.seconds * 1000).getFullYear() + ', ' + new Date(title.pickUp.time.seconds * 1000).getHours() + ':' + new Date(title.pickUp.time.seconds * 1000).getMinutes()}</Text>
+                    <Text style={styles.dateStyle}>{new Date(title.pickUp.time * 1000).getDate() + ' ' + months[new Date(title.pickUp.time * 1000).getMonth()] + ' ' + new Date(title.pickUp.time * 1000).getFullYear() + ', ' + new Date(title.pickUp.time * 1000).getHours() + ':' + new Date(title.pickUp.time * 1000).getMinutes()}</Text>
                   </View>
                   <View style={styles.locView}>
                     <Entypo style={styles.locIcon} size={17} name='circle'/>
@@ -45,7 +45,7 @@ const RenderJobs = ({allJobs}) => {
                   <View style={styles.locView}>
                     <View style={{
                       marginLeft:7}}/>
-                      <Text style={styles.dateStyle}>{new Date(title.dropOff.Time.seconds * 1000).getDate() + ' ' + months[new Date(title.dropOff.Time.seconds * 1000).getMonth()] + ' ' + new Date(title.dropOff.Time.seconds * 1000).getFullYear() + ', ' + new Date(title.dropOff.Time.seconds * 1000).getHours() + ':' + new Date(title.dropOff.Time.seconds * 1000).getMinutes()}</Text>
+                      <Text style={styles.dateStyle}>{new Date(title.dropOff.Time * 1000).getDate() + ' ' + months[new Date(title.dropOff.Time * 1000).getMonth()] + ' ' + new Date(title.dropOff.Time * 1000).getFullYear() + ', ' + new Date(title.dropOff.Time * 1000).getHours() + ':' + new Date(title.dropOff.Time * 1000).getMinutes()}</Text>
                   </View>
               </TouchableOpacity>
             </Card>
