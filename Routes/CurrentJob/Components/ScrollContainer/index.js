@@ -13,11 +13,11 @@ import { Actions } from 'react-native-router-flux';
 
 class ScrollContainer extends Component{
     state={
-        buttonText: 'Start Job'
+        buttonText: 'Pending'
     };
 
     async componentDidMount(){
-        if(this.props.jobDetails.tripStatus !== 'live'){
+        if(this.props.jobDetails.status == 'accepted'){
             this.setState({buttonText: 'Start Job'});
         }else if(this.props.jobDetails.tripStatus == 'live'){
             this.setState({buttonText: 'Complete Job'});
@@ -42,7 +42,11 @@ class ScrollContainer extends Component{
             this.setState({buttonText: 'Complete Job'}),
             this.props.createLiveJob(this.props.jobDetails) */
             this.props.updateBidTripStatus(this.props.jobDetails, 
-                this.setState({buttonText: 'Complete Job'}))}
+            this.setState({buttonText: 'Complete Job'}))
+        }elseif(this.state.buttonText == 'Complete Job'){
+            this.props.updateBidTripStatus(this.props.bidDetails, 'completed'),
+            this.setState({buttonText: 'Job Completed'})
+        }
     }
 
     componentDidUpdate(){

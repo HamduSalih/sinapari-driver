@@ -28,9 +28,6 @@ const scenes = Actions.create(
 		<Scene key="signintwo" component={SignInTwoContainer} title="Sign In" />
 		<Scene key="signinthree" component={SignInThreeContainer} title="Sign In" />
 		<Scene key="regprocess" type={ActionConst.RESET} component={RegProcessContainer} title="Processing" />
-		<Scene key="home" component={HomeContainer} title="Home"/>
-		<Scene key="trackDriver" component={TrackDriverContainer} title="Driver" />
-		
 		<Scene key="driverhome" tabBarComponent={BottomTab} type={ActionConst.RESET} component={DriverHomeContainer} title="Home" />
 		<Scene key="driverhome2" tabBarComponent={BottomTab} component={DriverHomeContainer} title="Home" />
 		<Scene key="driverjobdetails" component={DriverJobDetailsContainer} title="Job Details" />

@@ -29,10 +29,6 @@ const firebaseConfig = {
   //firebase.analytics();
 
 export default class DriverProfile extends Component{
-    static navigationOptions = {
-        headerShown: false
-    }
-
     constructor(props) {
         super(props);
         // Don't call this.setState() here!
