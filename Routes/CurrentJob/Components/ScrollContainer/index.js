@@ -38,12 +38,9 @@ class ScrollContainer extends Component{
 
     onPressEvent = () => {
         if(this.state.buttonText == 'Start Job'){
-            /**this.props.updateBidTripStatus(this.props.jobDetails),
-            this.setState({buttonText: 'Complete Job'}),
-            this.props.createLiveJob(this.props.jobDetails) */
-            this.props.updateBidTripStatus(this.props.jobDetails, 
-            this.setState({buttonText: 'Complete Job'}))
-        }elseif(this.state.buttonText == 'Complete Job'){
+            this.props.updateBidTripStatus(this.props.bidDetails[0], 'started'),
+            this.setState({buttonText: 'Complete Job'})
+        }else if(this.state.buttonText == 'Complete Job'){
             this.props.updateBidTripStatus(this.props.bidDetails, 'completed'),
             this.setState({buttonText: 'Job Completed'})
         }

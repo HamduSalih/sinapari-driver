@@ -6,19 +6,20 @@ import MapViewDirections from 'react-native-maps-directions';
 
 export const MapContainer = ({
 		region,
+		jobDetails
 	})=>{
 		
 
 		const origin = {
-			latitude: 5.6604616,
-			longitude: -0.0077599,
+			latitude: jobDetails.pickUpAddress.lat,
+			longitude: jobDetails.pickUpAddress.long,
 			latitudeDelta: 0.9,
 		 	longitudeDelta: 0.9};
 		const destination = {
-			latitude: 5.6060955, 
-			longitude: -0.1681235,
-			latitudeDelta: 0.045,
-			longitudeDelta: 0.045};
+			latitude: jobDetails.dropOffAddress.lat,
+			longitude: jobDetails.dropOffAddress.long,
+			latitudeDelta: 0.9,
+			longitudeDelta: 0.9};
 			 
 		const pickUpOrigin = region
 		const pickUpDestination = origin

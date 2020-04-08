@@ -6,7 +6,6 @@ import {
 //states from modules home.js
 const mapStateToProps = (state) => ({
 	region: state.driverhome.region,
-	liveJob: state.currentJob.liveJob
 });
 
 const mapActionCreators = {
