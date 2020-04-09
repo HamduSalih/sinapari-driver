@@ -5,13 +5,17 @@ import {AsyncStorage,
         Text } from 'react-native';
 import styles from './AuthLoadScreenStyles';
 import { Actions } from 'react-native-router-flux';
+import * as Location from 'expo-location';
 
 const sinabg = require('../../../assets/img/sina-bg.jpg')
 const sinalogo = require('../../../assets/img/sinalogo.jpg')
 
 export default class AuthLoadScreen extends React.Component{
-    componentDidMount() {
-        setTimeout(this._bootstrapAsync, 5000);
+    async componentDidMount() {
+        let { status } = await Location.requestPermissionsAsync();
+        if (status !== 'granted') {
+            setTimeout(this._bootstrapAsync, 5000);
+        }
     }
 
     //fetch token from storage and navigate to appropriate screen

@@ -6,6 +6,7 @@ import MapViewDirections from 'react-native-maps-directions';
 
 export const MapContainer = ({
 		region,
+		jobDetails
 	})=>{
 		const origin = {
 			latitude: 5.6604616,
@@ -27,8 +28,8 @@ export const MapContainer = ({
 				region={origin}
 			>
 				<MapViewDirections 
-					origin={origin}
-					destination={destination}
+					origin={jobDetails.pickUp.address}
+					destination={jobDetails.dropOff.address}
 					apikey={GOOGLE_MAPS_APIKEY}
 					strokeWidth={3}
 					strokeColor={'blue'}

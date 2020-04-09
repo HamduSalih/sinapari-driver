@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
 import { Actions, Scene, ActionConst } from "react-native-router-flux";
-import HomeContainer from "./Home/Containers/HomeContainer";
-import TrackDriverContainer from "./TrackDriver/Containers/TrackDriverContainer";
 import LoginScreenContainer from './LoginScreen/Containers/LoginScreenContainer';
 import SignInOneContainer from './SignInOne/Containers/SignInOneContainer';
 import SignInTwoContainer from './SignInTwo/Containers/SignInTwoContainer';

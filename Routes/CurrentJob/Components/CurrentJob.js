@@ -5,6 +5,8 @@ import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
 import BottomTab from '../../../Navigtions/BottomTabContainer';
 import ScrollContainer from './ScrollContainer'
+import CallButton from './CallButton'
+
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
 
