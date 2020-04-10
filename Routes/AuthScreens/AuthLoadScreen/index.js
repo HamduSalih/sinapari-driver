@@ -13,8 +13,10 @@ const sinalogo = require('../../../assets/img/sinalogo.jpg')
 export default class AuthLoadScreen extends React.Component{
     async componentDidMount() {
         let { status } = await Location.requestPermissionsAsync();
-        if (status !== 'granted') {
+        if (status == 'granted') {
             setTimeout(this._bootstrapAsync, 5000);
+        }else{
+            alert('Please grant location access in Settings in Applications')
         }
     }
 

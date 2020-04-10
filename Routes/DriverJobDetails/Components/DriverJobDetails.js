@@ -40,7 +40,7 @@ render(){
 		return(
 			<View style={{flex:1}}>
 				<MapContainer 
-					region={initialRegion}
+					region={this.props.region}
 					jobDetails={this.state.jobDetails}							
 				/>
 				<ScrollContainer 

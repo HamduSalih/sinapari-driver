@@ -39,7 +39,7 @@ const RenderBids = ({allBids}) => {
                       height:35,
                       borderLeftWidth:2, 
                       marginLeft:7}}/>
-                    <Text style={styles.dateStyle}>{new Date(title.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(title.pickUpAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(title.pickUpAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(title.pickUpAddress.time.seconds * 1000).getHours() + ':' + new Date(title.pickUpAddress.time.seconds * 1000).getMinutes()}</Text>
+                    <Text style={styles.dateStyle}>{new Date(title.pickUpAddress.time * 1000).getDate() + ' ' + months[new Date(title.pickUpAddress.time * 1000).getMonth()] + ' ' + new Date(title.pickUpAddress.time * 1000).getFullYear() + ', ' + new Date(title.pickUpAddress.time * 1000).getHours() + ':' + new Date(title.pickUpAddress.time * 1000).getMinutes()}</Text>
                   </View>
                   <View style={styles.locView}>
                     <Entypo style={styles.locIcon} size={17} name='circle'/>
@@ -48,7 +48,7 @@ const RenderBids = ({allBids}) => {
                   <View style={styles.locView}>
                     <View style={{
                       marginLeft:7}}/>
-                      <Text style={styles.dateStyle}>{new Date(title.dropOffAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(title.dropOffAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(title.dropOffAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(title.dropOffAddress.time.seconds * 1000).getHours() + ':' + new Date(title.dropOffAddress.time.seconds * 1000).getMinutes()}</Text>
+                      <Text style={styles.dateStyle}>{new Date(title.dropOffAddress.time * 1000).getDate() + ' ' + months[new Date(title.dropOffAddress.time * 1000).getMonth()] + ' ' + new Date(title.dropOffAddress.time * 1000).getFullYear() + ', ' + new Date(title.dropOffAddress.time * 1000).getHours() + ':' + new Date(title.dropOffAddress.time * 1000).getMinutes()}</Text>
                   </View> 
               </TouchableOpacity>
             </Card>

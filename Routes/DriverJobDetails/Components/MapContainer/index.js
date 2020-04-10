@@ -11,8 +11,8 @@ export const MapContainer = ({
 		const origin = {
 			latitude: 5.6604616,
 			longitude: -0.0077599,
-			latitudeDelta: 0.9,
-		 	longitudeDelta: 0.9};
+			latitudeDelta: 0.005,
+		 	longitudeDelta: 0.005};
 		const destination = {
 			latitude: 5.6060955, 
 			longitude: -0.1681235,

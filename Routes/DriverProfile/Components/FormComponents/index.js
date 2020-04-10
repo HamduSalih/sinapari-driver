@@ -8,6 +8,7 @@ import {
     ScrollView } from 'react-native'
 
 import styles from './FormComponentsStyles'
+import { Actions } from 'react-native-router-flux';
 
 export default class FormComponents extends React.Component{
     state={
@@ -100,7 +101,9 @@ export default class FormComponents extends React.Component{
                         >
                             <Text style={styles.buttonText}>Save</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button}
+                            onPress={() => Actions.pop()}
+                        >
                             <Text style={styles.buttonText}>Cancel</Text>
                         </TouchableOpacity>
                     </View>
