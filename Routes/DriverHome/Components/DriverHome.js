@@ -40,6 +40,12 @@ class DriverHome extends React.Component{
 	} */
   } 
 
+  componentWillReceiveProps(nextProps){
+	if(Object.entries(this.props.userData) > 0){
+		this.props.getDriverLocation((nextProps.userData).driver_license)
+	}
+  }
+
 render(){
 	const region = {
 		latitude: 5.6604616,

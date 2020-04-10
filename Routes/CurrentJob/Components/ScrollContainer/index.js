@@ -17,7 +17,7 @@ class ScrollContainer extends Component{
     };
 
     async componentDidMount(){
-        if(this.props.jobDetails.status == 'accepted'){
+        if(this.props.jobDetails.status == 'accepted' && this.props.jobDetails.tripStatus !== 'live'){
             this.setState({buttonText: 'Start Job'});
         }else if(this.props.jobDetails.tripStatus == 'live'){
             this.setState({buttonText: 'Complete Job'});
@@ -38,10 +38,10 @@ class ScrollContainer extends Component{
 
     onPressEvent = () => {
         if(this.state.buttonText == 'Start Job'){
-            this.props.updateBidTripStatus(this.props.bidDetails[0], 'started'),
+            this.props.updateBidTripStatus(this.props.jobDetails, 'started'),
             this.setState({buttonText: 'Complete Job'})
         }else if(this.state.buttonText == 'Complete Job'){
-            this.props.updateBidTripStatus(this.props.bidDetails, 'completed'),
+            this.props.updateBidTripStatus(this.props.jobDetails, 'completed'),
             this.setState({buttonText: 'Job Completed'})
         }
     }
@@ -57,16 +57,16 @@ class ScrollContainer extends Component{
     render(){
         var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         var jobDetails = this.props.jobDetails;
-        var minutesSourcePickUp = new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMinutes();
+        var minutesSourcePickUp = new Date(jobDetails.pickUpAddress.time * 1000).getMinutes();
         var minutesPickUp = minutesSourcePickUp < 10 ? '0' + minutesSourcePickUp : minutesSourcePickUp;
 
-        var minutesSourceDropOff = new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMinutes();
+        var minutesSourceDropOff = new Date(jobDetails.pickUpAddress.time * 1000).getMinutes();
         var minutesDropOff = minutesSourceDropOff < 10 ? '0' + minutesSourceDropOff : minutesSourceDropOff;
         return(
             <View
               style={styles.container}>
                 <ScrollView contentContainerStyle={styles.scrollStyle}>
-                    <Text style={styles.pickUpTime}>Pick Up at {new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours() + ' ' + ':' + minutesPickUp}</Text>
+                    <Text style={styles.pickUpTime}>Pick Up at {new Date(jobDetails.pickUpAddress.time * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time * 1000).getHours() + ' ' + ':' + minutesPickUp}</Text>
                     <View style={styles.payoutView}>
                         <View style={styles.payoutViewViews, {borderRightWidth: 1, borderRightColor: 'grey', paddingRight: 40}}>
                             <Text>Payout</Text>
@@ -109,7 +109,7 @@ class ScrollContainer extends Component{
                             height:35,
                             borderLeftWidth:2, 
                             marginLeft:7}}/>
-                          <Text style={styles.dateStyle}>{new Date(jobDetails.pickUpAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time.seconds * 1000).getHours() + ':' + minutesPickUp}</Text>
+                          <Text style={styles.dateStyle}>{new Date(jobDetails.pickUpAddress.time * 1000).getDate() + ' ' + months[new Date(jobDetails.pickUpAddress.time * 1000).getMonth()] + ' ' + new Date(jobDetails.pickUpAddress.time * 1000).getFullYear() + ', ' + new Date(jobDetails.pickUpAddress.time * 1000).getHours() + ':' + minutesPickUp}</Text>
                         </View>
                         <View style={styles.locView}>
                             <Entypo style={styles.locIcon} size={17} name='circle'/>
@@ -118,7 +118,7 @@ class ScrollContainer extends Component{
                         <View style={styles.locView}>
                             <View style={{
                             marginLeft:7}}/>
-                            <Text style={styles.dateStyle}>{new Date(jobDetails.dropOffAddress.time.seconds * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOffAddress.time.seconds * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOffAddress.time.seconds * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOffAddress.time.seconds * 1000).getHours() + ':' + minutesDropOff}</Text>
+                            <Text style={styles.dateStyle}>{new Date(jobDetails.dropOffAddress.time * 1000).getDate() + ' ' + months[new Date(jobDetails.dropOffAddress.time * 1000).getMonth()] + ' ' + new Date(jobDetails.dropOffAddress.time * 1000).getFullYear() + ', ' + new Date(jobDetails.dropOffAddress.time * 1000).getHours() + ':' + minutesDropOff}</Text>
                         </View>
                     </View>
                 </ScrollView>
