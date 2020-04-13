@@ -6,11 +6,14 @@ import { StyleSheet,
         TouchableOpacity, 
         Image,
         AsyncStorage,
-        ImageBackground } from 'react-native';
+        ImageBackground,
+        KeyboardAvoidingView,
+        ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
 import '@firebase/firestore';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const database = firebase.firestore()
 
@@ -90,28 +93,21 @@ export default class LoginScreen extends Component{
 
     render(){
         return(
-            <ImageBackground 
-                source={sinabg} 
-                style={styles.container}
-            >
-                <View style={styles.statusBar} />
-                
-                <View style={{margin:20}}>
-                    <Image 
-                            source={sinaLogo}
-                            resizeMode='center'
-                            style={{padding:0,marginBottom:-60}} />
-                    <Text style={styles.welcome}>Welcome Partner</Text>
-                </View>
-
-                
-                    <TextInput 
-                        style={styles.input}
-                        placeholder='Username'
-                        onChangeText={(username)=> this.setState({username})}
-                        value={this.state.username}
-                        autoCapitalize='none'
-                    />
+            <ScrollView contentContainerStyle={{flex:1}}>
+            <ImageBackground source={sinabg} style={{flex:1}}>
+               
+                <KeyboardAvoidingView behavior="height" style={styles.container}>
+                        <View style={styles.container2}>
+                            <View>
+                                <Text style={styles.welcome}>Welcome Partner</Text>
+                            </View>
+                            <TextInput 
+                            style={styles.input}
+                            placeholder='Username'
+                            onChangeText={(username)=> this.setState({username})}
+                            value={this.state.username}
+                            autoCapitalize='none'
+                        />
                     <TextInput 
                         style={styles.input}
                         placeholder='Password'
@@ -132,7 +128,11 @@ export default class LoginScreen extends Component{
                             <Text style={styles.buttonText}>Register</Text>
                         </TouchableOpacity>
                     </View>
+                        </View>
+                    </KeyboardAvoidingView>
+               
             </ImageBackground>
+            </ScrollView>
         )
     }
 }
@@ -140,11 +140,14 @@ export default class LoginScreen extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    container2: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#b2b2ff'
     },
     welcome: {
-        fontSize: 15,
+        fontSize: 25,
         textAlign: 'center',
         margin: 10,
         color: '#fff'
