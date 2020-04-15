@@ -6,7 +6,8 @@ import { StyleSheet,
         TouchableOpacity,
         Picker,
         Image,
-        ImageBackground } from 'react-native';
+        ImageBackground,
+        KeyboardAvoidingView } from 'react-native';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
@@ -40,16 +41,17 @@ export default class DriverProfile extends Component{
 
     render(){
         return(
-            <ImageBackground 
-                source={sinabg} 
-                style={styles.container}
-            >
-                <FormComponents 
-                    userData={this.props.userData}
-                    updateProfile={this.props.updateProfile}
-                />
-                <BottomTab />
-            </ImageBackground>
+            <KeyboardAvoidingView
+                behavior="padding" 
+                    style={styles.container}>
+                <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'flex-end'}}>
+                    <FormComponents 
+                        userData={this.props.userData}
+                        updateProfile={this.props.updateProfile}
+                    />
+                    <BottomTab />
+                </ImageBackground>
+            </KeyboardAvoidingView>
 
         )
     }
@@ -58,8 +60,6 @@ export default class DriverProfile extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#b2b2ff'
     },
     welcome: {
         fontSize: 20,

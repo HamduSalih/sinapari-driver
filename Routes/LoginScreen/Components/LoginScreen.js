@@ -93,46 +93,45 @@ export default class LoginScreen extends Component{
 
     render(){
         return(
-            <ScrollView contentContainerStyle={{flex:1}}>
-            <ImageBackground source={sinabg} style={{flex:1}}>
-               
-                <KeyboardAvoidingView behavior="height" style={styles.container}>
-                        <View style={styles.container2}>
-                            <View>
-                                <Text style={styles.welcome}>Welcome Partner</Text>
-                            </View>
-                            <TextInput 
-                            style={styles.input}
-                            placeholder='Username'
-                            onChangeText={(username)=> this.setState({username})}
-                            value={this.state.username}
-                            autoCapitalize='none'
-                        />
-                    <TextInput 
-                        style={styles.input}
-                        placeholder='Password'
-                        secureTextEntry
-                        onChangeText={(password)=> this.setState({password})}
-                        value={this.state.password}
-                        autoCapitalize='none'
-                    />
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity 
-                            style={styles.userButton}
-                            onPress={this._login}>
-                            <Text style={styles.buttonText}>Login</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
-                            style={styles.userButton}
-                            onPress={ this._navigate }>
-                            <Text style={styles.buttonText}>Register</Text>
-                        </TouchableOpacity>
-                    </View>
-                        </View>
+            
+                <KeyboardAvoidingView
+                behavior="padding" 
+                    style={styles.container}>
+                        <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'flex-end'}}>
+                            <ScrollView contentContainerStyle={{alignItems:'center', justifyContent:'center', flex:1}}>
+                                <View>
+                                    <Text style={styles.welcome}>Welcome Partner</Text>
+                                </View>
+                                <TextInput 
+                                    style={styles.input}
+                                    placeholder='Username'
+                                    onChangeText={(username)=> this.setState({username})}
+                                    value={this.state.username}
+                                    autoCapitalize='none'
+                                />
+                                <TextInput 
+                                    style={styles.input}
+                                    placeholder='Password'
+                                    secureTextEntry
+                                    onChangeText={(password)=> this.setState({password})}
+                                    value={this.state.password}
+                                    autoCapitalize='none'
+                                />
+                                <View style={styles.buttonContainer}>
+                                    <TouchableOpacity 
+                                        style={styles.userButton}
+                                        onPress={this._login}>
+                                        <Text style={styles.buttonText}>Login</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity 
+                                        style={styles.userButton}
+                                        onPress={ this._navigate }>
+                                        <Text style={styles.buttonText}>Register</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </ScrollView>
+                        </ImageBackground>
                     </KeyboardAvoidingView>
-               
-            </ImageBackground>
-            </ScrollView>
         )
     }
 }
@@ -142,7 +141,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     container2: {
-        flex: 1,
+        flex:1,
         justifyContent: 'center',
         alignItems: 'center',
     },

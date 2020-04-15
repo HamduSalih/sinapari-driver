@@ -6,7 +6,8 @@ import { StyleSheet,
         TouchableOpacity,
         Picker,
         Image,
-        ImageBackground } from 'react-native';
+        ImageBackground,
+        KeyboardAvoidingView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
@@ -76,59 +77,60 @@ export default class SignInThree extends Component{
         let { picture } = this.state;   
         let g = 'https://firebasestorage.googleapis.com/v0/b/sinapari-6dbbd.appspot.com/o/123.jpg?alt=media&token=0597b22e-fefd-4942-bdb4-8bc688d5319c';
         return(
-            <ImageBackground 
-                source={sinabg} 
-                style={styles.container}
-            >
-                <TouchableOpacity
-                    style={{backgroundColor: '#eef0ef',
-                    padding: 15,
-                    width: '45%',
-                    borderRadius: 5,
-                    flexDirection:'row',
-                    alignSelf: 'flex-start',
-                    marginLeft: '5%',
-                    marginBottom: 20}
-                }
-                    onPress={this._pickImage}
-                >
-                    <Text style={styles.buttonText}>Pick an Image</Text>
-                </TouchableOpacity>
-                {
-                    picture && 
-                    <Image source={{uri: picture}} style={{width: 200, height:200, padding:10}}/>
-                }
-                <TextInput 
-                    style={styles.input}
-                    placeholder='Identification Number'
-                    onChangeText={(id_number)=> this.setState({id_number})}
-                    value={this.state.id_number}
-                />
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Driver's License"
-                    onChangeText={(driver_license)=> this.setState({driver_license})}
-                    value={this.state.driver_license}
-                />
-                <Picker
-                    selectedValue={this.state.affiliate}
-                    style={styles.input}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({affiliate: itemValue})
-                    }>
-                        <Picker.Item label="Affiliation" value="" />
-                        <Picker.Item label="Independent" value="independent" />
-                        <Picker.Item label="Under Partner" value="under_partner" />
-                </Picker>
-                
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity 
-                        style={styles.userButton}
-                        onPress={ this._upload.bind(this, this.state.picture) }>
-                        <Text style={styles.buttonText}>Next</Text>
+            <KeyboardAvoidingView
+                behavior="padding" 
+                    style={styles.container}>
+                <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'center', alignItems:'center'}}>
+                    <TouchableOpacity
+                        style={{backgroundColor: '#eef0ef',
+                        padding: 15,
+                        width: '45%',
+                        borderRadius: 5,
+                        flexDirection:'row',
+                        alignSelf: 'flex-start',
+                        marginLeft: '5%',
+                        marginBottom: 20}
+                    }
+                        onPress={this._pickImage}
+                    >
+                        <Text style={styles.buttonText}>Pick an Image</Text>
                     </TouchableOpacity>
-                </View>
-            </ImageBackground>
+                    {
+                        picture && 
+                        <Image source={{uri: picture}} style={{width: 200, height:200, padding:10}}/>
+                    }
+                    <TextInput 
+                        style={styles.input}
+                        placeholder='Identification Number'
+                        onChangeText={(id_number)=> this.setState({id_number})}
+                        value={this.state.id_number}
+                    />
+                    <TextInput 
+                        style={styles.input}
+                        placeholder="Driver's License"
+                        onChangeText={(driver_license)=> this.setState({driver_license})}
+                        value={this.state.driver_license}
+                    />
+                    <Picker
+                        selectedValue={this.state.affiliate}
+                        style={styles.input}
+                        onValueChange={(itemValue, itemIndex) =>
+                            this.setState({affiliate: itemValue})
+                        }>
+                            <Picker.Item label="Affiliation" value="" />
+                            <Picker.Item label="Independent" value="independent" />
+                            <Picker.Item label="Under Partner" value="under_partner" />
+                    </Picker>
+                    
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity 
+                            style={styles.userButton}
+                            onPress={ this._upload.bind(this, this.state.picture) }>
+                            <Text style={styles.buttonText}>Next</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
+            </KeyboardAvoidingView>
 
         )
     }
@@ -166,9 +168,6 @@ export default class SignInThree extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#b2b2ff'
     },
     welcome: {
         fontSize: 20,

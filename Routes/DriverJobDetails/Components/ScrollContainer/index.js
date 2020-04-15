@@ -73,9 +73,9 @@ class ScrollContainer extends Component{
         const jobDetails = this.props.jobDetails;
         return(
             <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : null}
+                behavior='padding'
                 style={styles.container}>
-                <ScrollView contentContainerStyle={styles.scrollStyle}>
+                <ScrollView contentContainerStyle={{flex:1, padding:15}}>
                     <View style = {styles.distanceContainer}>
                         <View style={{borderRightColor: 'grey', 
                             borderRightWidth: 1,

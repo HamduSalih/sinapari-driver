@@ -5,7 +5,8 @@ import { StyleSheet,
         TextInput,
         TouchableOpacity,
         Picker,
-        ImageBackground } from 'react-native';
+        ImageBackground,
+        KeyboardAvoidingView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Constants from 'expo-constants';
 const sinabg = require('../../../assets/img/sina-bg.jpg');
@@ -30,51 +31,52 @@ export default class SignInTwo extends Component{
 
     render(){        
         return(
-            <ImageBackground 
-                source={sinabg} 
-                style={styles.container}
-            >
-                <TextInput 
-                    style={styles.input}
-                    placeholder='Truck Model/Name'
-                    onChangeText={(truck_model)=> this.setState({truck_model})}
-                    value={this.state.truck_model}
-                />
-                <Picker
-                    selectedValue={this.state.trailer_length}
-                    style={styles.input}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({trailer_length: itemValue})
-                    }>
-                        <Picker.Item label="Trailer Length" value="" />
-                        <Picker.Item label="20ft" value="20ft" />
-                        <Picker.Item label="40ft" value="40ft" />
-                </Picker>
-                <Picker
-                    selectedValue={this.state.trailer_type}
-                    style={styles.input}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({trailer_type: itemValue})
-                    }>
-                        <Picker.Item label="Trailer Type" value="" />
-                        <Picker.Item label="Flatbed" value="flatbed" />
-                        <Picker.Item label="Transit" value="transit" />
-                        <Picker.Item label="Box-cargo" value="box-cargo" />
-                </Picker>
-                <TextInput 
-                    style={styles.input}
-                    placeholder='Truck Number'
-                    onChangeText={(truck_number)=> this.setState({truck_number})}
-                    value={this.state.truck_number}
-                />
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity 
-                        style={styles.userButton}
-                        onPress={ this._navigate }>
-                        <Text style={styles.buttonText}>Next</Text>
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
+            <KeyboardAvoidingView
+                behavior="padding" 
+                    style={styles.container}>
+                <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'center', alignItems:'center'}}>
+                    <TextInput 
+                        style={styles.input}
+                        placeholder='Truck Model/Name'
+                        onChangeText={(truck_model)=> this.setState({truck_model})}
+                        value={this.state.truck_model}
+                    />
+                    <Picker
+                        selectedValue={this.state.trailer_length}
+                        style={styles.input}
+                        onValueChange={(itemValue, itemIndex) =>
+                            this.setState({trailer_length: itemValue})
+                        }>
+                            <Picker.Item label="Trailer Length" value="" />
+                            <Picker.Item label="20ft" value="20ft" />
+                            <Picker.Item label="40ft" value="40ft" />
+                    </Picker>
+                    <Picker
+                        selectedValue={this.state.trailer_type}
+                        style={styles.input}
+                        onValueChange={(itemValue, itemIndex) =>
+                            this.setState({trailer_type: itemValue})
+                        }>
+                            <Picker.Item label="Trailer Type" value="" />
+                            <Picker.Item label="Flatbed" value="flatbed" />
+                            <Picker.Item label="Transit" value="transit" />
+                            <Picker.Item label="Box-cargo" value="box-cargo" />
+                    </Picker>
+                    <TextInput 
+                        style={styles.input}
+                        placeholder='Truck Number'
+                        onChangeText={(truck_number)=> this.setState({truck_number})}
+                        value={this.state.truck_number}
+                    />
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity 
+                            style={styles.userButton}
+                            onPress={ this._navigate }>
+                            <Text style={styles.buttonText}>Next</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
+            </KeyboardAvoidingView>
         )
     }
 }
@@ -82,9 +84,6 @@ export default class SignInTwo extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent:'center',
-        alignItems: 'center',
-        backgroundColor: '#b2b2ff'
     },
     welcome: {
         fontSize: 20,
