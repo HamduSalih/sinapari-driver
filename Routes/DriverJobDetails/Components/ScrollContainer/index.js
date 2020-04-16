@@ -21,6 +21,8 @@ class ScrollContainer extends Component{
         driverName: this.props.userData.fullname,
         truck_number: this.props.userData.truck_number,
         rating: this.props.userData.rating,
+        phone_number: this.props.userData.phone_number,
+        client_number: this.props.jobDetails.client_number,
         paid: false,
         status: 'pending',
         goodsDescription: this.props.jobDetails.goodsDescription,
@@ -52,6 +54,7 @@ class ScrollContainer extends Component{
         const driverId = await AsyncStorage.getItem('driverLicense');
         this.setState({bidId: bidId});
         this.setState({driverId: driverId});
+
     }
 
     componentDidUpdate(){

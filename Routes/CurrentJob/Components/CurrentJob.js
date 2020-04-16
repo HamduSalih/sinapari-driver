@@ -44,6 +44,9 @@ render(){
 					jobDetails={this.props.jobDetails}
 					updateBidTripStatus={this.props.updateBidTripStatus}
 				/>
+				<CallButton 
+						bidDetails={this.props.jobDetails}
+						/>
 				<BottomTab />
 			</View>
 		);
