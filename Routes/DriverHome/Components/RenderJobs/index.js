@@ -53,7 +53,7 @@ const RenderJobs = ({allJobs}) => {
         }
     return(
       <SafeAreaView style={styles.container}>
-        <View style={{paddingTop:10, paddingHorizontal:15}}>
+        <View>
           <Text style={styles.headerText}>
             Available Jobs
           </Text>
@@ -94,8 +94,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 5,
     backgroundColor:'#eef0ef',
-    borderColor: 'grey',
-    width: '50%'
+    width: '100%'
   },
   dateStyle:{
     fontSize: 12,

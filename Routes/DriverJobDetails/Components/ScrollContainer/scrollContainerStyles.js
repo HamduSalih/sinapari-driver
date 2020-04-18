@@ -49,7 +49,6 @@ const styles = {
           borderTopColor: 'grey',
           borderTopWidth: 1,
           justifyContent: 'space-between',
-          flex:1
       },
       bidInput:{
           width: '55%',

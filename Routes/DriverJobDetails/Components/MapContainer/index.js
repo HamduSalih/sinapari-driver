@@ -25,7 +25,7 @@ export const MapContainer = ({
 				followsUserLocation
 				provider={MapView.PROVIDER_GOOGLE}
 				style={styles.map}
-				region={origin}
+				region={region}
 			>
 				<MapViewDirections 
 					origin={jobDetails.pickUp.address}

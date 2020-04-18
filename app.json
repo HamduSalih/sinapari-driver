@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "sinapari",
+    "name": "Sinapari Driver",
     "slug": "sinapari",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -15,7 +15,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#141d48"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -27,12 +27,18 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.sinapari.lolikar",
+      "package": "com.sinapari.sinapariDriver",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyCspx_yMJwX4bTjLXTUHebo9TwYxTaLa6E"
         }
-      }
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "READ_PHONE_STATE"
+      ]
     }
   }
 }

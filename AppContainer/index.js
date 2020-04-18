@@ -14,7 +14,9 @@ export default class AppContainer extends Component {
 		return (
 
 			<Provider store={this.props.store}>
-				<Router scenes={scenes} />
+				<Router 
+					scenes={scenes}
+					 />
 			</Provider> 
 
 			);
