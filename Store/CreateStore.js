@@ -3,12 +3,9 @@ import thunk from "redux-thunk";
 import makeRootReducer from "./Reducers";
 import { createLogger } from "redux-logger";
 import Constants from "expo-constants";
-const { manifest } = Constants;
 import createSocketIoMiddleware from "redux-socket.io";
 
 import io from "socket.io-client/dist/socket.io";
-
-const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 
 let socket = io(uri, {jsonp:false});
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");

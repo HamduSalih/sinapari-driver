@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { registerRootComponent } from 'expo';
 import {
   AppRegistry,
   StyleSheet,
   View
 } from 'react-native';
 import Root from './main'
-export default class sinapari extends Component {
+class App extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -30,5 +31,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('sinapari', () => sinapari);
+registerRootComponent(App);

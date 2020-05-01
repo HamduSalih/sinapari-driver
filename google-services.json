@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "501482455468",
+    "firebase_url": "https://sinapari-6dbbd.firebaseio.com",
+    "project_id": "sinapari-6dbbd",
+    "storage_bucket": "sinapari-6dbbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501482455468:android:7bddf9deda6e7cf57fba09",
+        "android_client_info": {
+          "package_name": "com.sinapari.sinapari_driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501482455468-qcehkq48q0cqlmipgp8nu6tfq4kavgpj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUQUY-rIlVsB6jl4NNLZpZEPUeOtKkk-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501482455468-qcehkq48q0cqlmipgp8nu6tfq4kavgpj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

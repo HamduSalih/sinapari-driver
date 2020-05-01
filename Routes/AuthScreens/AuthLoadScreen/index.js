@@ -16,7 +16,7 @@ export default class AuthLoadScreen extends React.Component{
         if (status == 'granted') {
             setTimeout(this._bootstrapAsync, 5000);
         }else{
-            alert('Please grant location access in Settings in Applications')
+            let { status } = await Location.requestPermissionsAsync();
         }
     }
 

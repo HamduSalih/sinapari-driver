@@ -3,7 +3,6 @@ import constants from "./actionConstants";
 //helps you get latidue delta from main size of window
 import { Dimensions } from "react-native"
 import RNGooglePlaces from "react-native-google-places";
-import request from '../../../util/Request';
 import Constants from "expo-constants";
 import * as firebase from 'firebase';
 import '@firebase/firestore';
@@ -21,11 +20,6 @@ const firebaseConfig = {
 //firebase.analytics();
 
 const database = firebase.firestore();
-
-
-const { manifest } = Constants;
-
-const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 
 //--------------------
 //Constants

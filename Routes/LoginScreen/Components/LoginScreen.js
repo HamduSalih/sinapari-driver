@@ -97,8 +97,8 @@ export default class LoginScreen extends Component{
                 <KeyboardAvoidingView
                 behavior="padding" 
                     style={styles.container}>
-                        <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'flex-end'}}>
-                            <ScrollView contentContainerStyle={{alignItems:'center', justifyContent:'center', flex:1}}>
+                        <ImageBackground source={sinabg} style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
+                            
                                 <View>
                                     <Text style={styles.welcome}>Welcome Partner</Text>
                                 </View>
@@ -129,7 +129,6 @@ export default class LoginScreen extends Component{
                                         <Text style={styles.buttonText}>Register</Text>
                                     </TouchableOpacity>
                                 </View>
-                            </ScrollView>
                         </ImageBackground>
                     </KeyboardAvoidingView>
         )

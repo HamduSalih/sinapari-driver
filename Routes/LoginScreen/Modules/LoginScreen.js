@@ -4,8 +4,6 @@ import constants from "./actionConstants";
 import { Dimensions } from "react-native"
 import RNGooglePlaces from "react-native-google-places";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
-import request from '../../../util/Request';
-import calculateFare from '../../../util/FareCalculator';
 import * as Network from 'expo-network';
 import Constants from "expo-constants";
 import * as firebase from 'firebase';
@@ -26,10 +24,6 @@ firebase.initializeApp(firebaseConfig);
 //firebase.analytics();
 
 const database = firebase.firestore();
-
-const { manifest } = Constants;
-
-const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 
 //--------------------
 //Constants

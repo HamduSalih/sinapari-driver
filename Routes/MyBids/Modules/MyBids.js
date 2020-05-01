@@ -2,7 +2,6 @@ import update from "react-addons-update";
 import constants from "./actionConstants";
 //helps you get latidue delta from main size of window
 import { Dimensions, AsyncStorage } from "react-native"
-import request from '../../../util/Request';
 import Constants from "expo-constants";
 import * as firebase from 'firebase';
 import '@firebase/firestore';
@@ -20,10 +19,6 @@ const firebaseConfig = {
 //firebase.analytics();
 
 const database = firebase.firestore();
-
-const { manifest } = Constants;
-
-const uri = `http://${manifest.debuggerHost.split(':').shift()}:3000`;
 
 //--------------------
 //Constants
