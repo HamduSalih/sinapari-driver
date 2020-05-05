@@ -48,11 +48,9 @@ export default class AuthLoadScreen extends React.Component{
                 source={sinabg} 
                 style={styles.container}
                  >
-                     <Image 
-                        source={sinalogo}
-                        resizeMode='center'
-                        style={{padding:0,marginVertical:-65}} />
-                    <Text style={{color:'#eef0ef', padding:0}}>The Future of Logistics Transportation</Text>
+                    <Text
+                        style={{color:'#eef0ef', padding:0, fontSize: 35}}>SinaPari Driver</Text>
+                    <Text style={{color:'#eef0ef', padding:0, fontSize: 10}}>The Future of Logistics Transportation</Text>
             </ImageBackground>
         )
     }

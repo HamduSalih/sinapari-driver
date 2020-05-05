@@ -65,6 +65,12 @@ render(){
 						/> */
 					}
 					{
+						!this.props.allJobs &&
+						<Text>
+							There are no jobs available.
+						</Text>
+					}
+					{
 						this.props.allJobs && this.props.userJobs && this.props.userJobs.status == 'inactive' && 
 						<RenderJobs
 							allJobs={this.props.allJobs}
