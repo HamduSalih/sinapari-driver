@@ -46,10 +46,6 @@ export default class BidProcess extends Component{
             >
                 
                 <View style={{margin:20}}>
-                    <Image 
-                            source={sinaLogo}
-                            resizeMode='center'
-                            style={{padding:0,marginBottom:-60}} />
                     <Text style={styles.welcome}>We are processing your bid</Text>
                 </View>
                 <ActivityIndicator size="large" color="#eef0ef"/>

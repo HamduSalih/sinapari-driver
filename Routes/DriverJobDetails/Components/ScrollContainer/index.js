@@ -75,10 +75,9 @@ class ScrollContainer extends Component{
         var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const jobDetails = this.props.jobDetails;
         return(
-            <KeyboardAvoidingView
-                behavior='padding'
+            <View
                 style={styles.container}>
-                <ScrollView contentContainerStyle={{flex:1, padding:15}}>
+                <ScrollView contentContainerStyle={{padding:15}}>
                     <View style = {styles.distanceContainer}>
                         <View style={{borderRightColor: 'grey', 
                             borderRightWidth: 1,
@@ -158,7 +157,7 @@ class ScrollContainer extends Component{
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </KeyboardAvoidingView>
+            </View>
         )
     }
 }

@@ -1,28 +1,28 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-location@~8.0.0
+  C:\Program Files\nodejs\node.exe C:\Users\Zuchi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-safe-area-context@0.6.0
 
 PATH: 
-  C:\Perl64\site\bin;C:\Perl64\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Ruby26-x64\bin;C:\Users\Zuchi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Zuchi\AppData\Roaming\npm
+  C:\Perl64\site\bin;C:\Perl64\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Ruby26-x64\bin;C:\Users\Zuchi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Zuchi\AppData\Roaming\npm
 
 Yarn version: 
-  1.21.1
+  1.22.4
 
 Node version: 
-  12.14.0
+  13.13.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\Zuchi\Desktop\Dev Environment\sinapari\node_modules\@babel\plugin-transform-runtime\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Zuchi\Desktop\Dev Environment\sinapari_driver\node_modules\jest-react-native\node_modules\.bin'
 
 npm manifest: 
   {
-    "name": "sinapari",
-    "version": "0.0.0",
+    "name": "sinapari_driver",
+    "version": "1.0.0",
     "description": "cargo movement app",
     "author": "Sinapari",
-    "main": "node_modules/expo/AppEntry.js",
+    "main": "App.js",
     "scripts": {
       "start": "expo start",
       "android": "expo start --android",
@@ -31,13 +31,14 @@ npm manifest:
       "eject": "expo eject"
     },
     "dependencies": {
-      "@react-native-community/masked-view": "^0.1.6",
+      "@react-native-community/masked-view": "0.1.5",
       "cors": "^2.8.5",
       "crypto-random-string": "^3.1.0",
       "eslint": "^6.8.0",
-      "expo": "~36.0.0",
+      "expo": "36.0.0",
       "expo-file-system": "~8.0.0",
       "expo-image-picker": "~8.0.1",
+      "expo-location": "~8.0.0",
       "expo-network": "^2.0.0",
       "expo-random": "~8.0.0",
       "express": "^4.17.1",
@@ -55,10 +56,11 @@ npm manifest:
       "react-native-gesture-handler": "^1.5.3",
       "react-native-google-places": "^3.1.2",
       "react-native-google-places-autocomplete": "^1.4.0",
+      "react-native-keyboard-aware-scroll-view": "^0.9.1",
       "react-native-maps": "^0.26.1",
       "react-native-maps-directions": "^1.7.3",
       "react-native-router-flux": "^4.0.6",
-      "react-native-safe-area-context": "^0.6.2",
+      "react-native-safe-area-context": "0.6.2",
       "react-native-safe-area-view": "^1.0.0",
       "react-native-spinkit": "^1.5.0",
       "react-native-star-rating": "^1.1.0",
@@ -1416,10 +1418,10 @@ Lockfile:
       wcwidth "^1.0.1"
       ws "^1.1.0"
   
-  "@react-native-community/masked-view@^0.1.6":
-    version "0.1.6"
-    resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.6.tgz#c7f2ac187c1f25aa8c30d11baa8f4398eca3bb84"
-    integrity sha512-PpMoeXwPUoldCRKDuSi+zK5rT+sJTW6ri6RdGPkSKRzU77Q1d9IaR0O5IKvBj0XSdL3p+dcOa05gk35aGDffBQ==
+  "@react-native-community/masked-view@0.1.5":
+    version "0.1.5"
+    resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.5.tgz#25421be6cd943a4b1660b62cfbcd45be8891462c"
+    integrity sha512-Lj1DzfCmW0f4HnmHtEuX8Yy2f7cnUA8r5KGGUuDDGtQt1so6QJkKeUmsnLo2zYDtsF8due6hvIL06Vdo5xxuLQ==
   
   "@react-navigation/core@^3.5.1":
     version "3.5.1"
@@ -3307,10 +3309,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-8.0.0.tgz#8a4451c744c115569a4c810dac8851f219a21c72"
     integrity sha512-7/rXUajycSjEF4Zd4tWm8+zP9/zJg8UWj575w2AeGI7RbOwUjqzQd1CFRzQBJkHflrEaTOXJbFHXxjJXdJaL1g==
   
-  expo@~36.0.0:
-    version "36.0.2"
-    resolved "https://registry.yarnpkg.com/expo/-/expo-36.0.2.tgz#17e5470c056f8615ebdd6819087af6a1032cf1ad"
-    integrity sha512-A0HkOBr6PkHUCcPmmTRmZQHE68EYhWDevFHAiv7fSZxNACmTq9arrSoON+UiPtGQEIV5OyV+MN/joHTJMduTkA==
+  expo@36.0.0:
+    version "36.0.0"
+    resolved "https://registry.yarnpkg.com/expo/-/expo-36.0.0.tgz#a73060027d230dd53a893bbd7b1ebf0fb2dc0f64"
+    integrity sha512-LR2VFERKWJ7KGpjJRDrwXNb0B+2bUiRUkOOx+buReSgIbvz1QKDdMKKtQbiifEVSLdBohBtGAfCObw72SSzPGg==
     dependencies:
       "@babel/runtime" "^7.1.2"
       "@expo/vector-icons" "^10.0.2"
@@ -6497,7 +6499,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
     integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
   
-  react-native-keyboard-aware-scroll-view@0.9.1:
+  react-native-keyboard-aware-scroll-view@0.9.1, react-native-keyboard-aware-scroll-view@^0.9.1:
     version "0.9.1"
     resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.9.1.tgz#9e54b565a5f19b30bed12221d48921781f7630af"
     integrity sha512-tBZ8rmjELN0F6t5UBp5CW3NYmZXgVnJSzVCssv/OqG2t6kiB+OUTqxNvUP24K+HARX4H+XaW0aEJSFQkQCv6KA==
@@ -6537,7 +6539,7 @@ Lockfile:
       prop-types "^15.6.2"
       react-navigation "2.x"
   
-  react-native-safe-area-context@^0.6.2:
+  react-native-safe-area-context@0.6.2:
     version "0.6.2"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-0.6.2.tgz#d467ac8a953426bfbb6d8f417222b0dc3952be7a"
     integrity sha512-VtBW0JymVCwVt0TGxTv25Co3wtOv3Yb/K5pAUYkjKXNhWFDz5ZwUG/Yho/p0EkWYlFdroJcSqlvVFl2n3AU7SA==

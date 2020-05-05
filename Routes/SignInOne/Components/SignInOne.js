@@ -36,14 +36,9 @@ export default class SignInOne extends Component{
     render(){
         return(
             <KeyboardAvoidingView
-                behavior="padding" 
                     style={styles.container}>
                 <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'center', alignItems:'center'}}>
-                    <Image 
-                    source={sinaLogo}
-                    resizeMode='center'
-                    style={{padding:0,marginBottom:-60}}
-                    />
+                    
                     <Text style={styles.welcome}>Register</Text>
 
                     <TextInput 
@@ -84,7 +79,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     welcome: {
-        fontSize: 15,
+        fontSize: 25,
         textAlign: 'center',
         margin: 10,
         color: '#fff'

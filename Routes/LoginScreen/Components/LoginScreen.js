@@ -94,8 +94,7 @@ export default class LoginScreen extends Component{
     render(){
         return(
             
-                <KeyboardAvoidingView
-                behavior="padding" 
+                <KeyboardAvoidingView 
                     style={styles.container}>
                         <ImageBackground source={sinabg} style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
                             

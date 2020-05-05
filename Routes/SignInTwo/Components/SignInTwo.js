@@ -32,7 +32,6 @@ export default class SignInTwo extends Component{
     render(){        
         return(
             <KeyboardAvoidingView
-                behavior="padding" 
                     style={styles.container}>
                 <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'center', alignItems:'center'}}>
                     <TextInput 

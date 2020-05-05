@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, YellowBox} from "react-native";
+import {View, Text, Dimensions} from "react-native";
 import { Container }  from "native-base";
 import { Actions } from 'react-native-router-flux';
 import MapContainer from "./MapContainer";
@@ -9,6 +9,8 @@ import BottomTab from '../../../Navigtions/BottomTabContainer';
 
 const sinaLogo = require("../../../assets/img/sinapari_blue.png");
 const truckMarker = require("../../../assets/img/truck_marker.png");
+
+const {width, height} = Dimensions.get('window')
 
 class DriverHome extends React.Component{
 	constructor(props){
@@ -56,7 +58,7 @@ render(){
 		return(
 			<Container>
 				
-					<View style={{flex:1}}>
+					<View style={{flex:1, alignItems: 'center', justifyContent:'center'}}>
 					{/**this.props.region.latitude &&
 						<MapContainer 
 							region={this.props.region}
@@ -66,7 +68,7 @@ render(){
 					}
 					{
 						!this.props.allJobs &&
-						<Text>
+						<Text style={{flex:1, top: height * 0.4}}>
 							There are no jobs available.
 						</Text>
 					}

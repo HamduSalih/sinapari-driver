@@ -77,8 +77,7 @@ export default class SignInThree extends Component{
         let { picture } = this.state;   
         let g = 'https://firebasestorage.googleapis.com/v0/b/sinapari-6dbbd.appspot.com/o/123.jpg?alt=media&token=0597b22e-fefd-4942-bdb4-8bc688d5319c';
         return(
-            <KeyboardAvoidingView
-                behavior="padding" 
+            <KeyboardAvoidingView 
                     style={styles.container}>
                 <ImageBackground source={sinabg} style={{flex:1,  justifyContent:'center', alignItems:'center'}}>
                     <TouchableOpacity

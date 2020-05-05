@@ -78,7 +78,7 @@ export default class RegProcess extends React.Component{
             await AsyncStorage.setItem('driverLicense', this.state.driver_license);
         })
         .then(()=>{
-            Actions.driverhome();
+            Actions.driverhome({userId: this.state.driver_license});
         })
         .catch((err)=>{
             console.log(err)
