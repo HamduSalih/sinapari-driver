@@ -8,6 +8,7 @@ import { StyleSheet,
         AsyncStorage,
         ImageBackground,
         KeyboardAvoidingView,
+        Dimensions,
         ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { Actions } from 'react-native-router-flux';
@@ -18,7 +19,9 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 const database = firebase.firestore()
 
 const sinabg = require('../../../assets/img/sina-bg.jpg')
-const sinaLogo = require("../../../assets/img/sinalogo.jpg");
+const sinaLogo = require("../../../assets/icon.png");
+
+const {width, height} = Dimensions.get('window')
 
 
 const userInfo = {
@@ -96,9 +99,18 @@ export default class LoginScreen extends Component{
             
                 <KeyboardAvoidingView 
                     style={styles.container}>
-                        <ImageBackground source={sinabg} style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
+                        <ImageBackground source={sinabg} style={{flex:1,  alignItems:'center'}}>
                             
-                                <View>
+                                <View style={{alignItems:'center'}}>
+                                    <Image 
+                                        source={sinaLogo}
+                                        style={{
+                                            width: width * 0.3,
+                                            height: height * 0.3,
+                                            resizeMode: 'contain',
+                                            marginBottom: -(height * 0.05)
+                                        }}
+                                    />
                                     <Text style={styles.welcome}>Welcome Partner</Text>
                                 </View>
                                 <TextInput 
@@ -146,7 +158,7 @@ const styles = StyleSheet.create({
     welcome: {
         fontSize: 25,
         textAlign: 'center',
-        margin: 10,
+        marginBottom: 10,
         color: '#fff'
    },
     instructions: {
