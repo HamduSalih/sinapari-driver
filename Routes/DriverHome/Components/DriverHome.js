@@ -28,6 +28,7 @@ class DriverHome extends React.Component{
 	}
 
 	componentDidMount(){
+		//console.log(this.props.userId)
 		if( Object.entries(this.props.allBids) < 1){
 			this.props.getDriverLocation(this.state.driverLicense)
 			this.props.getAllJobs(),
@@ -58,7 +59,7 @@ render(){
 		return(
 			<Container>
 				
-					<View style={{flex:1, alignItems: 'center', justifyContent:'center'}}>
+					<View style={{flex:1, justifyContent:'center'}}>
 					{/**this.props.region.latitude &&
 						<MapContainer 
 							region={this.props.region}

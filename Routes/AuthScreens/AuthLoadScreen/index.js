@@ -38,6 +38,7 @@ export default class AuthLoadScreen extends React.Component{
         if(userToken !== '1'){
             Actions.login();
         } else{
+            //alert(driverLicense)
             Actions.driverhome({userId: driverLicense});
         }
     }

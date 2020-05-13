@@ -64,7 +64,7 @@ export default class LoginScreen extends Component{
         .then(async(querySnapshot)=>{
             querySnapshot.forEach(async(doc)=>{
                 await AsyncStorage.setItem('isLoggedIn', '1');
-                await AsyncStorage.setItem('driverLicense', doc.data().id_number);
+                await AsyncStorage.setItem('driverLicense', doc.id);
             })
         })
         .then(async()=>{
@@ -99,7 +99,7 @@ export default class LoginScreen extends Component{
             
                 <KeyboardAvoidingView 
                     style={styles.container}>
-                        <ImageBackground source={sinabg} style={{flex:1,  alignItems:'center'}}>
+                        <ImageBackground source={sinabg} style={{flex:1,  alignItems:'center',justifyContent:'center'}}>
                             
                                 <View style={{alignItems:'center'}}>
                                     <Image 

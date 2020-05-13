@@ -38,7 +38,6 @@ export default class RegProcess extends React.Component{
     constructor(props) {
         super(props);
         // Don't call this.setState() here!
-        const { navigation } = this.props;
         let old_state = this.props.userData;
         this.state = old_state;
     }
