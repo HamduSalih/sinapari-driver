@@ -8,9 +8,13 @@ import { View } from 'native-base';
 import styles from './scrollContainerStyles'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
-
+import * as firebase from 'firebase';
+import '@firebase/firestore';
 import * as Random from 'expo-random';
 import { Actions } from 'react-native-router-flux';
+
+const database = firebase.firestore()
+var bidsContainer = []
 
 class ScrollContainer extends Component{
     state={
@@ -44,6 +48,16 @@ class ScrollContainer extends Component{
     };
 
     async componentDidMount(){
+        var bidCollections = database.collection('bids');
+        bidCollections.where('jobId', '==', this.state.jobId)
+        .where('tripStatus', '==', 'live')
+        .get()
+        .then((querySnapshot)=>{
+            querySnapshot.foreach((doc)=>{
+                bidsContainer.push(doc.data())
+            })
+        })
+
         const randomBytes = await Random.getRandomBytesAsync(9);
         var i = 0;
         var bidId = '';
@@ -63,7 +77,9 @@ class ScrollContainer extends Component{
 
     _navigate = () => {
         let param = this.state;
-        if(this.state.amount === null || this.state.amount === ' ' || this.state.amount === ' '){
+        if(bidsContainer.length > 0){
+            alert('')
+        } else if(this.state.amount === null || this.state.amount === ' ' || this.state.amount === ' '){
             alert('Please add your price');
         }
         else{

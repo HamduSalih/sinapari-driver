@@ -34,6 +34,32 @@ export const MapContainer = ({
 					strokeWidth={3}
 					strokeColor={'blue'}
 				/>
+
+				{
+					jobDetails.pickUp.long &&
+					<View>
+						<MapView.Marker 
+							coordinate={{
+								latitude: jobDetails.pickUp.lat,
+								longitude: jobDetails.pickUp.long,
+								latitudeDelta: 0.045,
+								longitudeDelta: 0.045
+							}}
+							pinColor='#ffffff'
+							title='Loading Point'
+						/>
+						<MapView.Marker 
+							coordinate={{
+								latitude: jobDetails.dropOff.lat,
+								longitude: jobDetails.dropOff.long,
+								latitudeDelta: 0.045,
+								longitudeDelta: 0.045
+							}}
+							pinColor='#141d48'
+							title='Destination'
+						/>
+					</View>
+				}
 			</MapView>
 	)
 }

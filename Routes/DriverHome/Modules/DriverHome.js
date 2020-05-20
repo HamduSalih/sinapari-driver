@@ -221,7 +221,6 @@ const ACTION_HANDLERS = {
 }
 const initialState = {
   region:{},
-  allBids: {}
 };
 
 export function DriverHomeReducer (state = initialState, action){
