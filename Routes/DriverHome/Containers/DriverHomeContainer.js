@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 	userAccount: state.driverhome.userAccount,
 	userJobs: state.driverhome.userJobs,
 	allJobs: state.driverhome.allJobs,
-	allBids: state.driverhome.allBids
+	allBids: state.driverhome.allBids || {}
 });
 
 const mapActionCreators = {

@@ -15,6 +15,7 @@ import CurrentJobContainer from './CurrentJob/Containers/CurrentJobContainer';
 import BottomTab from '../Navigtions/BottomTab'
 import navAuthLoad from '../Navigtions/DriverHomeNav'
 import DriverProfileContainer from "./DriverProfile/Containers/DriverProfileContainer";
+import ReportContainer from "./Report/Containers/ReportContainer";
 
 
 
@@ -34,6 +35,7 @@ const scenes = Actions.create(
 		<Scene key="currentJob" hideNavBar component={CurrentJobContainer} title="Current Job" />
 		<Scene key="driverProfile" component={DriverProfileContainer} title="Edit Profile" />
 		<Scene key="driverBotTab" hideNavBar component={navAuthLoad} title="DriverBotTab" />
+		<Scene key="report"  component={ReportContainer} title="Send Report" />
 	</Scene>
 
 );

@@ -70,7 +70,7 @@ render(){
 					{
 						!this.props.allJobs &&
 						<Text style={{flex:1, top: height * 0.4}}>
-							There are no jobs available.
+							Searching for jobs...
 						</Text>
 					}
 					{

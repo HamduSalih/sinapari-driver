@@ -60,6 +60,7 @@ export default class SignInTwo extends Component{
                             <Picker.Item label="Flatbed" value="flatbed" />
                             <Picker.Item label="Transit" value="transit" />
                             <Picker.Item label="Box-cargo" value="box-cargo" />
+                            <Picker.Item label="Oil-tanker" value="oil-tanker" />
                     </Picker>
                     <TextInput 
                         style={styles.input}
