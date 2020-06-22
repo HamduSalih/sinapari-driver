@@ -58,6 +58,7 @@ export default class RegProcess extends React.Component{
         };
         const locations = {
             id: this.state.driver_license,
+            name: this.state.fullname,
             lat: null,
             long: null,
             geocode: null

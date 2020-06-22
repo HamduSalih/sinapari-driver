@@ -78,7 +78,7 @@ class ScrollContainer extends Component{
     _navigate = () => {
         let param = this.state;
         if(bidsContainer.length > 0){
-            alert('')
+            alert('Job already assigned')
         } else if(this.state.amount === null || this.state.amount === ' ' || this.state.amount === ' '){
             alert('Please add your price');
         }

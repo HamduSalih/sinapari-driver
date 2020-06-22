@@ -42,6 +42,7 @@ const LONGITUDE_DELTA = 0.035;
 //---------------
 export function updateBidTripStatus(bid, buttonText){
 	var collections = database.collection('bids');
+	var jobCollections = database.collection('jobs')
 	var docId = '';
 	var allBids = [];
 
@@ -67,6 +68,21 @@ export function updateBidTripStatus(bid, buttonText){
 			.then((querySnapshot)=>{
 				querySnapshot.forEach((doc)=>{
 				allBids.push(doc.data());
+				})
+			})
+			.then(()=>{
+				jobCollections.where('jobId', '==', bid.jobId)
+				.get()
+				.then((querySnapshot)=>{
+					querySnapshot.foreach((doc)=>{
+						docId = doc.id
+					})
+				})
+				.then(()=>{
+					jobCollections.doc(docId)
+					.update({
+						status:'live'
+					})
 				})
 			})
 			.then(()=>{

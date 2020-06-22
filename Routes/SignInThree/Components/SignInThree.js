@@ -58,14 +58,22 @@ export default class SignInThree extends Component{
         //ref.getDownloadURL().then(function(url){
           //  console.log(url);
         //})
-        if(ref.put(blob)){
+        /**if(ref.put(blob)){
             let param = this.state;
-            Actions.regprocess({userData:param});
-        };
+            if(this.state.affiliate == 'under_partner'){
+                Actions.selectPartner({userData:param})
+            }else{
+                Actions.regprocess({userData:param});
+            }
+        }; */
         ref.put(blob)
         .then(()=>{
             let param = this.state;
-            Actions.regprocess({userData:param});
+            if(this.state.affiliate == 'under_partner'){
+                Actions.selectPartner({userData:param})
+            }else{
+                Actions.regprocess({userData:param});
+            }
         })
         .catch((err)=>{
             console.log(err)

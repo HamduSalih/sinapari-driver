@@ -111,7 +111,9 @@ export function getAllJobs(){
 	var jobsCollection = database.collection('jobs');
 	var jobsObject = {};
 	return(dispatch) => {
-		jobsCollection.get()
+		jobsCollection.where('status', '==', 'not live')
+		.where('number_of_trucks', '==', '1')
+		.get()
 		.then(function(querySnapshot) {
 			querySnapshot.forEach(function(doc) {
 				// doc.data() is never undefined for query doc snapshots
