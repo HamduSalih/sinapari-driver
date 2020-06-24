@@ -56,33 +56,68 @@ export default class RegProcess extends React.Component{
             reports: null,
             status: 'inactive'
         };
-        const locations = {
-            id: this.state.driver_license,
-            name: this.state.fullname,
-            lat: null,
-            long: null,
-            geocode: null
+        
+
+        if(userData.affiliate == 'independent'){
+            const locations = {
+                id: this.state.driver_license,
+                name: this.state.fullname,
+                lat: null,
+                long: null,
+                geocode: null
+            }
+            database.collection('drivers').doc(this.state.driver_license).set(userData)
+            .then(()=>{
+                database.collection('accounts').doc(this.state.driver_license).set(userAccount);
+            })
+            .then(()=>{
+                database.collection('jobsInfo').doc(this.state.driver_license).set(userJobsInfo);
+            })
+            .then(()=>{
+                database.collection('locations').doc(this.state.driver_license).set(locations);
+            })
+            .then(async() => {
+                await AsyncStorage.setItem('isLoggedIn', '1');
+                await AsyncStorage.setItem('driverLicense', this.state.driver_license);
+                await AsyncStorage.setItem('userType', 'independent')
+            })
+            .then(()=>{
+                Actions.driverhome({userId: this.state.driver_license});
+            })
+            .catch((err)=>{
+                console.log(err)
+            });
+        }else if(userData.affiliate == 'under_partner'){
+            const locations = {
+                id: this.state.driver_license,
+                name: this.state.fullname,
+                lat: null,
+                long: null,
+                geocode: null,
+                company: userData.company
+            }
+            database.collection('tms_drivers').doc(this.state.driver_license).set(userData)
+            .then(()=>{
+                database.collection('accounts').doc(this.state.driver_license).set(userAccount);
+            })
+            .then(()=>{
+                database.collection('jobsInfo').doc(this.state.driver_license).set(userJobsInfo);
+            })
+            .then(()=>{
+                database.collection('locations').doc(this.state.driver_license).set(locations);
+            })
+            .then(async() => {
+                await AsyncStorage.setItem('isLoggedIn', '1');
+                await AsyncStorage.setItem('driverLicense', this.state.driver_license);
+                await AsyncStorage.setItem('userType', 'under_partner')
+            })
+            .then(()=>{
+                Actions.tmsHome({userId: this.state.driver_license});
+            })
+            .catch((err)=>{
+                console.log(err)
+            });
         }
-        database.collection('drivers').doc(this.state.driver_license).set(userData)
-        .then(()=>{
-            database.collection('accounts').doc(this.state.driver_license).set(userAccount);
-        })
-        .then(()=>{
-            database.collection('jobsInfo').doc(this.state.driver_license).set(userJobsInfo);
-        })
-        .then(()=>{
-            database.collection('locations').doc(this.state.driver_license).set(locations);
-        })
-        .then(async() => {
-            await AsyncStorage.setItem('isLoggedIn', '1');
-            await AsyncStorage.setItem('driverLicense', this.state.driver_license);
-        })
-        .then(()=>{
-            Actions.driverhome({userId: this.state.driver_license});
-        })
-        .catch((err)=>{
-            console.log(err)
-        });
     }
 
     componentDidMount() {

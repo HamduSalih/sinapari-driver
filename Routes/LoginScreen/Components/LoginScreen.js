@@ -57,6 +57,7 @@ export default class LoginScreen extends Component{
 
     _login = async() => {
         var driverCollection = database.collection('drivers')
+        var tmsDriverCollection = database.collection('tms_drivers')
 
         driverCollection.where('username', '==', this.state.username)
         .where('password', '==', this.state.password)
@@ -74,6 +75,34 @@ export default class LoginScreen extends Component{
                 Actions.login();
             } else{
                 Actions.driverhome({userId: driverLicense});
+            }
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+        tmsDriverCollection.where('username', '==', this.state.username)
+        .where('password', '==', this.state.password)
+        .get()
+        .then(async(querySnapshot)=>{
+            querySnapshot.forEach(async(doc)=>{
+                await AsyncStorage.setItem('isLoggedIn', '1');
+                await AsyncStorage.setItem('driverLicense', doc.id);
+                await AsyncStorage.setItem('userType', doc.data().affiliate)
+            })
+        })
+        .then(async()=>{
+            const userToken = await AsyncStorage.getItem('isLoggedIn');
+            const driverLicense = await AsyncStorage.getItem('driverLicense');
+            const userType = await AsyncStorage.getItem('userType')
+            if(userToken !== '1'){
+                Actions.login();
+            } else if(userType == 'independent'){
+                //alert(driverLicense)
+                Actions.driverhome({userId: driverLicense});
+            }else if(userType == 'under_partner'){
+                //alert(driverLicense)
+                Actions.tmsHome({userId: driverLicense});
             }
         })
         .catch((error)=>{

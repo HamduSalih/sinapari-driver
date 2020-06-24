@@ -35,11 +35,15 @@ export default class AuthLoadScreen extends React.Component{
          */
         const userToken = await AsyncStorage.getItem('isLoggedIn');
         const driverLicense = await AsyncStorage.getItem('driverLicense');
+        const userType = await AsyncStorage.getItem('userType')
         if(userToken !== '1'){
             Actions.login();
-        } else{
+        } else if(userType == 'independent'){
             //alert(driverLicense)
             Actions.driverhome({userId: driverLicense});
+        }else if(userType == 'under_partner'){
+            //alert(driverLicense)
+            Actions.tmsHome({userId: driverLicense});
         }
     }
 

@@ -17,6 +17,8 @@ import navAuthLoad from '../Navigtions/DriverHomeNav'
 import DriverProfileContainer from "./DriverProfile/Containers/DriverProfileContainer";
 import ReportContainer from "./Report/Containers/ReportContainer";
 import SelectPartnerContainer from "./SelectPartner/Containers/SelectPartnerContainer";
+import TmsHomeContainer from "./TmsHome/Containers/TmsHomeContainer";
+import TmsCurrentJobContainer from "./TmsCurrentJob/Containers/TmsCurrentJobContainer";
 
 
 
@@ -38,6 +40,8 @@ const scenes = Actions.create(
 		<Scene key="driverBotTab" hideNavBar component={navAuthLoad} title="DriverBotTab" />
 		<Scene key="report"  component={ReportContainer} title="Send Report" />
 		<Scene key="selectPartner"  component={SelectPartnerContainer} title="Select Your Company" />
+		<Scene key="tmsHome" hideNavBar type={ActionConst.RESET} component={TmsHomeContainer} title="Home" />
+		<Scene key="tmsCurrentJob" hideNavBar component={TmsCurrentJobContainer} title="Current Job" />
 	</Scene>
 
 );
