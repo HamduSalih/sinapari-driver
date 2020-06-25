@@ -15,6 +15,8 @@ import { ReportReducer as report } from '../Routes/Report/Modules/Report';
 import { SelectPartnerReducer as selectPartner } from '../Routes/SelectPartner/Modules/SelectPartner';
 import { TmsHomeReducer as tmsHome } from '../Routes/TmsHome/Modules/TmsHome';
 import { TmsCurrentJobReducer as tmsCurrentJob } from '../Routes/TmsCurrentJob/Modules/TmsCurrentJob';
+import { TmsDriverProfileReducer as tmsDriverProfile } from '../Routes/TmsDriverProfile/Modules/TmsDriverProfile';
+import { TmsReportReducer as tmsReport } from '../Routes/TmsReport/Modules/TmsReport';
 
 export const makeRootReducer = () => {
 	return combineReducers({
@@ -28,9 +30,13 @@ export const makeRootReducer = () => {
 		bidProcess,
 		myBids,
 		currentJob,
+		driverProfile,
+		report,
 		selectPartner,
 		tmsHome,
-		tmsCurrentJob
+		tmsCurrentJob,
+		tmsDriverProfile,
+		tmsReport
 	});
 }
 

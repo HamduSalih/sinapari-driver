@@ -48,6 +48,19 @@ render(){
 						<MapContainer 
 							region={this.props.region} />
 					}
+					{
+						!this.props.region.latitude &&
+						<View style={{
+							flex:1, justifyContent:'center', alignItems:'center'
+						}}>
+							<Text style={{
+								width:'100%',
+								textAlign:'center',
+								fontSize:14,
+								lineHeight: 16
+							}}>Loading Your Information. Please wait...</Text>
+						</View>
+					}
                 </View>
 				<TmsBottomTab />
 			</Container>

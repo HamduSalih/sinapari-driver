@@ -25,6 +25,7 @@ const database = firebase.firestore();
 //THESE ARE ACTIONS CONSTANTS THEY SHOULD BE CALLED 
 //IN actionConstants.js
 const {
+  GET_DRIVER_JOBS
 	  } = constants;
 
 
@@ -35,16 +36,149 @@ const LONGITUDE_DELTA = 0.035;
 //---------------
 //Actions
 //---------------
+export function updateBidTripStatus(bid, buttonText){
+	var collections = database.collection('bids');
+	var jobCollections = database.collection('jobs')
+	var accountsCollections = database.collection('accounts')
+	var tmsUserCollection = database.collection('tms_users')
+	var docId = '';
+	var allBids = [];
+	var tmsDocId = ''
 
+	if(buttonText == 'started'){
+		return (dispatch)=>{
+			collections.where('driverId', '==', bid.driverId)
+			.where('bidId', '==', bid.bidId)
+			.where('status', '==', 'accepted')
+			.get().then((querySnapshot)=>{
+				querySnapshot.forEach((doc)=>{
+					docId = doc.id
+				})
+			})
+			.then(()=>{
+				collections.doc(docId)
+				.update({
+					tripStatus: 'live'
+				})
+			})
+			.then(()=>{
+			collections.where('driverId', '==', bid.driverId)
+			.get()
+			.then((querySnapshot)=>{
+				querySnapshot.forEach((doc)=>{
+				allBids.push(doc.data());
+				})
+			})
+			.then(()=>{
+				jobCollections.where('jobId', '==', bid.jobId)
+				.get()
+				.then((querySnapshot)=>{
+					querySnapshot.forEach((doc)=>{
+						docId = doc.id
+					})
+				})
+				.then(()=>{
+					jobCollections.doc(docId)
+					.update({
+						status:'live'
+					})
+				})
+			})
+			.then(()=>{
+				dispatch({
+				type: GET_DRIVER_JOBS,
+				payload: allBids
+				})
+			})
+			.then(()=>{
+				tmsUserCollection.where('companyName', '==', bid.companyName)
+				.get()
+				.then((querySnapshot)=>{
+					querySnapshot.forEach((doc)=>{
+						tmsDocId = doc.data().id_number
+					})
+				})
+				.then(()=>{
+					accountsCollections.doc(tmsDocId)
+					.get()
+					.then((doc)=>{
+						if((doc.data()).amountIn == null){
+							accountsCollections.doc(tmsDocId)
+							.update({
+								amountIn: bid.amount
+							})
+						}else{
+							accountsCollections.doc(tmsDocId)
+							.update({
+								amountIn: (parseInt((doc.data()).amountIn) + parseInt(bid.amount)).toString()
+							})
+						}
+					})
+				})
+			})
+			.then(()=>{
+				jobCollections.where('jobId', '==', bid.jobId)
+				.get()
+				.then((querySnapshot)=>{
+					querySnapshot.forEach((doc)=>{
+						jobCollections.doc(doc.id).delete()
+					})
+				})
+			})
+			})
+		}
+	}
+
+	if(buttonText == 'completed'){
+		return (dispatch)=>{
+			collections.where('driverId', '==', bid.driverId)
+			.where('bidId', '==', bid.bidId)
+			.where('tripStatus', '==', 'live')
+			.get().then((querySnapshot)=>{
+				querySnapshot.forEach((doc)=>{
+					docId = doc.id
+				})
+			})
+			.then(()=>{
+				collections.doc(docId)
+				.update({
+					tripStatus: 'completed'
+				})
+		})
+		.then(()=>{
+		  collections.where('driverId', '==', bid.driverId)
+		  .get()
+		  .then((querySnapshot)=>{
+			querySnapshot.forEach((doc)=>{
+			  allBids.push(doc.data());
+			})
+		  })
+		  .then(()=>{
+			dispatch({
+			  type: GET_DRIVER_JOBS,
+			  payload: allBids
+			})
+		  })
+		})
+	}
+	}
+}
 
 
 //--------------------
 //Action Handlers
 //--------------------
-
+function handleGetDriverJobs(state, action){
+	return update(state, {
+		jobs:{
+			$set: action.payload
+		}
+	})
+}
 
 
 const ACTION_HANDLERS = {
+  GET_DRIVER_JOBS:handleGetDriverJobs
 }
 
 const initialState = {

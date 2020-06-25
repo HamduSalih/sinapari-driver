@@ -39,13 +39,13 @@ export default class BottomTab extends React.Component {
         title:'Profile',
         subTitle:'',
         icon:'person',
-        sceneKey: 'driverProfile'
+        sceneKey: 'tmsDriverProfile'
     },
     {
         title:'Report',
         subTitle:'',
         icon:'report',
-        sceneKey: 'report'
+        sceneKey: 'tmsReport'
     }
     ];
 

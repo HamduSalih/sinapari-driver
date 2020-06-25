@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 import Root from './main'
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-registerRootComponent(App);
+//registerRootComponent(App);

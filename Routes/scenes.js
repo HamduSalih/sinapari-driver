@@ -19,6 +19,8 @@ import ReportContainer from "./Report/Containers/ReportContainer";
 import SelectPartnerContainer from "./SelectPartner/Containers/SelectPartnerContainer";
 import TmsHomeContainer from "./TmsHome/Containers/TmsHomeContainer";
 import TmsCurrentJobContainer from "./TmsCurrentJob/Containers/TmsCurrentJobContainer";
+import TmsDriverProfileContainer from "./TmsDriverProfile/Containers/TmsDriverProfileContainer";
+import TmsReportContainer from "./TmsReport/Containers/TmsReportContainer";
 
 
 
@@ -42,6 +44,8 @@ const scenes = Actions.create(
 		<Scene key="selectPartner"  component={SelectPartnerContainer} title="Select Your Company" />
 		<Scene key="tmsHome" hideNavBar type={ActionConst.RESET} component={TmsHomeContainer} title="Home" />
 		<Scene key="tmsCurrentJob" hideNavBar component={TmsCurrentJobContainer} title="Current Job" />
+		<Scene key="tmsDriverProfile" component={TmsDriverProfileContainer} title="Edit Profile" />
+		<Scene key="tmsReport"  component={TmsReportContainer} title="Send Report" />
 	</Scene>
 
 );

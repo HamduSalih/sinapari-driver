@@ -43,6 +43,7 @@ const LONGITUDE_DELTA = 0.035;
 export function updateBidTripStatus(bid, buttonText){
 	var collections = database.collection('bids');
 	var jobCollections = database.collection('jobs')
+	var accountsCollections = database.collection('accounts')
 	var docId = '';
 	var allBids = [];
 
@@ -89,6 +90,23 @@ export function updateBidTripStatus(bid, buttonText){
 				dispatch({
 				type: DRIVER_BIDS,
 				payload: allBids
+				})
+			})
+			.then(()=>{
+				accountsCollections.doc(bid.driverId)
+				.get()
+				.then((doc)=>{
+					if((doc.data()).amountIn == null){
+						accountsCollections.doc(bid.driverId)
+						.update({
+							amountIn: bid.amount
+						})
+					}else{
+						accountsCollections.doc(bid.driverId)
+						.update({
+							amountIn: (parseInt((doc.data()).amountIn) + parseInt(bid.amount)).toString()
+						})
+					}
 				})
 			})
 			})
