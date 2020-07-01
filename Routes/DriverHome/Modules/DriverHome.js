@@ -113,15 +113,12 @@ export function getAllJobs(){
 	return(dispatch) => {
 		jobsCollection.where('status', '==', 'not live')
 		.where('number_of_trucks', '==', '1')
-		.get()
-		.then(function(querySnapshot) {
+		.onSnapshot(function(querySnapshot) {
 			querySnapshot.forEach(function(doc) {
 				// doc.data() is never undefined for query doc snapshots
 				var docId = doc.id;
 				jobsObject[docId] = doc.data();
 			});
-		})
-		.then(()=>{
 			dispatch({
 				type:GET_ALL_JOBS,
 				payload: jobsObject	
@@ -132,16 +129,14 @@ export function getAllJobs(){
 
 export function getDriverBids(userId){
 	var bidsCollection = database.collection('bids');
-	var allBids = [];
+	
 	return (dispatch) => {
 		bidsCollection.where('driverId', '==', userId.toString())
-		.get()
-		.then((querySnapshot)=>{
+		.onSnapshot((querySnapshot)=>{
+			var allBids = [];
 			querySnapshot.forEach((doc)=>{
 				allBids.push(doc.data());
 			})
-		})
-		.then(()=>{
 			dispatch({
 				type: DRIVER_BIDS,
 				payload: allBids

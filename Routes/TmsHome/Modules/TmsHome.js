@@ -82,8 +82,7 @@ export function getDriversJob(driverId){
 	return (dispatch)=>{
 		bidsCollection.where('driverId', '==', driverId.toString())
 		.where('status', '==', 'accepted')
-		.get()
-		.then((querySnapshot)=>{
+		.onSnapshot((querySnapshot)=>{
 			var myJobs = []
 			querySnapshot.forEach((doc)=>{
 				myJobs.push(doc.data())

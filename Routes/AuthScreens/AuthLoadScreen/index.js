@@ -6,7 +6,10 @@ import {AsyncStorage,
 import styles from './AuthLoadScreenStyles';
 import { Actions } from 'react-native-router-flux';
 import * as Location from 'expo-location';
+import * as firebase from 'firebase';
+import '@firebase/firestore';
 
+const database = firebase.firestore()
 const sinabg = require('../../../assets/img/sina-bg.jpg')
 const sinalogo = require('../../../assets/img/sinalogo.jpg')
 
@@ -14,7 +17,24 @@ export default class AuthLoadScreen extends React.Component{
     async componentDidMount() {
         let { status } = await Location.requestPermissionsAsync();
         if (status == 'granted') {
-            setTimeout(this._bootstrapAsync, 5000);
+            var version = "1.0.0"
+            var versionControl = database.collection('versionControl').doc('versionControl')
+            versionControl
+            .get()
+            .then((doc)=>{
+                if((doc.data()).version == version){
+                    setTimeout(() => {
+                        this._bootstrapAsync();
+                    }, 5000);
+                }else{
+                    if(alert('Please close app and update to the latest version')){
+
+                    }
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })		
         }else{
             let { status } = await Location.requestPermissionsAsync();
         }
