@@ -40,7 +40,7 @@ const GooglePlacesInput = ({getSelectedAddress,getInputType}) => {
 
       query={{
         // available options: https://developers.google.com/places/web-service/autocomplete
-        key: 'AIzaSyCspx_yMJwX4bTjLXTUHebo9TwYxTaLa6E',
+        key: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         language: 'en', // language of the results
       }}
 
